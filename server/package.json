@@ -26,6 +26,7 @@
     "@nestjs/passport": "^10.0.1",
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/sequelize": "^10.0.0",
+    "@nestjs/swagger": "^7.1.8",
     "@types/bcrypt": "^5.0.0",
     "@types/express-session": "^1.17.7",
     "@types/passport": "^1.0.12",
