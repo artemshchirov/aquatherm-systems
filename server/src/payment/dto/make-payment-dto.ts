@@ -4,7 +4,7 @@ import { IsNotEmpty } from 'class-validator';
 export class MakePaymentDto {
   @ApiProperty({ example: 100 })
   @IsNotEmpty()
-  readonly amount: string;
+  readonly amount: number;
 }
 
 export class MakePaymentResponse {

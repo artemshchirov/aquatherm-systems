@@ -13,7 +13,7 @@ import { AuthModule } from '../../src/auth/auth.module';
 
 const mockedUser = {
   username: 'John',
-  password: 'John123',
+  password: 'john123',
   email: 'john@gmail.com',
 };
 
@@ -60,6 +60,7 @@ describe('Auth controller', () => {
 
   afterEach(async () => {
     await User.destroy({ where: { username: mockedUser.username } });
+    await app.close();
   });
 
   it('should login user', async () => {
@@ -89,6 +90,6 @@ describe('Auth controller', () => {
     const response = await request(app.getHttpServer()).get('/users/logout');
 
     // TODO: add text .toBe from constants
-    expect(response.body.msg).toBe('Session has ended');
+    expect(response.body.msg).toBe('session has ended');
   });
 });

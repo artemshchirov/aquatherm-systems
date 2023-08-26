@@ -11,7 +11,7 @@ import { AuthService } from '../../src/auth/auth.service';
 
 const mockedUser = {
   username: 'John',
-  password: 'John123',
+  password: 'john123',
   email: 'john@gmail.com',
 };
 
@@ -51,6 +51,7 @@ describe('Auth service', () => {
 
   afterEach(async () => {
     await User.destroy({ where: { username: mockedUser.username } });
+    await app.close();
   });
 
   it('should login user', async () => {

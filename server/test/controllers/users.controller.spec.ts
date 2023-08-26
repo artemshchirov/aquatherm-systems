@@ -30,6 +30,7 @@ describe('Users controller', () => {
 
   afterEach(async () => {
     await User.destroy({ where: { username: 'Test' } });
+    await app.close();
   });
 
   it('should create user', async () => {
@@ -47,6 +48,7 @@ describe('Users controller', () => {
       newUser.password,
       response.body.password,
     );
+
     expect(response.body.username).toBe(newUser.username);
     expect(passwordIsValid).toBe(true);
     expect(response.body.email).toBe(newUser.email);

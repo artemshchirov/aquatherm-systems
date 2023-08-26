@@ -29,7 +29,7 @@ export class LoginUserResponse {
 }
 
 export class LogoutUserResponse {
-  @ApiProperty({ example: 'Session has ended' })
+  @ApiProperty({ example: 'session has ended' })
   msg: string;
 }
 

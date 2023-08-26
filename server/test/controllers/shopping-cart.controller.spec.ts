@@ -18,11 +18,11 @@ import { ShoppingCartModule } from '../../src/shopping-cart/shopping-cart.module
 
 const mockedUser = {
   username: 'John',
-  password: 'John123',
+  password: 'john123',
   email: 'john@gmail.com',
 };
 
-describe('Products controller', () => {
+describe('Shopping Cart controller', () => {
   let app: INestApplication;
   let productsService: ProductsService;
   let usersService: UsersService;

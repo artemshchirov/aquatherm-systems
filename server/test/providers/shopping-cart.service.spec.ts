@@ -6,10 +6,6 @@ import { databaseConfig } from '../../src/config/configuration';
 import { SequelizeConfigService } from '../../src/config/sequelizeConfig.service';
 import { User } from '../../src/users/users.model';
 import * as bcrypt from 'bcrypt';
-import * as request from 'supertest';
-import * as passport from 'passport';
-import * as session from 'express-session';
-import { AuthModule } from '../../src/auth/auth.module';
 import { ProductsModule } from '../../src/products/products.module';
 import { ProductsService } from '../../src/products/products.service';
 import { UsersService } from '../../src/users/users.service';
@@ -19,11 +15,11 @@ import { ShoppingCartService } from '../../src/shopping-cart/shopping-cart.servi
 
 const mockedUser = {
   username: 'John',
-  password: 'John123',
+  password: 'john123',
   email: 'john@gmail.com',
 };
 
-describe('Products controller', () => {
+describe('Shopping Cart service', () => {
   let app: INestApplication;
   let productsService: ProductsService;
   let usersService: UsersService;
@@ -39,7 +35,6 @@ describe('Products controller', () => {
         ConfigModule.forRoot({ load: [databaseConfig] }),
         ShoppingCartModule,
         ProductsModule,
-        AuthModule,
       ],
     }).compile();
 

@@ -32,6 +32,7 @@ describe('Users service', () => {
 
   afterEach(async () => {
     await User.destroy({ where: { username: 'Test' } });
+    await app.close();
   });
 
   it('should create user', async () => {

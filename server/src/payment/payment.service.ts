@@ -32,7 +32,8 @@ export class PaymentService {
       };
       const { data } = await axios(paymentData);
 
-      // return data;  // for production
+      // FIXME: uncomment after connecting payment API
+      // return data;
       return paymentData;
     } catch (err) {
       throw new ForbiddenException(err);

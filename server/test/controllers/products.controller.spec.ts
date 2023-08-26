@@ -14,7 +14,7 @@ import { ProductsModule } from '../../src/products/products.module';
 
 const mockedUser = {
   username: 'John',
-  password: 'John123',
+  password: 'john123',
   email: 'john@gmail.com',
 };
 
