@@ -42,7 +42,7 @@ export class ShoppingCartController {
   @ApiOkResponse({ type: UpdateCountResponse })
   @ApiBody({ type: UpdateCountRequest })
   @UseGuards(AuthenticatedGuard)
-  @Post('/count/:id')
+  @Patch('/count/:id')
   updateCount(
     @Body() { count }: { count: number },
     @Param('id') productId: string,
