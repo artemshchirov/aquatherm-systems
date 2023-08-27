@@ -5,10 +5,10 @@ const EmailInput = ({ register, errors }: IAuthPageInput) => (
   <label className={styles.form__label}>
     <input
       {...register('email', {
-        required: 'Введите Email!',
+        required: 'Enter Email',
         pattern: {
           value: /\S+@\S+\.\S+/,
-          message: 'Неправильный Email!',
+          message: 'Wrong Email',
         },
       })}
       className={styles.form__input}

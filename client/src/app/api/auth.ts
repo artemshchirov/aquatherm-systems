@@ -2,8 +2,8 @@ import type { AxiosError } from 'axios'
 import type { ISignInFx, ISignUpFx } from '@/types/auth'
 import { toast } from 'react-toastify'
 import { api } from '@/app/axiosClient'
-import { createEffect } from 'effector-next'
 import { HTTPStatus } from '@/constants'
+import { createEffect } from 'effector'
 
 export const singUpFx = createEffect(
   async ({ email, password, url, username }: ISignUpFx) => {
@@ -13,8 +13,8 @@ export const singUpFx = createEffect(
       toast.warning(data.warningMessage)
       return
     }
-
-    toast.success('Регистрация прощла успешно!')
+    // TODO: rewrite all texts to constants file
+    toast.success('Registration completed successfully')
 
     return data
   }
@@ -24,7 +24,7 @@ export const singInFx = createEffect(
   async ({ password, url, username }: ISignInFx) => {
     const { data } = await api.post(url, { password, username })
 
-    toast.success('Вход выполнен!')
+    toast.success('Signed in')
 
     return data
   }

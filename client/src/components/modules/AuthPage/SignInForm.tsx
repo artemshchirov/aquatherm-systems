@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import NameInput from '@/components/elements/AuthPage/NameInput'
 import { IInputs } from '@/types/auth'
 import PasswordInput from '@/components/elements/AuthPage/PasswordInput'
-import { singInFx } from '../../../app/api/auth'
+import { singInFx } from '@/app/api/auth'
 import { showAuthError } from '@/utils/errors'
 import { $mode } from '@/context/mode'
 import styles from '@/styles/auth/index.module.scss'
@@ -48,7 +48,7 @@ const SignInForm = () => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <h2 className={`${styles.form__title} ${styles.title} ${darkModeClass}`}>
-        Войти на сайт
+        Login to your account
       </h2>
       <NameInput register={register} errors={errors} />
       <PasswordInput register={register} errors={errors} />

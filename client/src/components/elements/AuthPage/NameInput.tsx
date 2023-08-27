@@ -5,12 +5,12 @@ const NameInput = ({ register, errors }: IAuthPageInput) => (
   <label className={styles.form__label}>
     <input
       {...register('name', {
-        required: 'Введите имя!',
+        required: 'Input name',
         minLength: 2,
         maxLength: 15,
         pattern: {
           value: /^[а-яА-Яa-zA-ZёЁ]*$/,
-          message: 'Недопустимое значение!',
+          message: 'Invalid value',
         },
       })}
       className={styles.form__input}
@@ -21,10 +21,10 @@ const NameInput = ({ register, errors }: IAuthPageInput) => (
       <span className={styles.error_alert}>{errors.name?.message}</span>
     )}
     {errors.name && errors.name.type === 'minLength' && (
-      <span className={styles.error_alert}>Минимум 2 символа!</span>
+      <span className={styles.error_alert}>Minimum 2 characters</span>
     )}
     {errors.name && errors.name.type === 'maxLength' && (
-      <span className={styles.error_alert}>Не более 15 символов!</span>
+      <span className={styles.error_alert}>No more than 15 characters</span>
     )}
   </label>
 )

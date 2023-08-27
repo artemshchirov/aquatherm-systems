@@ -72,6 +72,7 @@ const AuthPage = () => {
           ref={switchCircle2}
         />
         <div className={styles.switch__container} id="switch-c1" ref={switchC1}>
+          {/* TODO: hide using styles */}
           {!isMedia800 && (
             <>
               <h2
@@ -99,17 +100,18 @@ const AuthPage = () => {
           id="switch-c2"
           ref={switchC2}
         >
+          {/* TODO: hide using styles */}
           {!isMedia800 && (
             <>
               <h2
                 className={`${styles.switch__title} ${styles.title} ${darkModeClass}`}
               >
-                Привет, друг!
+                Hi, friend!
               </h2>
               <p
                 className={`${styles.switch__description} ${styles.description} ${darkModeClass}`}
               >
-                Введите свои личные данные и начните путешествие с нами
+                Enter your personal details and start your journey with us
               </p>
             </>
           )}

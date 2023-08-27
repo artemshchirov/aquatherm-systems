@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import { EffectorNext } from '@effector/next'
+import ToastProvider from '../providers/toast.provider'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
@@ -13,7 +15,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning>{children}</body>
+      <body suppressHydrationWarning>
+        <ToastProvider>
+          <EffectorNext>{children}</EffectorNext>
+        </ToastProvider>
+      </body>
     </html>
   )
 }

@@ -13,6 +13,7 @@ import spinnerStyles from '@/styles/spinner/index.module.scss'
 
 const SignUpForm = ({ switchForm }: { switchForm: () => void }) => {
   const [spinner, setSpinner] = useState(false)
+  // TODO: change react-hook-form to zod
   const {
     register,
     formState: { errors },
@@ -26,6 +27,7 @@ const SignUpForm = ({ switchForm }: { switchForm: () => void }) => {
     try {
       setSpinner(true)
       const userData = await singUpFx({
+        // TODO: rewrite all urls in constants file
         url: '/users/signup',
         username: data.name,
         password: data.password,
@@ -53,7 +55,7 @@ const SignUpForm = ({ switchForm }: { switchForm: () => void }) => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <h2 className={`${styles.form__title} ${styles.title} ${darkModeClass}`}>
-        Создать аккаунт
+        Create account
       </h2>
       <NameInput register={register} errors={errors} />
       <EmailInput register={register} errors={errors} />
