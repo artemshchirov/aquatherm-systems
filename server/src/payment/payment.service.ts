@@ -25,7 +25,7 @@ export class PaymentService {
           capture: true,
           confirmation: {
             type: 'redirect',
-            return_url: 'http://localhost:3001/order',
+            return_url: 'http://localhost:3000/order',
           },
           description: 'Order №1',
         },

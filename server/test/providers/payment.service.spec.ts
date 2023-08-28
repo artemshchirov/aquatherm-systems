@@ -4,7 +4,6 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { Test, TestingModule } from '@nestjs/testing';
 import { databaseConfig } from '../../src/config/configuration';
 import { SequelizeConfigService } from '../../src/config/sequelizeConfig.service';
-import * as request from 'supertest';
 import { PaymentModule } from '../../src/payment/payment.module';
 import { PaymentService } from '../../src/payment/payment.service';
 
@@ -57,7 +56,7 @@ describe('Payment controller', () => {
         },
         capture: true,
         confirmation: {
-          return_url: 'http://localhost:3001/order',
+          return_url: 'http://localhost:3000/order',
           type: 'redirect',
         },
         description: 'Order №1',
@@ -65,26 +64,3 @@ describe('Payment controller', () => {
     });
   });
 });
-
-// "method": "POST",
-// "url": "http://example.com",
-// "headers": {
-// 		"Content-Type": "application/json",
-// 		"Idempotence-Key": 1693088217426
-// },
-// "auth": {
-// 		"username": "204971",
-// 		"password": "test_deg3128t583990"
-// },
-// "data": {
-// 		"amount": {
-// 				"value": 100,
-// 				"currency": "ILS"
-// 		},
-// 		"capture": true,
-// 		"confirmation": {
-// 				"type": "redirect",
-// 				"return_url": "http://localhost:3001/order"
-// 		},
-// 		"description": "Order №1"
-// }
