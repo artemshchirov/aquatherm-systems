@@ -1,4 +1,4 @@
-import { NextRouter } from 'next/navigation'
+// import { NextRouter } from 'next/navigation'
 
 export const getWindowWidth = () => {
   const { innerWidth: windowWidth } =
@@ -34,10 +34,8 @@ export const idGenerator = () => {
   )
 }
 
-export const getQueryParamOnFirstRender = (
-  queryName: string,
-  router: NextRouter
-) =>
+// FIXME: any
+export const getQueryParamOnFirstRender = (queryName: string, router: any) =>
   router.query[queryName] ||
   router.asPath.match(new RegExp(`[&?]${queryName}=(.*)(&|$)`))
 

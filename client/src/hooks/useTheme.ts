@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { setMode, $mode } from '../context/mode'
 
 export const useTheme = () => {
+  // TODO: rename "mode" to "theme"
   const mode = useStore($mode)
 
   const toggleTheme = () => {
@@ -21,6 +22,8 @@ export const useTheme = () => {
     if (localTheme) {
       setMode(localTheme)
     }
+
+    // FIXME: check if need return for deleting mode from localStorage on unmount
   }, [])
 
   return { toggleTheme }

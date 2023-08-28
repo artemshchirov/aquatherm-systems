@@ -1,7 +1,9 @@
+'use client'
+
 import type { Metadata } from 'next'
-import { EffectorNext } from '@effector/next'
 import ToastProvider from '../providers/toast.provider'
 import '@/styles/globals.css'
+import Header from '../components/modules/Header/Header'
 
 export const metadata: Metadata = {
   title: 'Ecommerce api full',
@@ -17,7 +19,8 @@ export default function RootLayout({
     <html lang="en">
       <body suppressHydrationWarning>
         <ToastProvider>
-          <EffectorNext>{children}</EffectorNext>
+          <Header />
+          <main>{children}</main>
         </ToastProvider>
       </body>
     </html>

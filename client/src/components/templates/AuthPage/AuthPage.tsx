@@ -35,6 +35,7 @@ const AuthPage = () => {
     bContainer.current.classList.toggle(styles.is_z200)
   }
 
+  // TODO: clsx for classnames with multiple classes
   return (
     <div className={`${styles.main} ${darkModeClass}`}>
       <div className={styles.mode_toggle}>
@@ -78,13 +79,13 @@ const AuthPage = () => {
               <h2
                 className={`${styles.switch__title} ${styles.title} ${darkModeClass}`}
               >
-                Добро пожаловать!
+                Welcome!
               </h2>
               <p
                 className={`${styles.switch__description} ${styles.description} ${darkModeClass}`}
               >
-                Чтобы оставаться на связи с нами, пожалуйста, войдите под своей
-                личной информацией
+                To stay in touch with us, please log in with your personal
+                information
               </p>
             </>
           )}
