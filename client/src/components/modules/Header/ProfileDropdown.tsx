@@ -25,8 +25,6 @@ const ProfileDropDown = forwardRef<HTMLDivElement, IWrappedComponentProps>(
       router.push('/')
     }
 
-    console.log(user)
-
     return (
       <div className={styles.profile} ref={ref}>
         <button className={styles.profile__btn} onClick={toggleProfileDropDown}>

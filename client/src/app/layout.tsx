@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import ToastProvider from '../providers/toast.provider'
 import '@/styles/globals.css'
 import Header from '../components/modules/Header/Header'
+import Footer from '../components/modules/Footer/Footer'
 
 export const metadata: Metadata = {
   title: 'Ecommerce api full',
@@ -21,6 +22,7 @@ export default function RootLayout({
         <ToastProvider>
           <Header />
           <main>{children}</main>
+          <Footer />
         </ToastProvider>
       </body>
     </html>
