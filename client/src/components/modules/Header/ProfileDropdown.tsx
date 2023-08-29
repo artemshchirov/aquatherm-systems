@@ -22,7 +22,7 @@ const ProfileDropDown = forwardRef<HTMLDivElement, IWrappedComponentProps>(
 
     const handleLogout = async () => {
       await logoutFx('/users/logout')
-      router.push('/')
+      router.push('/auth')
     }
 
     return (
@@ -45,12 +45,12 @@ const ProfileDropDown = forwardRef<HTMLDivElement, IWrappedComponentProps>(
                 <span
                   className={`${styles.profile__dropdown__username} ${darkModeClass}`}
                 >
-                  {user.username || 'Username'}
+                  {user.username}
                 </span>
                 <span
                   className={`${styles.profile__dropdown__email} ${darkModeClass}`}
                 >
-                  {user.email || 'email@gmail.com'}
+                  {user.email}
                 </span>
               </li>
               <li className={styles.profile__dropdown__item}>

@@ -1,16 +1,24 @@
 'use client'
 
 import type { Metadata } from 'next'
+import DashboardPage from '../../components/templates/DashboardPage/DashboardPage'
+import useRedirectByUserCheck from '../../hooks/useRedirectByUserCheck'
+import { EffectorNext } from '@effector/next'
 
 export const metadata: Metadata = {
   title: 'Art Box - Dashboard',
 }
 
-export default function Auth() {
+export default function Dashboard() {
+  const { shouldLoadContent } = useRedirectByUserCheck()
   return (
     <>
-      <h1>Dashboard</h1>
-      <div className="overlay" />
+      {shouldLoadContent && (
+        <>
+          <DashboardPage />
+          <div className="overlay" />
+        </>
+      )}
     </>
   )
 }

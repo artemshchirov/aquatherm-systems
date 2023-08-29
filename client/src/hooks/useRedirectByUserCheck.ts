@@ -1,3 +1,5 @@
+'use client'
+
 import { checkUserAuthFx } from '@/app/api/auth'
 import { setUser } from '@/context/user'
 import { useRouter } from 'next/navigation'
@@ -17,7 +19,7 @@ const useRedirectByUserCheck = (isAuthPage = false) => {
 
   const checkUser = async () => {
     const user = await checkUserAuthFx('/users/login-check')
-
+    console.log(user)
     if (isAuthPage) {
       if (!user) {
         setShouldLoadContent(true)
@@ -34,7 +36,7 @@ const useRedirectByUserCheck = (isAuthPage = false) => {
       return
     }
 
-    router.push('/')
+    router.push('/auth')
   }
 
   return { shouldLoadContent }

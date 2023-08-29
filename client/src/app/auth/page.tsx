@@ -2,15 +2,13 @@
 
 import type { Metadata } from 'next'
 import AuthPage from '@/components/templates/AuthPage/AuthPage'
+import useRedirectByUserCheck from '../../hooks/useRedirectByUserCheck'
 
 export const metadata: Metadata = {
   title: 'Art Box - Auth',
 }
 
 export default function Auth() {
-  return (
-    <>
-      <AuthPage />
-    </>
-  )
+  const { shouldLoadContent } = useRedirectByUserCheck(true)
+  return <>{shouldLoadContent && <AuthPage />}</>
 }
