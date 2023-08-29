@@ -9,7 +9,7 @@ const createManufacturerCheckboxObj = (title: string) => ({
   id: idGenerator(),
 })
 
-export const boilerManufacturers = [
+export const vendors = [
   'Ariston',
   'Chaffoteaux&Maury',
   'Baxi',
@@ -21,7 +21,7 @@ export const boilerManufacturers = [
   'Northwest',
 ].map(createManufacturerCheckboxObj)
 
-export const partsManufacturers = [
+export const productsManufacturers = [
   'Azure',
   'Gloves',
   'Cambridgeshire',
@@ -47,27 +47,27 @@ export const checkQueryParams = (router: NextRouter) => {
     router
   ) as string
   const boilerQueryValue = JSON.parse(
-    decodeURIComponent(getQueryParamOnFirstRender('boiler', router) as string)
+    decodeURIComponent(getQueryParamOnFirstRender('product', router) as string)
   )
-  const partsQueryValue = JSON.parse(
-    decodeURIComponent(getQueryParamOnFirstRender('parts', router) as string)
+  const productsQueryValue = JSON.parse(
+    decodeURIComponent(getQueryParamOnFirstRender('products', router) as string)
   )
   const isValidBoilerQuery =
     Array.isArray(boilerQueryValue) && !!boilerQueryValue?.length
-  const isValidPartsQuery =
-    Array.isArray(partsQueryValue) && !!partsQueryValue?.length
+  const isValidProductsQuery =
+    Array.isArray(productsQueryValue) && !!productsQueryValue?.length
   const isValidPriceQuery =
     checkPriceFromQuery(+priceFromQueryValue) &&
     checkPriceFromQuery(+priceToQueryValue)
 
   return {
     isValidBoilerQuery,
-    isValidPartsQuery,
+    isValidProductsQuery,
     isValidPriceQuery,
     priceFromQueryValue,
     priceToQueryValue,
     boilerQueryValue,
-    partsQueryValue,
+    productsQueryValue,
   }
 }
 
@@ -87,10 +87,12 @@ export async function updateParamsAndFilters<T>(
   path: string,
   router: NextRouter
 ) {
+  // const params = router.query
   const params = router.query
+  console.log('params:', router)
 
-  delete params.boiler
-  delete params.parts
+  delete params.product
+  delete params.products
   delete params.priceFrom
   delete params.priceTo
 

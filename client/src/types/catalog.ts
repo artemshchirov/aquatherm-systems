@@ -14,11 +14,11 @@ export interface IManufacturersBlockItemProps {
 export interface IQueryParams {
   offset: string
   firs: string
-  boiler: string
-  parts: string
+  product: string
+  products: string
   priceFrom: string
   priceTo: string
-  partId: string
+  productId: string
 }
 
 export interface IFilterCheckboxItem {

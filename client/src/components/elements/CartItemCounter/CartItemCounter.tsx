@@ -12,7 +12,7 @@ import spinnerStyles from '@/styles/spinner/index.module.scss'
 
 const CartItemCounter = ({
   totalCount,
-  partId,
+  productId,
   increasePrice,
   decreasePrice,
   initialCount,
@@ -44,11 +44,11 @@ const CartItemCounter = ({
       setCount(count + 1)
 
       const data = await updateCartItemFx({
-        url: `/shopping-cart/count/${partId}`,
+        url: `/shopping-cart/count/${productId}`,
         payload: { count: count + 1 },
       })
 
-      updateCartItemCount({ partId, count: data.count })
+      updateCartItemCount({ productId, count: data.count })
     } catch (error) {
       toast.error((error as Error).message)
     } finally {
@@ -64,11 +64,11 @@ const CartItemCounter = ({
       setCount(count - 1)
 
       const data = await updateCartItemFx({
-        url: `/shopping-cart/count/${partId}`,
+        url: `/shopping-cart/count/${productId}`,
         payload: { count: count - 1 },
       })
 
-      updateCartItemCount({ partId, count: data.count })
+      updateCartItemCount({ productId, count: data.count })
     } catch (error) {
       toast.error((error as Error).message)
     } finally {

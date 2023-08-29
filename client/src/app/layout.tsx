@@ -5,6 +5,7 @@ import ToastProvider from '../providers/toast.provider'
 import '@/styles/globals.css'
 import Header from '../components/modules/Header/Header'
 import Footer from '../components/modules/Footer/Footer'
+import { AppProgressBar as ProgressBar } from 'next-nprogress-bar'
 
 export const metadata: Metadata = {
   title: 'Ecommerce api full',
@@ -19,6 +20,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body suppressHydrationWarning>
+        <ProgressBar
+          height="4px"
+          color="#fffd00"
+          options={{ showSpinner: true }}
+          shallowRouting
+        />
         <ToastProvider>
           <Header />
           <main>{children}</main>

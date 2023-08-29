@@ -2,11 +2,13 @@ import { createEffect } from 'effector'
 import { api } from '../axiosClient'
 import { toast } from 'react-toastify'
 
-export const getBestsellersOrNewPartsFx = createEffect(async (url: string) => {
-  const { data } = await api.get(url)
+export const getBestsellersOrNewProductsFx = createEffect(
+  async (url: string) => {
+    const { data } = await api.get(url)
 
-  return data
-})
+    return data
+  }
+)
 
 export const getProductsFx = createEffect(async (url: string) => {
   const { data } = await api.get(url)
@@ -20,7 +22,7 @@ export const getProductFx = createEffect(async (url: string) => {
   return data
 })
 
-export const searchPartsFx = createEffect(
+export const searchProductsFx = createEffect(
   async ({ url, search }: { url: string; search: string }) => {
     const { data } = await api.post(url, { search })
 
@@ -28,7 +30,7 @@ export const searchPartsFx = createEffect(
   }
 )
 
-export const getPartByNameFx = createEffect(
+export const getProductByNameFx = createEffect(
   async ({ url, name }: { url: string; name: string }) => {
     try {
       const { data } = await api.post(url, { name })

@@ -2,7 +2,7 @@ export interface IProduct {
   id: number
   boiler_manufacturer: string
   price: number
-  parts_manufacturer: string
+  products_manufacturer: string
   vendor_code: string
   name: string
   description: string
