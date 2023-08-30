@@ -5,7 +5,7 @@ import { removeItemFromCart, updateTotalPrice } from '@/utils/shopping-cart'
 
 export const usePrice = (
   count: number,
-  partId: number,
+  productId: number,
   initialPrice: number
 ) => {
   const spinner = useStore(removeFromCartFx.pending)
@@ -16,12 +16,12 @@ export const usePrice = (
   }, [])
 
   useEffect(() => {
-    updateTotalPrice(price, partId)
+    updateTotalPrice(price, productId)
   }, [price])
 
   const increasePrice = () => setPrice(price + initialPrice)
   const decreasePrice = () => setPrice(price - initialPrice)
-  const deleteCartItem = () => removeItemFromCart(partId)
+  const deleteCartItem = () => removeItemFromCart(productId)
 
   return { price, spinner, increasePrice, decreasePrice, deleteCartItem }
 }

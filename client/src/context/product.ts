@@ -7,4 +7,4 @@ export const setProduct = product.createEvent<IProduct>()
 
 export const $product = product
   .createStore<IProduct>({} as IProduct)
-  .on(setProduct, (_, part) => part)
+  .on(setProduct, (_, product) => product)

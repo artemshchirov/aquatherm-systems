@@ -15,7 +15,7 @@ import styles from '@/styles/dashboard/index.module.scss'
 const DashboardSlider = ({
   items,
   spinner,
-  goToPartPage,
+  goToProductPage,
 }: IDashboardSlider) => {
   const isMedia768 = useMediaQuery(768)
   const isMedia1366 = useMediaQuery(1366)
@@ -74,7 +74,7 @@ const DashboardSlider = ({
             <img src={JSON.parse(item.images)[0]} alt={item.name} />
             <div className={styles.dashboard__slide__inner}>
               <Link
-                href={goToPartPage ? `/catalog/${item.id}` : '/catalog'}
+                href={goToProductPage ? `/catalog/${item.id}` : '/catalog'}
                 passHref
                 legacyBehavior
               >

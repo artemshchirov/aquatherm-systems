@@ -12,20 +12,20 @@ import {
 
 export const toggleCartItem = async (
   username: string,
-  partId: number,
+  productId: number,
   isInCart: boolean
 ) => {
   try {
     if (isInCart) {
-      await removeFromCartFx(`/shopping-cart/one/${partId}`)
-      removeShoppingCartItem(partId)
+      await removeFromCartFx(`/shopping-cart/one/${productId}`)
+      removeShoppingCartItem(productId)
       return
     }
 
     const data = await addToCartFx({
       url: '/shopping-cart/add',
       username,
-      partId,
+      productId,
     })
 
     updateShoppingCart(data)
@@ -34,20 +34,20 @@ export const toggleCartItem = async (
   }
 }
 
-export const removeItemFromCart = async (partId: number) => {
+export const removeItemFromCart = async (productId: number) => {
   try {
-    await removeFromCartFx(`/shopping-cart/one/${partId}`)
-    removeShoppingCartItem(partId)
+    await removeFromCartFx(`/shopping-cart/one/${productId}`)
+    removeShoppingCartItem(productId)
   } catch (error) {
     toast.error((error as Error).message)
   }
 }
 
-export const updateTotalPrice = async (total_price: number, partId: number) => {
+export const updateTotalPrice = async (total_price: number, productId: number) => {
   const data = await updateCartItemFx({
-    url: `/shopping-cart/total-price/${partId}`,
+    url: `/shopping-cart/total-price/${productId}`,
     payload: { total_price },
   })
 
-  updateCartItemTotalPrice({ partId, total_price: data.total_price })
+  updateCartItemTotalPrice({ productId, total_price: data.total_price })
 }

@@ -1,6 +1,6 @@
 import { IProducts } from '@/types/products'
 import { IFilterCheckboxItem } from '@/types/catalog'
-import { boilerManufacturers, partsManufacturers } from '@/utils/catalog'
+import { vendors, productsManufacturers } from '@/utils/catalog'
 import { createDomain } from 'effector'
 
 const products = createDomain()
@@ -10,16 +10,15 @@ export const setProductsCheapFirst = products.createEvent()
 export const setProductsExpensiveFirst = products.createEvent()
 export const setProductsByPopularity = products.createEvent()
 export const setFilteredProducts = products.createEvent()
-export const setBoilerManufacturers =
+export const setVendors = products.createEvent<IFilterCheckboxItem[]>()
+export const updateVendor = products.createEvent<IFilterCheckboxItem>()
+export const setProductsManufacturers =
   products.createEvent<IFilterCheckboxItem[]>()
-export const updateBoilerManufacturer =
+export const updateProductsManufacturer =
   products.createEvent<IFilterCheckboxItem>()
-export const setPartsManufacturers =
-  products.createEvent<IFilterCheckboxItem[]>()
-export const updatePartsManufacturer =
-  products.createEvent<IFilterCheckboxItem>()
-export const setBoilerManufacturersFromQuery = products.createEvent<string[]>()
-export const setPartsManufacturersFromQuery = products.createEvent<string[]>()
+export const setVendorsFromQuery = products.createEvent<string[]>()
+export const setProductsManufacturersFromQuery =
+  products.createEvent<string[]>()
 
 const updateManufacturer = (
   manufacturers: IFilterCheckboxItem[],
@@ -54,7 +53,7 @@ const updateManufacturerFromQuery = (
 
 export const $products = products
   .createStore<IProducts>({} as IProducts)
-  .on(setProducts, (_, parts) => parts)
+  .on(setProducts, (_, items) => items)
   .on(setProductsCheapFirst, (state) => ({
     ...state,
     rows: state.rows.sort((a, b) => a.price - b.price),
@@ -68,34 +67,33 @@ export const $products = products
     rows: state.rows.sort((a, b) => b.popularity - a.popularity),
   }))
 
-export const $boilerManufacturers = products
-  .createStore<IFilterCheckboxItem[]>(
-    boilerManufacturers as IFilterCheckboxItem[]
-  )
-  .on(setBoilerManufacturers, (_, parts) => parts)
-  .on(updateBoilerManufacturer, (state, payload) => [
+export const $vendors = products
+  .createStore<IFilterCheckboxItem[]>(vendors as IFilterCheckboxItem[])
+  .on(setVendors, (_, products) => products)
+  .on(updateVendor, (state, payload) => [
     ...updateManufacturer(state, payload.id as string, {
       checked: payload.checked,
     }),
   ])
-  .on(setBoilerManufacturersFromQuery, (state, manufacturersFromQuery) => [
+  .on(setVendorsFromQuery, (state, manufacturersFromQuery) => [
     ...updateManufacturerFromQuery(state, manufacturersFromQuery),
   ])
 
-export const $partsManufacturers = products
+// FIXME: rename to categories
+export const $productsManufacturers = products
   .createStore<IFilterCheckboxItem[]>(
-    partsManufacturers as IFilterCheckboxItem[]
+    productsManufacturers as IFilterCheckboxItem[]
   )
-  .on(setPartsManufacturers, (_, parts) => parts)
-  .on(updatePartsManufacturer, (state, payload) => [
+  .on(setProductsManufacturers, (_, products) => products)
+  .on(updateProductsManufacturer, (state, payload) => [
     ...updateManufacturer(state, payload.id as string, {
       checked: payload.checked,
     }),
   ])
-  .on(setPartsManufacturersFromQuery, (state, manufacturersFromQuery) => [
+  .on(setProductsManufacturersFromQuery, (state, manufacturersFromQuery) => [
     ...updateManufacturerFromQuery(state, manufacturersFromQuery),
   ])
 
 export const $filteredProducts = products
   .createStore<IProducts>({} as IProducts)
-  .on(setFilteredProducts, (_, parts) => parts)
+  .on(setFilteredProducts, (_, products) => products)

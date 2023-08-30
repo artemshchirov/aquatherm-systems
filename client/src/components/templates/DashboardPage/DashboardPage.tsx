@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
-import { getBestsellersOrNewPartsFx } from '@/app/api/products'
+import { getBestsellersOrNewProductsFx } from '@/app/api/products'
 import BrandsSlider from '@/components/modules/DashboardPage/BrandsSlider'
 import { IProducts } from '@/types/products'
 import styles from '@/styles/dashboard/index.module.scss'
@@ -14,7 +14,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import CartAlert from '@/components/modules/DashboardPage/CartAlert'
 
 const DashboardPage = () => {
-  const [newParts, setNewParts] = useState<IProducts>({} as IProducts)
+  const [newProducts, setNewProducts] = useState<IProducts>({} as IProducts)
   const [bestsellers, setBestsellers] = useState<IProducts>({} as IProducts)
   const [spinner, setSpinner] = useState(false)
   const shoppingCart = useStore($shoppingCart)
@@ -23,7 +23,7 @@ const DashboardPage = () => {
   const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : ''
 
   useEffect(() => {
-    loadBoilerParts()
+    loadProducts()
   }, [])
 
   useEffect(() => {
@@ -35,16 +35,16 @@ const DashboardPage = () => {
     setShowAlert(false)
   }, [shoppingCart.length])
 
-  const loadBoilerParts = async () => {
+  const loadProducts = async () => {
     try {
       setSpinner(true)
-      const bestsellers = await getBestsellersOrNewPartsFx(
+      const bestsellers = await getBestsellersOrNewProductsFx(
         '/products/bestsellers'
       )
-      const newParts = await getBestsellersOrNewPartsFx('/products/new')
+      const newProducts = await getBestsellersOrNewProductsFx('/products/new')
 
       setBestsellers(bestsellers)
-      setNewParts(newParts)
+      setNewProducts(newProducts)
     } catch (error) {
       toast.error((error as Error).message)
     } finally {
@@ -81,21 +81,21 @@ const DashboardPage = () => {
         <h2 className={`${styles.dashboard__title} ${darkModeClass}`}>
           Best things ever
         </h2>
-        <div className={styles.dashboard__parts}>
-          <h3 className={`${styles.dashboard__parts__title} ${darkModeClass}`}>
+        <div className={styles.dashboard__products}>
+          <h3 className={`${styles.dashboard__products__title} ${darkModeClass}`}>
             Bestsellers
           </h3>
           <DashboardSlider items={bestsellers.rows || []} spinner={spinner} />
         </div>
-        <div className={styles.dashboard__parts}>
-          <h3 className={`${styles.dashboard__parts__title} ${darkModeClass}`}>
+        <div className={styles.dashboard__products}>
+          <h3 className={`${styles.dashboard__products__title} ${darkModeClass}`}>
             New
           </h3>
-          <DashboardSlider items={newParts.rows || []} spinner={spinner} />
+          <DashboardSlider items={newProducts.rows || []} spinner={spinner} />
         </div>
         <div className={styles.dashboard__about}>
           <h3
-            className={`${styles.dashboard__parts__title} ${styles.dashboard__about__title} ${darkModeClass}`}
+            className={`${styles.dashboard__products__title} ${styles.dashboard__about__title} ${darkModeClass}`}
           >
             About us
           </h3>

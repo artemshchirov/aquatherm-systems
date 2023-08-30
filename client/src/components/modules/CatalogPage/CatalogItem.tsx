@@ -33,7 +33,7 @@ const CatalogItem = ({ item }: { item: IProduct }) => {
           <h3 className={styles.catalog__list__item__title}>{item.name}</h3>
         </Link>
         <span className={styles.catalog__list__item__code}>
-          Артикул: {item.vendor_code}
+          Article: {item.vendor_code}
         </span>
         <span className={styles.catalog__list__item__price}>
           {formatPrice(item.price)} P

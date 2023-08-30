@@ -9,24 +9,24 @@ export const removeShoppingCartItem = shoppingCart.createEvent<number>()
 export const setTotalPrice = shoppingCart.createEvent<number>()
 export const setDisableCart = shoppingCart.createEvent<boolean>()
 export const updateCartItemTotalPrice = shoppingCart.createEvent<{
-  partId: number
+  productId: number
   total_price: number
 }>()
 export const updateCartItemCount = shoppingCart.createEvent<{
-  partId: number
+  productId: number
   count: number
 }>()
 
-const remove = (cartItems: IShoppingCartItem[], partId: number) =>
-  cartItems.filter((item) => item.partId !== partId)
+const remove = (cartItems: IShoppingCartItem[], productId: number) =>
+  cartItems.filter((item) => item.productId !== productId)
 
 function updateCartItem<T>(
   cartItems: IShoppingCartItem[],
-  partId: number,
+  productId: number,
   payload: T
 ) {
   return cartItems.map((item) => {
-    if (item.partId === partId) {
+    if (item.productId === productId) {
       return {
         ...item,
         ...payload,
@@ -41,12 +41,12 @@ export const $shoppingCart = shoppingCart
   .createStore<IShoppingCartItem[]>([])
   .on(setShoppingCart, (_, shoppingCart) => shoppingCart)
   .on(updateShoppingCart, (state, cartItem) => [...state, cartItem])
-  .on(removeShoppingCartItem, (state, partId) => [...remove(state, partId)])
-  .on(updateCartItemTotalPrice, (state, { partId, total_price }) => [
-    ...updateCartItem(state, partId, { total_price }),
+  .on(removeShoppingCartItem, (state, productId) => [...remove(state, productId)])
+  .on(updateCartItemTotalPrice, (state, { productId, total_price }) => [
+    ...updateCartItem(state, productId, { total_price }),
   ])
-  .on(updateCartItemCount, (state, { partId, count }) => [
-    ...updateCartItem(state, partId, { count }),
+  .on(updateCartItemCount, (state, { productId, count }) => [
+    ...updateCartItem(state, productId, { count }),
   ])
 
 export const $totalPrice = shoppingCart

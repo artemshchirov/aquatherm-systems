@@ -4,18 +4,18 @@ export interface IShoppingCartItem {
   price: number
   image: string
   in_stock: number
-  parts_manufacturer: string
+  products_manufacturer: string
   boiler_manufacturer: string
   count: number
   total_price: number
   userId: number
-  partId: number
+  productId: number
 }
 
 export interface IAddToCartFx {
   url: string
   username: string
-  partId: number
+  productId: number
 }
 
 export interface IUpdateCartItemFx {
@@ -28,7 +28,7 @@ export interface IUpdateCartItemFx {
 
 export interface ICartItemCounterProps {
   totalCount: number
-  partId: number
+  productId: number
   initialCount: number
   increasePrice: VoidFunction
   decreasePrice: VoidFunction

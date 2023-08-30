@@ -3,7 +3,7 @@ import { IProduct } from './products'
 export interface IDashboardSlider {
   items: IProduct[]
   spinner: boolean
-  goToPartPage?: boolean
+  goToProductPage?: boolean
 }
 
 export interface ICartAlertProps {

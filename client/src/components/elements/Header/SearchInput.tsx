@@ -19,7 +19,7 @@ import {
 import { $searchInputZIndex, setSearchInputZIndex } from '@/context/header'
 import SearchSvg from '../SearchSvg/SearchSvg'
 import { useDebounceCallback } from '@/hooks/useDebounceCallback'
-import { getPartByNameFx, searchPartsFx } from '@/app/api/products'
+import { getProductByNameFx, searchProductsFx } from '@/app/api/products'
 import { IProduct } from '@/types/products'
 import {
   NoOptionsMessage,
@@ -39,7 +39,7 @@ const SearchInput = () => {
   const [options, setOptions] = useState([])
   const [inputValue, setInputValue] = useState('')
   const delayCallback = useDebounceCallback(1000)
-  const spinner = useStore(searchPartsFx.pending)
+  const spinner = useStore(searchProductsFx.pending)
   const router = useRouter()
 
   const handleSearchOptionChange = (selectedOption: SelectOptionType) => {
@@ -51,7 +51,7 @@ const SearchInput = () => {
     const name = (selectedOption as IOption)?.value as string
 
     if (name) {
-      getPartAndRedirect(name)
+      getProductAndRedirect(name)
     }
 
     setSearchOption(selectedOption)
@@ -68,13 +68,13 @@ const SearchInput = () => {
       return
     }
 
-    getPartAndRedirect(inputValue)
+    getProductAndRedirect(inputValue)
   }
 
-  const searchPart = async (search: string) => {
+  const searchProduct = async (search: string) => {
     try {
       setInputValue(search)
-      const data = await searchPartsFx({
+      const data = await searchProductsFx({
         url: '/products/search',
         search,
       })
@@ -89,25 +89,25 @@ const SearchInput = () => {
     }
   }
 
-  const getPartAndRedirect = async (name: string) => {
-    const part = await getPartByNameFx({
+  const getProductAndRedirect = async (name: string) => {
+    const product = await getProductByNameFx({
       url: '/products/name',
       name,
     })
 
-    if (!part.id) {
+    if (!product.id) {
       toast.warning('Товар не найден.')
       return
     }
 
-    router.push(`/catalog/${part.id}`)
+    router.push(`/catalog/${product.id}`)
   }
 
   const onSearchInputChange = (text: string) => {
     document.querySelector('.overlay')?.classList.add('open-search')
     document.querySelector('.body')?.classList.add('overflow-hidden')
 
-    delayCallback(() => searchPart(text))
+    delayCallback(() => searchProduct(text))
   }
 
   const onSearchMenuOpen = () => {

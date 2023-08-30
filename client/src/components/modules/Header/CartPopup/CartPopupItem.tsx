@@ -16,7 +16,7 @@ const CartPopupItem = ({ item }: { item: IShoppingCartItem }) => {
   const spinnerDarkModeClass =
     mode === 'dark' ? '' : `${spinnerStyles.dark_mode}`
   const { price, spinner, decreasePrice, deleteCartItem, increasePrice } =
-    usePrice(item.count, item.partId, item.price)
+    usePrice(item.count, item.productId, item.price)
 
   return (
     <li className={styles.cart__popup__list__item}>
@@ -24,12 +24,12 @@ const CartPopupItem = ({ item }: { item: IShoppingCartItem }) => {
         <div className={styles.cart__popup__list__item__img}>
           <img src={item.image} alt={item.name} />
         </div>
-        <Link href={`/catalog/${item.partId}`} passHref legacyBehavior>
+        <Link href={`/catalog/${item.productId}`} passHref legacyBehavior>
           <a
             className={`${styles.cart__popup__list__item__text} ${darkModeClass}`}
           >
             <span>
-              {item.name.replace('.', '')}, {item.parts_manufacturer},{' '}
+              {item.name.replace('.', '')}, {item.products_manufacturer},{' '}
               {item.boiler_manufacturer}
             </span>
           </a>
@@ -55,7 +55,7 @@ const CartPopupItem = ({ item }: { item: IShoppingCartItem }) => {
         ) : (
           <CartItemCounter
             totalCount={item.in_stock}
-            partId={item.partId}
+            productId={item.productId}
             initialCount={item.count}
             increasePrice={increasePrice}
             decreasePrice={decreasePrice}

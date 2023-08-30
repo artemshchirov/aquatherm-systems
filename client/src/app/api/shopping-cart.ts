@@ -9,8 +9,8 @@ export const getCartItemsFx = createEffect(async (url: string) => {
 })
 
 export const addToCartFx = createEffect(
-  async ({ url, username, partId }: IAddToCartFx) => {
-    const { data } = await api.post(url, { username, partId })
+  async ({ url, username, productId }: IAddToCartFx) => {
+    const { data } = await api.post(url, { username, productId })
 
     return data
   }
