@@ -22,7 +22,7 @@ import skeletonStyles from '@/styles/skeleton/index.module.scss'
 import CatalogItem from '@/components/modules/CatalogPage/CatalogItem'
 import ReactPaginate from 'react-paginate'
 import { IQueryParams } from '@/types/catalog'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { IProducts } from '@/types/products'
 import CatalogFilters from '@/components/modules/CatalogPage/CatalogFilters'
 import { usePopup } from '@/hooks/usePopup'
@@ -40,16 +40,11 @@ const CatalogPage = ({ query }: { query: IQueryParams }) => {
   const [isFilterInQuery, setIsFilterInQuery] = useState(false)
   const [isPriceRangeChanged, setIsPriceRangeChanged] = useState(false)
   const pagesCount = Math.ceil(products.count / 20)
-  // const isValidOffset =
-  //   query?.offset && !isNaN(+query.offset) && +query.offset > 0
-  // const [currentPage, setCurrentPage] = useState(
-  //   isValidOffset ? +query.offset - 1 : 0
-  // )
-
   const searchParams = useSearchParams()
+  const pathname = usePathname()
   const isValidOffset =
-    query?.offset && !isNaN(+query.offset) && +query.offset > 0
-
+    query.offset && !isNaN(+query.offset) && +query.offset > 0
+  console.log(query)
   const [currentPage, setCurrentPage] = useState(
     isValidOffset ? +query.offset - 1 : 0
   )
@@ -69,53 +64,43 @@ const CatalogPage = ({ query }: { query: IQueryParams }) => {
 
   useEffect(() => {
     loadProducts()
-  }, [filteredProducts, isFilterInQuery])
+  }, [])
 
-  console.log(products)
+  const resetPagination = (data: IProducts) => {
+    setCurrentPage(0)
+    setProducts(data)
+  }
 
   const loadProducts = async () => {
     try {
       setSpinner(true)
       const data = await getProductsFx('/products?limit=20&offset=0')
-      const params = new URLSearchParams(searchParams)
       setProducts(data)
-      // if (!isValidOffset) {
-      //   params.set('offset', '1')
-      //   // updateParamsAndFilters
-      //   resetPagination(data)
-      //   return
-      // }
 
-      // if (isValidOffset) {
-      //   if (+query.offset > Math.ceil(data.count / 20)) {
-      //     router.push(
-      //       {
-      //         query: {
-      //           ...query,
-      //           offset: 1,
-      //         },
-      //       },
-      //       undefined,
-      //       { shallow: true }
-      //     )
+      if (!isValidOffset) {
+        router.replace(`${pathname}?limit=20&offset=1`)
+        resetPagination(data)
+        return
+      }
 
-      //     setCurrentPage(0)
-      //     setProducts(isFilterInQuery ? filteredProducts : data)
-      //     return
-      //   }
+      if (isValidOffset) {
+        if (+query.offset > Math.ceil(data.count / 20)) {
+          const current = new URLSearchParams(
+            Array.from(searchParams.entries())
+          )
+          current.set('offset', '1')
+          router.push(`${pathname}?${current}`)
 
-      //   const offset = +query.offset - 1
-      //   const result = await getProductsFx(
-      //     `/products?limit=20&offset=${offset}`
-      //   )
+          resetPagination(isFilterInQuery ? filteredProducts : data)
+          return
+        }
+      }
 
-      //   setCurrentPage(offset)
-      //   setProducts(isFilterInQuery ? filteredProducts : result)
-      //   return
-      // }
+      const offset = +query.offset - 1
+      const result = await getProductsFx(`/products?limit=20&offset=${offset}`)
 
-      // setCurrentPage(0)
-      // setProducts(isFilterInQuery ? filteredProducts : data)
+      setCurrentPage(offset)
+      setProducts(isFilterInQuery ? filteredProducts : result)
     } catch (error) {
       toast.error((error as Error).message)
     } finally {
@@ -123,56 +108,28 @@ const CatalogPage = ({ query }: { query: IQueryParams }) => {
     }
   }
 
-  const resetPagination = (data: IProducts) => {
-    setCurrentPage(0)
-    setProducts(data)
-  }
-
   const handlePageChange = async ({ selected }: { selected: number }) => {
     try {
       setSpinner(true)
       const params = new URLSearchParams(searchParams)
       const data = await getProductsFx('/products?limit=20&offset=0')
-      console.log('params 1', params)
 
       if (selected > pagesCount) {
-        console.log('reset 1', params)
-
         resetPagination(isFilterInQuery ? filteredProducts : data)
         return
       }
 
-      if (isValidOffset && +params.get('offset')! > Math.ceil(data.count / 2)) {
-        console.log('reset 2', params)
-
+      if (isValidOffset && +query.offset > Math.ceil(data.count / 2)) {
         resetPagination(isFilterInQuery ? filteredProducts : data)
         return
       }
-
-      const { isValidBoilerQuery, isValidProductsQuery, isValidPriceQuery } =
-        checkQueryParams(params)
 
       const result = await getProductsFx(
-        `/products?limit=20&offset=${selected}${
-          isFilterInQuery && isValidBoilerQuery
-            ? `&product=${params.get('product')}`
-            : ''
-        }${
-          isFilterInQuery && isValidProductsQuery
-            ? `&products=${params.get('products')}`
-            : ''
-        }${
-          isFilterInQuery && isValidPriceQuery
-            ? `&priceFrom=${params.get('priceFrom')}&priceTo=${params.get(
-                'priceTo'
-              )}`
-            : ''
-        }`
+        `/products?limit=20&offset=${selected}`
       )
-      console.log('result', result)
+      params.set('offset', `${selected + 1}`)
+      router.push(`${pathname}?${params}`)
 
-      params.set('offset', (selected + 1).toString())
-      console.log('params 4', params)
       setCurrentPage(selected)
       setProducts(result)
     } catch (error) {
@@ -204,9 +161,6 @@ const CatalogPage = ({ query }: { query: IQueryParams }) => {
       toast.error((error as Error).message)
     }
   }
-  const validPageCount = Number.isInteger(pagesCount)
-    ? Math.ceil(pagesCount)
-    : 0
 
   return (
     <section className={styles.catalog}>
@@ -303,10 +257,8 @@ const CatalogPage = ({ query }: { query: IQueryParams }) => {
             breakClassName={styles.catalog__bottom__list__break}
             breakLinkClassName={`${styles.catalog__bottom__list__break__link} ${darkModeClass}`}
             breakLabel="..."
-            pageCount={validPageCount}
-            forcePage={
-              currentPage >= validPageCount ? validPageCount - 1 : currentPage
-            }
+            pageCount={products.count / 20}
+            forcePage={currentPage}
             onPageChange={handlePageChange}
           />
         </div>

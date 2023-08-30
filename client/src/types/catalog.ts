@@ -13,9 +13,9 @@ export interface IManufacturersBlockItemProps {
 
 export interface IQueryParams {
   offset: string
-  firs: string
+  first: string
   product: string
-  products: string
+  category: string
   priceFrom: string
   priceTo: string
   productId: string

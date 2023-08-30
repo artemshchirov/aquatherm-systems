@@ -19,7 +19,7 @@ const useRedirectByUserCheck = (isAuthPage = false) => {
 
   const checkUser = async () => {
     const user = await checkUserAuthFx('/users/login-check')
-    console.log(user)
+
     if (isAuthPage) {
       if (!user) {
         setShouldLoadContent(true)

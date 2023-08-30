@@ -89,7 +89,6 @@ export async function updateParamsAndFilters<T>(
 ) {
   // const params = router.query
   const params = router.query
-  console.log('params:', router)
 
   delete params.product
   delete params.products
