@@ -3,12 +3,15 @@
 const { faker } = require('@faker-js/faker');
 
 const productVendors = ['Art Box', 'Union', 'AMSTERDAM'];
+const productCategories = ['Sets', 'Paints', 'Canvas'];
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
     const products = [...Array(100)].map(() => ({
       vendor: productVendors[Math.floor(Math.random() * productVendors.length)],
+      category:
+        productCategories[Math.floor(Math.random() * productCategories.length)],
       price: faker.number.int(1000),
       name: faker.lorem.sentence(2),
       description: faker.lorem.sentence(10),

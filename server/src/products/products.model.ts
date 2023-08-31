@@ -5,6 +5,9 @@ export class Products extends Model {
   @Column
   vendor: string;
 
+  @Column
+  category: string;
+
   @Column({ defaultValue: 0 })
   price: number;
 

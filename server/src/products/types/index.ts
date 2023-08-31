@@ -1,5 +1,6 @@
 import { faker } from '@faker-js/faker';
 import { ApiProperty } from '@nestjs/swagger';
+import { Op } from 'sequelize';
 
 export interface IProducts {
   limit: string;
@@ -12,6 +13,9 @@ class Products {
 
   @ApiProperty({ example: faker.lorem.word(2) })
   vendor: string;
+
+  @ApiProperty({ example: faker.lorem.word(1) })
+  category: string;
 
   @ApiProperty({ example: 123 })
   price: string;
@@ -104,3 +108,18 @@ export class GetByNameRequest {
 }
 
 export class FindOneResponse extends Products {}
+
+export interface IProductsQuery {
+  limit: string;
+  offset: string;
+  vendor: string | undefined;
+  category: string | undefined;
+  priceFrom: string | undefined;
+  priceTo: string | undefined;
+}
+
+export interface IProductsFilter {
+  vendor: string | undefined;
+  category: string | undefined;
+  price: { [Op.between]: number[] };
+}
