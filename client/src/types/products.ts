@@ -1,8 +1,8 @@
 export interface IProduct {
   id: number
-  boiler_manufacturer: string
+  vendor: string
+  category: string
   price: number
-  products_manufacturer: string
   vendor_code: string
   name: string
   description: string

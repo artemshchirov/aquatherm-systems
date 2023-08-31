@@ -71,7 +71,7 @@
 
       &__item {
         &:first-child a {
-          width: 143px;
+          width: 155px;
 
           @media (max-width: 950px) {
             width: auto;
@@ -113,6 +113,8 @@
           font-size: 16px;
           color: #FAFBFC;
           transition: color .2s ease-in-out;
+          max-width: max-content;
+          min-width: max-content;
 
           &:hover {
             color: #FFC540;

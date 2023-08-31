@@ -43,7 +43,10 @@ export const removeItemFromCart = async (productId: number) => {
   }
 }
 
-export const updateTotalPrice = async (total_price: number, productId: number) => {
+export const updateTotalPrice = async (
+  total_price: number,
+  productId: number
+) => {
   const data = await updateCartItemFx({
     url: `/shopping-cart/total-price/${productId}`,
     payload: { total_price },

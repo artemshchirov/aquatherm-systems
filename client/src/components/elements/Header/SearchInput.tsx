@@ -96,7 +96,7 @@ const SearchInput = () => {
     })
 
     if (!product.id) {
-      toast.warning('Товар не найден.')
+      toast.warning('Product not found.')
       return
     }
 

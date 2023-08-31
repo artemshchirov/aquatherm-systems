@@ -1,7 +1,7 @@
 import { createSelectOption } from './common'
 
 export const categoriesOptions = [
+  'By popularity',
   'Cheap first',
   'First Dear',
-  'By popularity',
 ].map(createSelectOption)

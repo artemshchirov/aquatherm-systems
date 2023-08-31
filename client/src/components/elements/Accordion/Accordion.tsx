@@ -12,7 +12,7 @@ const Accordion = ({
   hideArrowClass,
   callback,
 }: IAccordion) => {
-  const [expanded, setExpanded] = useState(false)
+  const [expanded, setExpanded] = useState(true)
 
   const toggleAccordion = () => {
     if (callback) {

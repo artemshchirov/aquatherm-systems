@@ -1,22 +1,17 @@
+export const tab1Text = `You can order delivery via courier. The service is only available in select cities and regions. Information about the availability of courier delivery is provided on the product page (don't forget to specify the locality) or in the delivery section upon order confirmation on the website.
+The cost of courier delivery ranges from 59 to 150 shekels depending on the locality.
+The exact delivery cost is calculated during order placement. Please be careful and accurately specify the delivery city.
+Upon receiving the order via courier, you have the option to pay in cash or by card. Card payments upon receipt have certain limitations.`
 
-export const tab1Text = `Вы можете заказать доставку курьером Rozetka. Услуга доступна только в некоторых городах и областях. Информация о возможности доставки курьером Rozetka указана на странице товара (не забудьте указать населенный пункт) или в блоке доставка при подтверждении заказа на сайте.
-Стоимость курьерской доставки - от 59 до 150 грн в зависимости от населенного пункта.
-Точная стоимость доставки рассчитывается при оформлении заказа. Будьте внимательны и корректно указывайте город доставки.
-При доставке заказа курьером Rozetka у вас есть возможность оплатить заказ наличными или платежной картой. Оплата картой при получении имеет определенные ограничения.
-Вы можете заказать доставку курьером Rozetka. Услуга доступна только в некоторых городах и областях. Информация о возможности доставки курьером Rozetka указана на странице товара (не забудьте указать населенный пункт) или в блоке доставка при подтверждении заказа на сайте.
-Стоимость курьерской доставки - от 59 до 150 грн в зависимости от населенного пункта.
-Точная стоимость доставки рассчитывается при оформлении заказа. Будьте внимательны и корректно указывайте город доставки.
-При доставке заказа курьером Rozetka у вас есть возможность оплатить заказ наличными или платежной картой. Оплата картой при получении имеет определенные ограничения.`
+export const tab2Text = `Upon receiving the order via courier, you have the option to pay in cash or by card. Card payments upon receipt have certain limitations.
+You can order delivery via courier. The service is only available in select cities and regions. Information about the availability of courier delivery is provided on the product page (don't forget to specify the locality) or in the delivery section upon order confirmation on the website.
+The cost of courier delivery ranges from 59 to 150 shekels depending on the locality.`
 
-export const tab2Text = `При доставке заказа курьером Rozetka у вас есть возможность оплатить заказ наличными или платежной картой. Оплата картой при получении имеет определенные ограничения.
-Вы можете заказать доставку курьером Rozetka. Услуга доступна только в некоторых городах и областях. Информация о возможности доставки курьером Rozetka указана на странице товара (не забудьте указать населенный пункт) или в блоке доставка при подтверждении заказа на сайте.
-Стоимость курьерской доставки - от 59 до 150 грн в зависимости от населенного пункта.`
+export const tab3Text = `The cost of courier delivery ranges from 59 to 150 shekels depending on the locality.
+The exact delivery cost is calculated during order placement. Please be careful and accurately specify the delivery city.
+Upon receiving the order via courier, you have the option to pay in cash or by card. Card payments upon receipt have certain limitations.`
 
-export const tab3Text = `Стоимость курьерской доставки - от 59 до 150 грн в зависимости от населенного пункта.
-Точная стоимость доставки рассчитывается при оформлении заказа. Будьте внимательны и корректно указывайте город доставки.
-При доставке заказа курьером Rozetka у вас есть возможность оплатить заказ наличными или платежной картой. Оплата картой при получении имеет определенные ограничения.`
-
-export const tab4Text = `Точная стоимость доставки рассчитывается при оформлении заказа. Будьте внимательны и корректно указывайте город доставки.
-При доставке заказа курьером Rozetka у вас есть возможность оплатить заказ наличными или платежной картой. Оплата картой при получении имеет определенные ограничения.
-Вы можете заказать доставку курьером Rozetka. Услуга доступна только в некоторых городах и областях. Информация о возможности доставки курьером Rozetka указана на странице товара (не забудьте указать населенный пункт) или в блоке доставка при подтверждении заказа на сайте.
-Стоимость курьерской доставки - от 59 до 150 грн в зависимости от населенного пункта.`
+export const tab4Text = `The exact delivery cost is calculated during order placement. Please be careful and accurately specify the delivery city.
+Upon receiving the order via courier, you have the option to pay in cash or by card. Card payments upon receipt have certain limitations.
+You can order delivery via courier. The service is only available in select cities and regions. Information about the availability of courier delivery is provided on the product page (don't forget to specify the locality) or in the delivery section upon order confirmation on the website.
+The cost of courier delivery ranges from 59 to 150 shekels depending on the locality.`

@@ -29,8 +29,7 @@ const CartPopupItem = ({ item }: { item: IShoppingCartItem }) => {
             className={`${styles.cart__popup__list__item__text} ${darkModeClass}`}
           >
             <span>
-              {item.name.replace('.', '')}, {item.products_manufacturer},{' '}
-              {item.boiler_manufacturer}
+              {item.name.replace('.', '')}, {item.category}, {item.vendor}
             </span>
           </a>
         </Link>

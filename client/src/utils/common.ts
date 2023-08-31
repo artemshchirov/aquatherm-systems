@@ -1,5 +1,3 @@
-// import { NextRouter } from 'next/navigation'
-
 export const getWindowWidth = () => {
   const { innerWidth: windowWidth } =
     typeof window !== 'undefined' ? window : { innerWidth: 0 }
@@ -34,10 +32,12 @@ export const idGenerator = () => {
   )
 }
 
-// FIXME: any
-export const getQueryParamOnFirstRender = (queryName: string, router: any) =>
-  router.query[queryName] ||
-  router.asPath.match(new RegExp(`[&?]${queryName}=(.*)(&|$)`))
+export const getQueryParamOnFirstRender = (
+  queryName: string,
+  params: URLSearchParams,
+  path: string
+) =>
+  params.get(queryName) || path.match(new RegExp(`[&?]${queryName}=(.*)(&|$)`))
 
 export const toggleClassNamesForOverlayAndBody = (
   overlayClassName = 'open'

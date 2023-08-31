@@ -37,13 +37,34 @@ const HeaderTop = () => {
         >
           <ul className={styles.header__nav__list}>
             <li className={styles.header__nav__list__item}>
+              <Link href="/dashboard" passHref legacyBehavior>
+                <a
+                  className={`${styles.header__nav__list__item__link} ${darkModeClass}`}
+                  onClick={closePopup}
+                >
+                  {/* TODO: get text from constants file */}
+                  Home
+                </a>
+              </Link>
+            </li>
+            <li className={styles.header__nav__list__item}>
+              <Link href="/catalog?limit=20&offset=1" passHref legacyBehavior>
+                <a
+                  className={`${styles.header__nav__list__item__link} ${darkModeClass}`}
+                  onClick={closePopup}
+                >
+                  Catalog
+                </a>
+              </Link>
+            </li>
+            <li className={styles.header__nav__list__item}>
               <Link href="/shipping-payment" passHref legacyBehavior>
                 <a
                   className={`${styles.header__nav__list__item__link} ${darkModeClass}`}
                   onClick={closePopup}
                 >
                   {/* TODO: get text from constants file */}
-                  Delivery and payment
+                  Delivery and Payment
                 </a>
               </Link>
             </li>
@@ -53,17 +74,7 @@ const HeaderTop = () => {
                   className={`${styles.header__nav__list__item__link} ${darkModeClass}`}
                   onClick={closePopup}
                 >
-                  About company
-                </a>
-              </Link>
-            </li>
-            <li className={styles.header__nav__list__item}>
-              <Link href="/catalog" passHref legacyBehavior>
-                <a
-                  className={`${styles.header__nav__list__item__link} ${darkModeClass}`}
-                  onClick={closePopup}
-                >
-                  Catalog
+                  About us
                 </a>
               </Link>
             </li>
@@ -83,7 +94,7 @@ const HeaderTop = () => {
                   className={`${styles.header__nav__list__item__link} ${darkModeClass}`}
                   onClick={closePopup}
                 >
-                  Wholesale buyers
+                  Wholesale
                 </a>
               </Link>
             </li>

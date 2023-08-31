@@ -7,7 +7,7 @@ import { useCallback } from 'react'
 
 function Catalog({ searchParams }: { searchParams: IQueryParams }) {
   const { shouldLoadContent } = useRedirectByUserCheck()
-  const getDefaultTextGenerator = useCallback(() => 'Каталог', [])
+  const getDefaultTextGenerator = useCallback(() => 'Catalog', [])
   const getTextGenerator = useCallback((param: string) => ({})[param], [])
 
   return (

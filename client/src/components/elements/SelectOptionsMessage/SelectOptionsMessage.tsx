@@ -6,7 +6,7 @@ export const NoOptionsMessage = (
   props: NoticeProps<IOption, boolean, GroupBase<IOption>>
 ) => (
   <components.NoOptionsMessage {...props}>
-    <span>Ничего не найдено</span>
+    <span>Nothing found</span>
   </components.NoOptionsMessage>
 )
 

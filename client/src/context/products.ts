@@ -1,6 +1,6 @@
 import { IProducts } from '@/types/products'
 import { IFilterCheckboxItem } from '@/types/catalog'
-import { vendors, productsManufacturers } from '@/utils/catalog'
+import { vendors, categories } from '@/utils/catalog'
 import { createDomain } from 'effector'
 
 const products = createDomain()
@@ -9,23 +9,24 @@ export const setProducts = products.createEvent<IProducts>()
 export const setProductsCheapFirst = products.createEvent()
 export const setProductsExpensiveFirst = products.createEvent()
 export const setProductsByPopularity = products.createEvent()
-export const setFilteredProducts = products.createEvent()
-export const setVendors = products.createEvent<IFilterCheckboxItem[]>()
-export const updateVendor = products.createEvent<IFilterCheckboxItem>()
-export const setProductsManufacturers =
-  products.createEvent<IFilterCheckboxItem[]>()
-export const updateProductsManufacturer =
-  products.createEvent<IFilterCheckboxItem>()
-export const setVendorsFromQuery = products.createEvent<string[]>()
-export const setProductsManufacturersFromQuery =
-  products.createEvent<string[]>()
 
-const updateManufacturer = (
-  manufacturers: IFilterCheckboxItem[],
+export const setFilteredProducts = products.createEvent()
+
+export const setVendors = products.createEvent<IFilterCheckboxItem[]>()
+export const setCategories = products.createEvent<IFilterCheckboxItem[]>()
+
+export const updateVendor = products.createEvent<IFilterCheckboxItem>()
+export const updateCategory = products.createEvent<IFilterCheckboxItem>()
+
+export const setVendorsFromQuery = products.createEvent<string[]>()
+export const setCategoriesFromQuery = products.createEvent<string[]>()
+
+const updateCheckboxes = (
+  checkboxes: IFilterCheckboxItem[],
   id: string,
   payload: Partial<IFilterCheckboxItem>
 ) =>
-  manufacturers.map((item) => {
+  checkboxes.map((item) => {
     if (item.id === id) {
       return {
         ...item,
@@ -36,12 +37,12 @@ const updateManufacturer = (
     return item
   })
 
-const updateManufacturerFromQuery = (
-  manufacturers: IFilterCheckboxItem[],
-  manufacturersFromQuery: string[]
+const updateCheckboxesFromQuery = (
+  checkboxes: IFilterCheckboxItem[],
+  checkboxesFromQuery: string[]
 ) =>
-  manufacturers.map((item) => {
-    if (manufacturersFromQuery.find((title) => title === item.title)) {
+  checkboxes.map((item) => {
+    if (checkboxesFromQuery.find((title) => title === item.title)) {
       return {
         ...item,
         checked: true,
@@ -71,27 +72,24 @@ export const $vendors = products
   .createStore<IFilterCheckboxItem[]>(vendors as IFilterCheckboxItem[])
   .on(setVendors, (_, products) => products)
   .on(updateVendor, (state, payload) => [
-    ...updateManufacturer(state, payload.id as string, {
+    ...updateCheckboxes(state, payload.id as string, {
       checked: payload.checked,
     }),
   ])
-  .on(setVendorsFromQuery, (state, manufacturersFromQuery) => [
-    ...updateManufacturerFromQuery(state, manufacturersFromQuery),
+  .on(setVendorsFromQuery, (state, checkboxesFromQuery) => [
+    ...updateCheckboxesFromQuery(state, checkboxesFromQuery),
   ])
 
-// FIXME: rename to categories
-export const $productsManufacturers = products
-  .createStore<IFilterCheckboxItem[]>(
-    productsManufacturers as IFilterCheckboxItem[]
-  )
-  .on(setProductsManufacturers, (_, products) => products)
-  .on(updateProductsManufacturer, (state, payload) => [
-    ...updateManufacturer(state, payload.id as string, {
+export const $categories = products
+  .createStore<IFilterCheckboxItem[]>(categories as IFilterCheckboxItem[])
+  .on(setCategories, (_, products) => products)
+  .on(updateCategory, (state, payload) => [
+    ...updateCheckboxes(state, payload.id as string, {
       checked: payload.checked,
     }),
   ])
-  .on(setProductsManufacturersFromQuery, (state, manufacturersFromQuery) => [
-    ...updateManufacturerFromQuery(state, manufacturersFromQuery),
+  .on(setCategoriesFromQuery, (state, checkboxesFromQuery) => [
+    ...updateCheckboxesFromQuery(state, checkboxesFromQuery),
   ])
 
 export const $filteredProducts = products

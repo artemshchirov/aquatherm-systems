@@ -90,7 +90,7 @@ const FilterSelect: React.FC<Props> = ({ setSpinner }) => {
           break
       }
 
-      setTimeout(() => setSpinner(false), 1000)
+      setTimeout(() => setSpinner(false), 500)
     },
     [setSpinner, updateRouteParam]
   )
@@ -116,8 +116,8 @@ const FilterSelect: React.FC<Props> = ({ setSpinner }) => {
       isSearchable={false}
       onChange={handleSortOptionChange}
       options={categoriesOptions}
-      placeholder="Я ищу..."
-      value={categoryOption || createSelectOption('Сначала дешевые')}
+      placeholder="I'm looking for..."
+      value={categoryOption || createSelectOption('Cheap first')}
     />
   )
 }

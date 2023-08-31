@@ -4,8 +4,8 @@ export interface IShoppingCartItem {
   price: number
   image: string
   in_stock: number
-  products_manufacturer: string
-  boiler_manufacturer: string
+  vendor: string
+  category: string
   count: number
   total_price: number
   userId: number

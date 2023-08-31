@@ -24,14 +24,14 @@ const Footer = () => {
               {!isMedia500 && (
                 <>
                   <h3 className={styles.footer__top__item__title}>
-                    Интернет-магазин
+                    Online store
                   </h3>
                   <OnlineStoreContent />
                 </>
               )}
               {isMedia500 && (
                 <Accordion
-                  title="Интернет-магазин"
+                  title="Online store"
                   titleClass={styles.footer__top__item__title}
                   arrowOpenClass={styles.open}
                 >
@@ -43,13 +43,13 @@ const Footer = () => {
             <div className={styles.footer__top__item}>
               {!isMedia500 && (
                 <>
-                  <h3 className={styles.footer__top__item__title}>Компания</h3>
+                  <h3 className={styles.footer__top__item__title}>Company</h3>
                   <CompanyContent />
                 </>
               )}
               {isMedia500 && (
                 <Accordion
-                  title="Компания"
+                  title="Company"
                   titleClass={styles.footer__top__item__title}
                   arrowOpenClass={styles.open}
                 >
@@ -60,15 +60,15 @@ const Footer = () => {
             </div>
           </div>
           <div className={styles.footer__top__item}>
-            <h3 className={styles.footer__top__item__title}>Контакты</h3>
+            <h3 className={styles.footer__top__item__title}>Contacts</h3>
             <ul
               className={`${styles.footer__top__item__list} ${styles.footer__top__item__contacts}`}
             >
               <li className={styles.footer__top__item__list__item}>
                 <Link href="/contacts" passHref legacyBehavior>
                   <a className={styles.footer__top__item__list__item__link}>
-                    <span>Наш адрес:</span>
-                    <span>г. Москва, ул. ... д....</span>
+                    <span>Our address:</span>
+                    <span>Tel Aviv, Israel</span>
                     <span>
                       <MarkerSvg />
                     </span>
@@ -80,8 +80,8 @@ const Footer = () => {
                   href="tel:+780955555555"
                   className={styles.footer__top__item__list__item__link}
                 >
-                  <span>Наш контактный телефон:</span>
-                  <span>+7(8095) 555-55-55</span>
+                  <span>Our contact phone:</span>
+                  <span>+972584441705</span>
                   <span>
                     <PhoneSvg />
                   </span>
@@ -93,7 +93,7 @@ const Footer = () => {
                   className={styles.footer__top__item__list__item__link}
                 >
                   <span>E-mail:</span>
-                  <span>info@zapchasti.com.ru</span>
+                  <span>artemschirov@gmail.com</span>
                   <span>
                     <MailSvg />
                   </span>
@@ -106,7 +106,7 @@ const Footer = () => {
           <div className={styles.footer__bottom__block}>
             <div className={styles.footer__bottom__block__left}>
               <h3 className={styles.footer__bottom__block__title}>
-                Мы принимаем к оплате:
+                We accept for payment:
               </h3>
               <ul className={styles.footer__bottom__block__pay}>
                 <li className={styles.footer__bottom__block__pay__item}>
@@ -125,7 +125,7 @@ const Footer = () => {
             </div>
             <div className={styles.footer__bottom__block__right}>
               <h3 className={styles.footer__bottom__block__title}>
-                Мы в соцсети:
+                We are on social media:
               </h3>
               <ul className={styles.footer__bottom__block__social}>
                 <li className={styles.footer__bottom__block__social__item}>

@@ -5,12 +5,12 @@ import {
   $vendors,
   $products,
   $filteredProducts,
-  $productsManufacturers,
+  $categories,
   setVendors,
   setProducts,
-  setProductsManufacturers,
+  setCategories,
   updateVendor,
-  updateProductsManufacturer,
+  updateCategory,
 } from '@/context/products'
 import { $mode } from '@/context/mode'
 import styles from '@/styles/catalog/index.module.scss'
@@ -29,14 +29,20 @@ import { usePopup } from '@/hooks/usePopup'
 import { checkQueryParams } from '@/utils/catalog'
 import FilterSvg from '@/components/elements/FilterSvg/FilterSvg'
 
+const MIN_PRICE_RANGE = 100
+const MAX_PRICE_RANGE = 900
+
 const CatalogPage = ({ query }: { query: IQueryParams }) => {
   const mode = useStore($mode)
   const vendors = useStore($vendors)
-  const productsManufacturers = useStore($productsManufacturers)
+  const categories = useStore($categories)
   const filteredProducts = useStore($filteredProducts)
   const products = useStore($products)
   const [spinner, setSpinner] = useState(false)
-  const [priceRange, setPriceRange] = useState([1000, 9000])
+  const [priceRange, setPriceRange] = useState([
+    MIN_PRICE_RANGE,
+    MAX_PRICE_RANGE,
+  ])
   const [isFilterInQuery, setIsFilterInQuery] = useState(false)
   const [isPriceRangeChanged, setIsPriceRangeChanged] = useState(false)
   const pagesCount = Math.ceil(products.count / 20)
@@ -44,7 +50,7 @@ const CatalogPage = ({ query }: { query: IQueryParams }) => {
   const pathname = usePathname()
   const isValidOffset =
     query.offset && !isNaN(+query.offset) && +query.offset > 0
-  console.log(query)
+
   const [currentPage, setCurrentPage] = useState(
     isValidOffset ? +query.offset - 1 : 0
   )
@@ -52,19 +58,17 @@ const CatalogPage = ({ query }: { query: IQueryParams }) => {
   const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : ''
   const router = useRouter()
   const isAnyVendorChecked = vendors.some((item) => item.checked)
-  const isAnyProductsManufacturerChecked = productsManufacturers.some(
-    (item) => item.checked
-  )
+  const isAnyCategoryChecked = categories.some((item) => item.checked)
   const resetFilterBtnDisabled = !(
     isPriceRangeChanged ||
     isAnyVendorChecked ||
-    isAnyProductsManufacturerChecked
+    isAnyCategoryChecked
   )
   const { toggleOpen, open, closePopup } = usePopup()
 
   useEffect(() => {
     loadProducts()
-  }, [])
+  }, [filteredProducts, isFilterInQuery])
 
   const resetPagination = (data: IProducts) => {
     setCurrentPage(0)
@@ -94,24 +98,28 @@ const CatalogPage = ({ query }: { query: IQueryParams }) => {
           resetPagination(isFilterInQuery ? filteredProducts : data)
           return
         }
+
+        const offset = +query.offset - 1
+        const result = await getProductsFx(
+          `/products?limit=20&offset=${offset}`
+        )
+
+        setCurrentPage(offset)
+        setProducts(isFilterInQuery ? filteredProducts : result)
+        return
       }
-
-      const offset = +query.offset - 1
-      const result = await getProductsFx(`/products?limit=20&offset=${offset}`)
-
-      setCurrentPage(offset)
-      setProducts(isFilterInQuery ? filteredProducts : result)
+      resetPagination(isFilterInQuery ? filteredProducts : data)
     } catch (error) {
       toast.error((error as Error).message)
     } finally {
-      setTimeout(() => setSpinner(false), 1000)
+      setTimeout(() => setSpinner(false), 500)
     }
   }
 
   const handlePageChange = async ({ selected }: { selected: number }) => {
     try {
       setSpinner(true)
-      const params = new URLSearchParams(searchParams)
+      const params = new URLSearchParams(Array.from(searchParams.entries()))
       const data = await getProductsFx('/products?limit=20&offset=0')
 
       if (selected > pagesCount) {
@@ -124,66 +132,92 @@ const CatalogPage = ({ query }: { query: IQueryParams }) => {
         return
       }
 
+      const { isValidVendorQuery, isValidCategoryQuery, isValidPriceQuery } =
+        checkQueryParams(params, pathname)
+
       const result = await getProductsFx(
-        `/products?limit=20&offset=${selected}`
+        `products?limit=20&offset=${selected}${
+          isFilterInQuery && isValidVendorQuery
+            ? `&vendor=${params.get('vendor')}`
+            : ''
+        }${
+          isFilterInQuery && isValidCategoryQuery
+            ? `&category=${params.get('category')}`
+            : ''
+        }${
+          isFilterInQuery && isValidPriceQuery
+            ? `&priceFrom=${params.get('priceFrom')}&priceTo=${params.get(
+                'priceTo'
+              )}`
+            : ''
+        }`
       )
+
       params.set('offset', `${selected + 1}`)
-      router.push(`${pathname}?${params}`)
+      const path = params.toString()
+
+      router.push(`${pathname}?${path}`)
 
       setCurrentPage(selected)
       setProducts(result)
     } catch (error) {
       toast.error((error as Error).message)
     } finally {
-      setTimeout(() => setSpinner(false), 1000)
+      setTimeout(() => setSpinner(false), 500)
     }
   }
 
   const resetFilters = async () => {
     try {
       const data = await getProductsFx('/products?limit=20&offset=0')
-      const params = new URLSearchParams(searchParams)
+      const params = new URLSearchParams(Array.from(searchParams.entries()))
 
-      params.delete('product')
-      params.delete('products')
+      params.delete('vendor')
+      params.delete('category')
       params.delete('priceFrom')
       params.delete('priceTo')
+
       params.set('first', 'cheap')
+
+      const newParams = params.toString()
+      const query = newParams ? `?${newParams}` : ''
+
+      router.push(`${pathname}${query}`)
+
       setVendors(vendors.map((item) => ({ ...item, checked: false })))
-      setProductsManufacturers(
-        productsManufacturers.map((item) => ({ ...item, checked: false }))
-      )
+      setCategories(categories.map((item) => ({ ...item, checked: false })))
 
       setProducts(data)
-      setPriceRange([1000, 9000])
+      setPriceRange([MIN_PRICE_RANGE, MAX_PRICE_RANGE])
       setIsPriceRangeChanged(false)
     } catch (error) {
       toast.error((error as Error).message)
     }
   }
+  const validPageCount = Number.isInteger(pagesCount)
+    ? Math.ceil(pagesCount)
+    : 0
 
   return (
     <section className={styles.catalog}>
       <div className={`container ${styles.catalog__container}`}>
-        <h2 className={`${styles.catalog__title} ${darkModeClass}`}>
-          Каталог товаров
-        </h2>
+        <h2 className={`${styles.catalog__title} ${darkModeClass}`}>Catalog</h2>
         <div className={`${styles.catalog__top} ${darkModeClass}`}>
           <AnimatePresence>
             {isAnyVendorChecked && (
               <ManufacturersBlock
-                title="Производитель котлов:"
+                title="Vendor:"
                 event={updateVendor}
                 manufacturersList={vendors}
               />
             )}
           </AnimatePresence>
           <AnimatePresence>
-            {isAnyProductsManufacturerChecked && (
+            {isAnyCategoryChecked && (
               <ManufacturersBlock
-                title="Производитель запчастей:"
-                event={updateProductsManufacturer}
-                manufacturersList={productsManufacturers}
+                title="Category:"
+                event={updateCategory}
+                manufacturersList={categories}
               />
             )}
           </AnimatePresence>
@@ -193,7 +227,7 @@ const CatalogPage = ({ query }: { query: IQueryParams }) => {
               disabled={resetFilterBtnDisabled}
               onClick={resetFilters}
             >
-              Сбросить фильтр
+              Reset filters
             </button>
             <button
               className={styles.catalog__top__mobile_btn}
@@ -203,7 +237,7 @@ const CatalogPage = ({ query }: { query: IQueryParams }) => {
                 <FilterSvg />
               </span>
               <span className={styles.catalog__top__mobile_btn__text}>
-                Фильтр
+                Filter
               </span>
             </button>
             <FilterSelect setSpinner={setSpinner} />
@@ -243,11 +277,12 @@ const CatalogPage = ({ query }: { query: IQueryParams }) => {
                     <CatalogItem item={item} key={item.id} />
                   ))
                 ) : (
-                  <span>Список товаров пуст...</span>
+                  <span>Product list is empty...</span>
                 )}
               </ul>
             )}
           </div>
+
           <ReactPaginate
             containerClassName={styles.catalog__bottom__list}
             pageClassName={styles.catalog__bottom__list__item}
@@ -257,8 +292,10 @@ const CatalogPage = ({ query }: { query: IQueryParams }) => {
             breakClassName={styles.catalog__bottom__list__break}
             breakLinkClassName={`${styles.catalog__bottom__list__break__link} ${darkModeClass}`}
             breakLabel="..."
-            pageCount={products.count / 20}
-            forcePage={currentPage}
+            pageCount={validPageCount}
+            forcePage={
+              currentPage >= validPageCount ? validPageCount - 1 : currentPage
+            }
             onPageChange={handlePageChange}
           />
         </div>
