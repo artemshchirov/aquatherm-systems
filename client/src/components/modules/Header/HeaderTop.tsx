@@ -37,12 +37,11 @@ const HeaderTop = () => {
         >
           <ul className={styles.header__nav__list}>
             <li className={styles.header__nav__list__item}>
-              <Link href="/dashboard" passHref legacyBehavior>
+              <Link href="/" passHref legacyBehavior>
                 <a
                   className={`${styles.header__nav__list__item__link} ${darkModeClass}`}
                   onClick={closePopup}
                 >
-                  {/* TODO: get text from constants file */}
                   Home
                 </a>
               </Link>
@@ -63,7 +62,6 @@ const HeaderTop = () => {
                   className={`${styles.header__nav__list__item__link} ${darkModeClass}`}
                   onClick={closePopup}
                 >
-                  {/* TODO: get text from constants file */}
                   Delivery and Payment
                 </a>
               </Link>

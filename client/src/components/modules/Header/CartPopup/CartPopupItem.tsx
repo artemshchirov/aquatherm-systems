@@ -63,7 +63,7 @@ const CartPopupItem = ({ item }: { item: IShoppingCartItem }) => {
         <span
           className={`${styles.cart__popup__list__item__price} ${darkModeClass}`}
         >
-          {formatPrice(price)} P
+          {formatPrice(price)} ₪
         </span>
       </div>
     </li>

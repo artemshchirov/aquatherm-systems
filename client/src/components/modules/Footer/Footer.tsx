@@ -158,7 +158,7 @@ const Footer = () => {
           {isMedia750 && <FooterLogo />}
           <div className={styles.footer__bottom__block}>
             <p className={styles.footer__bottom__block__copyright}>
-              © «Best shop ever » 2023.
+              © «BEST SHOP» 2023.
             </p>
           </div>
         </div>

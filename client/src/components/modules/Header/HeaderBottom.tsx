@@ -31,13 +31,13 @@ const HeaderBottom = () => {
     <div className={styles.header__bottom}>
       <div className={`container ${styles.header__bottom__container}`}>
         <h1 className={styles.header__logo}>
-          <Link href="/dashboard" legacyBehavior passHref>
+          <Link href="/" legacyBehavior passHref>
             <a className={styles.header__logo__link}>
               <img src="/img/logo.svg" alt="logo" />
               <span
                 className={`${styles.header__logo__link__text} ${darkModeClass}`}
               >
-                Best shop ever
+                BEST SHOP
               </span>
             </a>
           </Link>

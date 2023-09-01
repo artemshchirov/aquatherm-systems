@@ -4,12 +4,10 @@ import styles from '@/styles/footer/index.module.scss'
 
 const FooterLogo = () => (
   <div className={styles.footer__top__item}>
-    <Link href="/dashboard" passHref legacyBehavior>
+    <Link href="/" passHref legacyBehavior>
       <a className={styles.footer__top__item__logo}>
         <img src="/img/logo-footer.svg" alt="logo" />
-        <span className={styles.footer__top__item__logo__text}>
-          Best shop ever
-        </span>
+        <span className={styles.footer__top__item__logo__text}>BEST SHOP</span>
       </a>
     </Link>
   </div>

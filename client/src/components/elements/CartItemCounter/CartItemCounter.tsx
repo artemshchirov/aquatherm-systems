@@ -21,24 +21,19 @@ const CartItemCounter = ({
   const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : ''
   const spinnerDarkModeClass =
     mode === 'dark' ? '' : `${spinnerStyles.dark_mode}`
-  const [spinner, setPinner] = useState(false)
+  const [spinner, setSpinner] = useState(false)
   const [count, setCount] = useState(initialCount)
   const [disableIncrease, setDisableIncrease] = useState(false)
   const [disableDecrease, setDisableDecrease] = useState(false)
 
   useEffect(() => {
-    if (count === 1) {
-      setDisableDecrease(true)
-    }
-
-    if (count === totalCount) {
-      setDisableIncrease(true)
-    }
+    if (count <= 1) setDisableDecrease(true)
+    if (count >= totalCount) setDisableIncrease(true)
   }, [count, totalCount])
 
   const increase = async () => {
     try {
-      setPinner(true)
+      setSpinner(true)
       increasePrice()
       setDisableDecrease(false)
       setCount(count + 1)
@@ -52,13 +47,13 @@ const CartItemCounter = ({
     } catch (error) {
       toast.error((error as Error).message)
     } finally {
-      setPinner(false)
+      setSpinner(false)
     }
   }
 
   const decrease = async () => {
     try {
-      setPinner(true)
+      setSpinner(true)
       decreasePrice()
       setDisableIncrease(false)
       setCount(count - 1)
@@ -72,7 +67,7 @@ const CartItemCounter = ({
     } catch (error) {
       toast.error((error as Error).message)
     } finally {
-      setPinner(false)
+      setSpinner(false)
     }
   }
 

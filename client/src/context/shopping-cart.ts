@@ -41,7 +41,9 @@ export const $shoppingCart = shoppingCart
   .createStore<IShoppingCartItem[]>([])
   .on(setShoppingCart, (_, shoppingCart) => shoppingCart)
   .on(updateShoppingCart, (state, cartItem) => [...state, cartItem])
-  .on(removeShoppingCartItem, (state, productId) => [...remove(state, productId)])
+  .on(removeShoppingCartItem, (state, productId) => [
+    ...remove(state, productId),
+  ])
   .on(updateCartItemTotalPrice, (state, { productId, total_price }) => [
     ...updateCartItem(state, productId, { total_price }),
   ])

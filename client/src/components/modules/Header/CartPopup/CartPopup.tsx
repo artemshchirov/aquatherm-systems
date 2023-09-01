@@ -49,7 +49,6 @@ const CartPopup = forwardRef<HTMLDivElement, IWrappedComponentProps>(
     const loadCartItems = async () => {
       try {
         const cartItems = await getCartItemsFx(`/shopping-cart/${user.userId}`)
-
         setShoppingCart(cartItems)
       } catch (error) {
         toast.error((error as Error).message)
@@ -117,7 +116,7 @@ const CartPopup = forwardRef<HTMLDivElement, IWrappedComponentProps>(
                     Total price:
                   </span>
                   <span className={styles.cart__popup__footer__price}>
-                    {formatPrice(totalPrice)} P
+                    {formatPrice(totalPrice)} ₪
                   </span>
                 </div>
                 <Link href="/order" passHref legacyBehavior>
