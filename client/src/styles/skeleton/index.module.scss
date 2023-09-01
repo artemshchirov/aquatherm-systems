@@ -50,7 +50,9 @@
 
 .skeleton__item__light {
   height: 100%;
-  animation-duration: 1.6s;
+  // default
+  // animation-duration: 1.6s;
+  animation-duration: 1.0s;
   background: linear-gradient(270deg, #ffffff0c 34.78%, #ffffffc2 60.33%, #ffffff0c 84.84%);
   animation-name: skeleton;
   animation-timing-function: linear;

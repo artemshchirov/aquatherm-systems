@@ -3,9 +3,6 @@
 import type { Metadata } from 'next'
 import ToastProvider from '../../providers/toast.provider'
 import '@/styles/globals.css'
-import Header from '../../components/modules/Header/Header'
-import Footer from '../../components/modules/Footer/Footer'
-import { AppProgressBar as ProgressBar } from 'next-nprogress-bar'
 import useRedirectByUserCheck from '../../hooks/useRedirectByUserCheck'
 
 export const metadata: Metadata = {

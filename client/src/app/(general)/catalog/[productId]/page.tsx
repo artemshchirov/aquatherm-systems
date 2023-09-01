@@ -9,10 +9,10 @@ import { IQueryParams } from '@/types/catalog'
 import { $product, setProduct } from '@/context/product'
 import { getProductFx } from '@/app/api/products'
 import ProductPage from '@/components/templates/ProductPage/ProductPage'
-import Custom404 from '../../404'
+import Custom404 from '@/app/404'
 import Breadcrumbs from '@/components/modules/Breadcrumbs/Breadcrumbs'
 
-function CatalogProductPage({ query }: { query: IQueryParams }) {
+function CatalogProductPage({ params }: { params: IQueryParams }) {
   const { shouldLoadContent } = useRedirectByUserCheck()
   const product = useStore($product)
   const [error, setError] = useState(false)
@@ -36,7 +36,7 @@ function CatalogProductPage({ query }: { query: IQueryParams }) {
 
   const loadProduct = async () => {
     try {
-      const data = await getProductFx(`/products/find/${query.productId}`)
+      const data = await getProductFx(`/products/find/${params.productId}`)
 
       if (!data) {
         setError(true)
@@ -67,12 +67,6 @@ function CatalogProductPage({ query }: { query: IQueryParams }) {
       )}
     </>
   )
-}
-
-export async function getServerSideProps(context: { query: IQueryParams }) {
-  return {
-    props: { query: { ...context.query } },
-  }
 }
 
 export default CatalogProductPage

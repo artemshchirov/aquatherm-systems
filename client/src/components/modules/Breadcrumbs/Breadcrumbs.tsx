@@ -3,7 +3,7 @@ import { useStore } from 'effector-react'
 import Link from 'next/link'
 import {
   ReadonlyURLSearchParams,
-  useRouter,
+  usePathname,
   useSearchParams,
 } from 'next/navigation'
 import { ParsedUrlQuery } from 'querystring'
@@ -12,10 +12,10 @@ import { $mode } from '@/context/mode'
 import Crumb from './Crumb'
 import styles from '@/styles/breadcrumbs/index.module.scss'
 
-// const generatePathProducts = (pathStr: string) => {
-//   const pathWithoutQuery = pathStr.split('?')[0]
-//   return pathWithoutQuery.split('/').filter((v) => v.length > 0)
-// }
+const generatePathParts = (pathStr: string) => {
+  const pathWithoutQuery = pathStr.split('?')[0]
+  return pathWithoutQuery.split('/').filter((v) => v.length > 0)
+}
 
 const Breadcrumbs = ({
   getTextGenerator,
@@ -24,19 +24,16 @@ const Breadcrumbs = ({
   getTextGenerator: (arg0: string, query: ReadonlyURLSearchParams) => void
   getDefaultTextGenerator: (arg0: string, href: string) => string
 }) => {
-  const searchParams = useSearchParams()
   const mode = useStore($mode)
   const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : ''
-
-  const generatePath = useCallback((pathStr: string) => {
-    const pathWithoutQuery = pathStr.split('?')[0]
-    return pathWithoutQuery.split('/').filter((v) => v.length > 0)
-  }, [])
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
 
   const breadcrumbs = useMemo(
     function generateBreadcrumbs() {
-      const asPathNestedRoutes = generatePath(searchParams.toString())
-      const pathnameNestedRoutes = generatePath(window.location.pathname)
+      const params = new URLSearchParams(Array.from(searchParams.entries()))
+      const asPathNestedRoutes = generatePathParts(`${params}`)
+      const pathnameNestedRoutes = generatePathParts(pathname)
 
       const crumbList = asPathNestedRoutes.map((subpath, idx) => {
         const param = pathnameNestedRoutes[idx]
@@ -53,14 +50,14 @@ const Breadcrumbs = ({
 
       return [...crumbList]
     },
-    [generatePath, searchParams, getTextGenerator, getDefaultTextGenerator]
+    [pathname, getTextGenerator, searchParams, getDefaultTextGenerator]
   )
 
   return (
     <div className="container">
       <ul className={styles.breadcrumbs}>
         <li className={styles.breadcrumbs__item}>
-          <Link href="/dashboard" passHref legacyBehavior>
+          <Link href="/" passHref legacyBehavior>
             <a>
               <span
                 className={`${styles.breadcrumbs__item__icon} ${darkModeClass}`}
