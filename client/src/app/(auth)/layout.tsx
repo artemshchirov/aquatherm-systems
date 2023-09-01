@@ -6,6 +6,7 @@ import '@/styles/globals.css'
 import Header from '../../components/modules/Header/Header'
 import Footer from '../../components/modules/Footer/Footer'
 import { AppProgressBar as ProgressBar } from 'next-nprogress-bar'
+import useRedirectByUserCheck from '../../hooks/useRedirectByUserCheck'
 
 export const metadata: Metadata = {
   title: 'Ecommerce api full',
@@ -17,12 +18,15 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const { shouldLoadContent } = useRedirectByUserCheck(true)
   return (
     <html lang="en">
       <body suppressHydrationWarning>
-        <ToastProvider>
-          <main>{children}</main>
-        </ToastProvider>
+        {shouldLoadContent && (
+          <ToastProvider>
+            <main>{children}</main>
+          </ToastProvider>
+        )}
       </body>
     </html>
   )

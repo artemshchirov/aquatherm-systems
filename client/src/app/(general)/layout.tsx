@@ -6,6 +6,7 @@ import '@/styles/globals.css'
 import Header from '../../components/modules/Header/Header'
 import Footer from '../../components/modules/Footer/Footer'
 import { AppProgressBar as ProgressBar } from 'next-nprogress-bar'
+import useRedirectByUserCheck from '../../hooks/useRedirectByUserCheck'
 
 export const metadata: Metadata = {
   title: 'Ecommerce api full',
@@ -17,20 +18,26 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  // FIXME: Do I need  it on each page in (general) routes?
+  const { shouldLoadContent } = useRedirectByUserCheck()
   return (
     <html lang="en">
       <body suppressHydrationWarning>
-        <ProgressBar
-          height="4px"
-          color="#fffd00"
-          options={{ showSpinner: true }}
-          shallowRouting
-        />
-        <ToastProvider>
-          <Header />
-          <main>{children}</main>
-          <Footer />
-        </ToastProvider>
+        {shouldLoadContent && (
+          <>
+            <ProgressBar
+              height="4px"
+              color="#fffd00"
+              options={{ showSpinner: true }}
+              shallowRouting
+            />
+            <ToastProvider>
+              <Header />
+              <main>{children}</main>
+              <Footer />
+            </ToastProvider>
+          </>
+        )}
       </body>
     </html>
   )

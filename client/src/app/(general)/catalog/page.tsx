@@ -6,22 +6,22 @@ import Breadcrumbs from '@/components/modules/Breadcrumbs/Breadcrumbs'
 import { useCallback } from 'react'
 
 function Catalog({ searchParams }: { searchParams: IQueryParams }) {
-  const { shouldLoadContent } = useRedirectByUserCheck()
+  // const { shouldLoadContent } = useRedirectByUserCheck()
   const getDefaultTextGenerator = useCallback(() => 'Catalog', [])
   const getTextGenerator = useCallback((param: string) => ({})[param], [])
 
   return (
     <>
-      {shouldLoadContent && (
-        <>
-          <Breadcrumbs
-            getDefaultTextGenerator={getDefaultTextGenerator}
-            getTextGenerator={getTextGenerator}
-          />
-          <CatalogPage query={searchParams} />
-          <div className="overlay" />
-        </>
-      )}
+      {/* {shouldLoadContent && ( */}
+      <>
+        <Breadcrumbs
+          getDefaultTextGenerator={getDefaultTextGenerator}
+          getTextGenerator={getTextGenerator}
+        />
+        <CatalogPage query={searchParams} />
+        <div className="overlay" />
+      </>
+      {/* )} */}
     </>
   )
 }

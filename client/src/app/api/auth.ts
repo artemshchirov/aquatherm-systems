@@ -1,7 +1,7 @@
 import type { AxiosError } from 'axios'
 import type { ISignInFx, ISignUpFx } from '@/types/auth'
 import { toast } from 'react-toastify'
-import { api } from '@/app/axiosClient'
+import { api } from '@/app/api/axiosClient'
 import { HTTPStatus } from '@/constants'
 import { createEffect } from 'effector'
 

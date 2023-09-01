@@ -1,5 +1,5 @@
 import { createEffect } from 'effector'
-import { api } from '../axiosClient'
+import { api } from './axiosClient'
 import { toast } from 'react-toastify'
 
 export const getBestsellersOrNewProductsFx = createEffect(

@@ -1,6 +1,6 @@
 import { createEffect } from 'effector'
 import { IGeolocation } from '../../types/common'
-import { api } from '../axiosClient'
+import { api } from './axiosClient'
 
 export const getGeolocationFx = createEffect(
   async ({ latitude, longitude }: IGeolocation) => {
