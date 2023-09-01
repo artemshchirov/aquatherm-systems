@@ -27,7 +27,6 @@ const SignUpForm = ({ switchForm }: { switchForm: () => void }) => {
     try {
       setSpinner(true)
       const userData = await singUpFx({
-        // TODO: rewrite all urls in constants file
         url: '/users/signup',
         username: data.name,
         password: data.password,
@@ -38,10 +37,10 @@ const SignUpForm = ({ switchForm }: { switchForm: () => void }) => {
         return
       }
 
+      switchForm()
       resetField('email')
       resetField('name')
       resetField('password')
-      switchForm()
     } catch (error) {
       showAuthError(error)
     } finally {

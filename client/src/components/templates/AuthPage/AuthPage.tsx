@@ -1,4 +1,4 @@
-import { MutableRefObject, useRef } from 'react'
+import { MutableRefObject, useCallback, useRef } from 'react'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 import SignUpForm from '@/components/modules/AuthPage/SignUpForm'
 import SignInForm from '@/components/modules/AuthPage/SignInForm'
@@ -19,7 +19,7 @@ const AuthPage = () => {
   const mode = useStore($mode)
   const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : ''
 
-  const switchForm = () => {
+  const switchForm = useCallback(() => {
     switchCtn.current.classList.add(styles.is_gx)
 
     setTimeout(() => switchCtn.current.classList.remove(styles.is_gx), 1500)
@@ -33,9 +33,16 @@ const AuthPage = () => {
     aContainer.current.classList.toggle(styles.is_txl)
     bContainer.current.classList.toggle(styles.is_txl)
     bContainer.current.classList.toggle(styles.is_z200)
-  }
+  }, [
+    switchCtn,
+    switchCircle1,
+    switchCircle2,
+    switchC1,
+    switchC2,
+    aContainer,
+    bContainer,
+  ])
 
-  // TODO: clsx for classnames with multiple classes
   return (
     <div className={`${styles.main} ${darkModeClass}`}>
       <div className={styles.mode_toggle}>
@@ -73,7 +80,6 @@ const AuthPage = () => {
           ref={switchCircle2}
         />
         <div className={styles.switch__container} id="switch-c1" ref={switchC1}>
-          {/* TODO: hide using styles */}
           {!isMedia800 && (
             <>
               <h2
@@ -101,7 +107,6 @@ const AuthPage = () => {
           id="switch-c2"
           ref={switchC2}
         >
-          {/* TODO: hide using styles */}
           {!isMedia800 && (
             <>
               <h2

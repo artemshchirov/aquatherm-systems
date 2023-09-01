@@ -18,7 +18,7 @@ function CatalogProductPage({ query }: { query: IQueryParams }) {
   const [error, setError] = useState(false)
   const pathname = usePathname()
   const getDefaultTextGenerator = useCallback(
-    (subpath: string) => subpath.replace('catalog', 'Каталог'),
+    (subpath: string) => subpath.replace('catalog', 'Catalog'),
     []
   )
   const getTextGenerator = useCallback((param: string) => ({})[param], [])

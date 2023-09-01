@@ -26,7 +26,7 @@ const useRedirectByUserCheck = (isAuthPage = false) => {
         return
       }
 
-      router.push('/dashboard')
+      router.push('/')
       return
     }
 

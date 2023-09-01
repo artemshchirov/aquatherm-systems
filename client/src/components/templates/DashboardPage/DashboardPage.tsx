@@ -82,13 +82,17 @@ const DashboardPage = () => {
           Best things ever
         </h2>
         <div className={styles.dashboard__products}>
-          <h3 className={`${styles.dashboard__products__title} ${darkModeClass}`}>
+          <h3
+            className={`${styles.dashboard__products__title} ${darkModeClass}`}
+          >
             Bestsellers
           </h3>
           <DashboardSlider items={bestsellers.rows || []} spinner={spinner} />
         </div>
         <div className={styles.dashboard__products}>
-          <h3 className={`${styles.dashboard__products__title} ${darkModeClass}`}>
+          <h3
+            className={`${styles.dashboard__products__title} ${darkModeClass}`}
+          >
             New
           </h3>
           <DashboardSlider items={newProducts.rows || []} spinner={spinner} />
