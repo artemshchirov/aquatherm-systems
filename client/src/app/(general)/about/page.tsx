@@ -1,14 +1,23 @@
-import type { Metadata } from 'next'
+'use client'
 
-export const metadata: Metadata = {
-  title: 'Art Box - About',
-}
+import { useCallback } from 'react'
+import AboutPage from '@/components/templates/AboutPage/AboutPage'
+import Breadcrumbs from '@/components/modules/Breadcrumbs/Breadcrumbs'
 
-export default function About() {
+function About() {
+  const getDefaultTextGenerator = useCallback(() => 'About company', [])
+  const getTextGenerator = useCallback((param: string) => ({})[param], [])
+
   return (
     <>
-      <h1>About</h1>
+      <Breadcrumbs
+        getDefaultTextGenerator={getDefaultTextGenerator}
+        getTextGenerator={getTextGenerator}
+      />
+      <AboutPage />
       <div className="overlay" />
     </>
   )
 }
+
+export default About

@@ -19,25 +19,25 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   // FIXME: Do I need  it on each page in (general) routes?
-  const { shouldLoadContent } = useRedirectByUserCheck()
+  // const { shouldLoadContent } = useRedirectByUserCheck()
   return (
     <html lang="en">
       <body suppressHydrationWarning>
-        {shouldLoadContent && (
-          <>
-            <ProgressBar
-              height="4px"
-              color="#fffd00"
-              options={{ showSpinner: true }}
-              shallowRouting
-            />
-            <ToastProvider>
-              <Header />
-              <main>{children}</main>
-              <Footer />
-            </ToastProvider>
-          </>
-        )}
+        {/* {shouldLoadContent && ( */}
+        <>
+          <ProgressBar
+            height="4px"
+            color="#fffd00"
+            options={{ showSpinner: true }}
+            shallowRouting
+          />
+          <ToastProvider>
+            <Header />
+            <main>{children}</main>
+            <Footer />
+          </ToastProvider>
+        </>
+        {/* )} */}
       </body>
     </html>
   )
