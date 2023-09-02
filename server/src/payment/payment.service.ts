@@ -29,7 +29,7 @@ export class PaymentService {
             return_url: 'http://localhost:3000/order',
             confirmation_url: 'http://example.com',
           },
-          description: 'Order №1',
+          description: makePaymentDto.description,
         },
       };
       const { data } = await axios(paymentData);

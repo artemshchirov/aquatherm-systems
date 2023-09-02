@@ -6,12 +6,18 @@ import { $userCity, setUserCity } from '@/context/user'
 import { getGeolocationFx } from '@/app/api/geolocation'
 import { toast } from 'react-toastify'
 import spinnerStyles from '@/styles/spinner/index.module.scss'
+import { useEffect } from 'react'
 
 const CityButton = () => {
   const mode = useStore($mode)
   const { city } = useStore($userCity)
   const spinner = useStore(getGeolocationFx.pending)
   const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : ''
+
+  // WARN: Only for testing first user visit
+  useEffect(() => {
+    getCity()
+  }, [])
 
   const getCity = () => {
     const options = {

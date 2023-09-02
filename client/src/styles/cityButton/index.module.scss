@@ -49,6 +49,7 @@
     text-decoration-line: underline;
     color: #FAFBFC;
     transition: color .2s ease-in-out;
+    min-width: max-content;
 
     @media (max-width: 950px) {
       font-size: 22px;

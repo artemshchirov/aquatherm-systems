@@ -125,6 +125,8 @@ const SearchInput = () => {
   }
 
   const onSearchMenuClose = () => {
+    removeClassNamesForOverlayAndBody()
+
     setOnMenuOpenControlStyles({
       borderBottomLeftRadius: 4,
       boxShadow: 'none',
@@ -184,6 +186,7 @@ const SearchInput = () => {
           onMenuClose={onSearchMenuClose}
           onInputChange={onSearchInputChange}
           options={options}
+          blurInputOnSelect
         />
         <span ref={borderRef} className={styles.header__search__border} />
       </div>

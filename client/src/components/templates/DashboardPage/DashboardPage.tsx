@@ -87,7 +87,11 @@ const DashboardPage = () => {
           >
             Bestsellers
           </h3>
-          <DashboardSlider items={bestsellers.rows || []} spinner={spinner} />
+          <DashboardSlider
+            items={bestsellers.rows || []}
+            spinner={spinner}
+            goToProductPage
+          />
         </div>
         <div className={styles.dashboard__products}>
           <h3
@@ -95,7 +99,11 @@ const DashboardPage = () => {
           >
             New
           </h3>
-          <DashboardSlider items={newProducts.rows || []} spinner={spinner} />
+          <DashboardSlider
+            items={newProducts.rows || []}
+            spinner={spinner}
+            goToProductPage
+          />
         </div>
         <div className={styles.dashboard__about}>
           <h3

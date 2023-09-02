@@ -1,5 +1,5 @@
 import { Body, Controller, Post, UseGuards } from '@nestjs/common';
-import { MakePaymentDto, MakePaymentResponse } from './dto/make-payment-dto';
+import { MakePaymentDto, MakePaymentResponse } from './types';
 import { PaymentService } from './payment.service';
 import { AuthenticatedGuard } from '../auth/authenticated.guard';
 import { ApiOkResponse } from '@nestjs/swagger';
