@@ -1,5 +1,5 @@
 import { createEffect } from 'effector'
-import { api } from './axiosClient'
+import api from '@/app/api/axiosClient'
 import { IAddToCartFx, IUpdateCartItemFx } from '@/types/shopping-cart'
 
 export const getCartItemsFx = createEffect(async (url: string) => {

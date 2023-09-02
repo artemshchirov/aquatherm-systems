@@ -1,14 +1,13 @@
 'use client'
 
-import useRedirectByUserCheck from '@/hooks/useRedirectByUserCheck'
-import CatalogPage from '@/components/templates/CatalogPage/CatalogPage'
-import { IQueryParams } from '@/types/catalog'
-import Breadcrumbs from '@/components/modules/Breadcrumbs/Breadcrumbs'
 import { useCallback } from 'react'
+import useRedirectByUserCheck from '@/hooks/useRedirectByUserCheck'
+import OrderPage from '@/components/templates/OrderPage/OrderPage'
+import Breadcrumbs from '@/components/modules/Breadcrumbs/Breadcrumbs'
 
-function Catalog({ searchParams }: { searchParams: IQueryParams }) {
+function Order() {
   const { shouldLoadContent } = useRedirectByUserCheck()
-  const getDefaultTextGenerator = useCallback(() => 'Catalog', [])
+  const getDefaultTextGenerator = useCallback(() => 'Оформление заказа', [])
   const getTextGenerator = useCallback((param: string) => ({})[param], [])
 
   return (
@@ -19,7 +18,7 @@ function Catalog({ searchParams }: { searchParams: IQueryParams }) {
             getDefaultTextGenerator={getDefaultTextGenerator}
             getTextGenerator={getTextGenerator}
           />
-          <CatalogPage query={searchParams} />
+          <OrderPage />
           <div className="overlay" />
         </>
       )}
@@ -27,4 +26,4 @@ function Catalog({ searchParams }: { searchParams: IQueryParams }) {
   )
 }
 
-export default Catalog
+export default Order
