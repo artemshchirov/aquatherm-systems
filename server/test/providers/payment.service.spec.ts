@@ -7,7 +7,7 @@ import { SequelizeConfigService } from '../../src/config/sequelizeConfig.service
 import { PaymentModule } from '../../src/payment/payment.module';
 import { PaymentService } from '../../src/payment/payment.service';
 
-describe('Payment controller', () => {
+describe('Payment service', () => {
   let app: INestApplication;
   let paymentService: PaymentService;
 
@@ -57,6 +57,7 @@ describe('Payment controller', () => {
         capture: true,
         confirmation: {
           return_url: 'http://localhost:3000/order',
+          confirmation_url: 'http://example.com',
           type: 'redirect',
         },
         description: 'Order №1',

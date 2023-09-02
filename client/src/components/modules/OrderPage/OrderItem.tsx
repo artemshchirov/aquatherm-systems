@@ -71,7 +71,7 @@ const OrderItem = ({ item }: { item: IShoppingCartItem }) => {
         <span
           className={`${styles.order__cart__list__item__price} ${darkModeClass}`}
         >
-          {formatPrice(price)} P
+          {formatPrice(price)} ₪
         </span>
         <button
           className={styles.order__cart__list__item__delete}

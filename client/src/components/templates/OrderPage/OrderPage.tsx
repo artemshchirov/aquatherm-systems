@@ -7,7 +7,7 @@ import {
   $totalPrice,
   setShoppingCart,
 } from '@/context/shopping-cart'
-import { formatPrice } from '@/utils/common'
+import { formatPrice, idGenerator } from '@/utils/common'
 import OrderAccordion from '@/components/modules/OrderPage/OrderAccordion'
 import { $mode } from '@/context/mode'
 import { checkPaymentFx, makePaymentFx } from '@/app/api/payment'
@@ -40,7 +40,7 @@ const OrderPage = () => {
 
   const makePay = async () => {
     try {
-      const data = await makePaymentFx({
+      const { data } = await makePaymentFx({
         url: '/payment',
         amount: totalPrice,
         description: `Order №1 ${
@@ -50,7 +50,12 @@ const OrderPage = () => {
         }`,
       })
 
-      sessionStorage.setItem('paymentId', data.id)
+      // NOTE: payment idGenerator for dev mode
+      sessionStorage.setItem('paymentId', idGenerator())
+
+      // TODO: for production
+      // sessionStorage.setItem('paymentId', data.id)
+
       router.push(data.confirmation.confirmation_url)
     } catch (error) {
       toast.error((error as Error).message)
@@ -139,7 +144,7 @@ const OrderPage = () => {
                   checked={agreement}
                 />
                 <span className={styles.order__pay__rights__text}>
-                  <strong>I agree with the terms</strong> of the Terms of Use
+                  <strong>* I agree with the terms</strong> of the Terms of Use
                   trading platform and return policy
                 </span>
               </label>

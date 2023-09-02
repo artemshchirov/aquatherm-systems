@@ -12,6 +12,9 @@ export class ShoppingCart extends Model {
   vendor: string;
 
   @Column
+  category: string;
+
+  @Column
   name: string;
 
   @Column

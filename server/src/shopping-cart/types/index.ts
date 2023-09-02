@@ -22,6 +22,9 @@ class ShoppingCartItem {
   @ApiProperty({ example: 'Art Box' })
   vendor: string;
 
+  @ApiProperty({ example: 'Sets' })
+  category: string;
+
   @ApiProperty({ example: 1 })
   userId: number;
 

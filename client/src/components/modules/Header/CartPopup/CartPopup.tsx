@@ -123,6 +123,7 @@ const CartPopup = forwardRef<HTMLDivElement, IWrappedComponentProps>(
                   <button
                     className={styles.cart__popup__footer__btn}
                     disabled={!shoppingCart.length}
+                    onClick={() => setOpen(false)}
                   >
                     Submit order
                   </button>

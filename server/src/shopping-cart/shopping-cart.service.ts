@@ -30,6 +30,7 @@ export class ShoppingCartService {
     cart.userId = user.id;
     cart.productId = product.id;
     cart.vendor = product.vendor;
+    cart.category = product.category;
     cart.price = product.price;
     cart.in_stock = product.in_stock;
     cart.image = JSON.parse(product.images)[0];
