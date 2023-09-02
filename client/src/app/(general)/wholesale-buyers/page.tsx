@@ -4,8 +4,8 @@ import { useCallback } from 'react'
 import ContactsPage from '@/components/templates/ContactsPage/ContactsPage'
 import Breadcrumbs from '@/components/modules/Breadcrumbs/Breadcrumbs'
 
-function Contacts() {
-  const getDefaultTextGenerator = useCallback(() => 'Contacts', [])
+function WholesaleBuyers() {
+  const getDefaultTextGenerator = useCallback(() => 'Оптовым покупателям', [])
   const getTextGenerator = useCallback((param: string) => ({})[param], [])
 
   return (
@@ -14,10 +14,10 @@ function Contacts() {
         getDefaultTextGenerator={getDefaultTextGenerator}
         getTextGenerator={getTextGenerator}
       />
-      <ContactsPage />
+      <ContactsPage isWholesaleBuyersPage={true} />
       <div className="overlay" />
     </>
   )
 }
 
-export default Contacts
+export default WholesaleBuyers
