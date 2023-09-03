@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "freedb_artem_admin",
+    "password": "@&$VVVRXTy2bg&r",
+    "database": "freedb_ecommerce_template",
+    "host": "sql.freedb.tech",
+    "dialect": "mysql",
+    "port": 3306
+  },
+  "test": {
+    "username": "freedb_artem_admin",
+    "password": "@&$VVVRXTy2bg&r",
+    "database": "freedb_ecommerce_template",
+    "host": "sql.freedb.tech",
+    "dialect": "mysql",
+    "port": 3306
+  },
+  "production": {
+    "username": "freedb_artem_admin",
+    "password": "@&$VVVRXTy2bg&r",
+    "database": "freedb_ecommerce_template",
+    "host": "sql.freedb.tech",
+    "dialect": "mysql",
+    "port": 3306
+  }
+}

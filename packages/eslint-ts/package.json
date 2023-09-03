@@ -1,0 +1,37 @@
+{
+  "name": "@artemshchirov/configs-eslint-ts",
+  "version": "0.1.5",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "artemshchirov",
+    "configs",
+    "pnpm",
+    "eslint"
+  ],
+  "description": "Shared eslint config for monorepo (ts) and lib (ts) packages",
+  "author": "Artem Shchirov <artemshchirov@gmail.com> (http://github.com/artemshchirov)",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/artemshchirov/configs",
+    "type": "git",
+    "directory": "packages/eslint-ts"
+  },
+  "homepage": "https://github.com/artemshchirov/shop-api-full#readme",
+  "bugs": "https://github.com/artemshchirov/shop-api-full/issues",
+  "main": "index.js",
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.40.1",
+    "@typescript-eslint/parser": "^5.40.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-log-filenames": "^1.0.6",
+    "eslint-plugin-prettier": "^4.2.1"
+  },
+  "devDependencies": {
+    "@types/eslint": "^8.4.7"
+  },
+  "peerDependencies": {
+    "eslint": "^8.26.0"
+  }
+}

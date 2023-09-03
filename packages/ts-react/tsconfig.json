@@ -1,0 +1,6 @@
+{
+  "extends": "@artemshchirov/configs-ts",
+  "compilerOptions": {
+    "lib": ["esnext", "dom", "dom.iterable"]
+  }
+}

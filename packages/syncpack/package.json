@@ -1,0 +1,30 @@
+{
+  "name": "@artemshchirov/configs-syncpack",
+  "version": "0.1.5",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "artemshchirov",
+    "configs",
+    "pnpm",
+    "syncpack"
+  ],
+  "description": "Shared syncpack config",
+  "author": "Artem Shchirov <artemshchirov@gmail.com> (http://github.com/artemshchirov)",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/artemshchirov/configs",
+    "type": "git",
+    "directory": "packages/syncpack"
+  },
+  "homepage": "https://github.com/artemshchirov/shop-api-full#readme",
+  "bugs": "https://github.com/artemshchirov/shop-api-full/issues",
+  "main": "index.js",
+  "devDependencies": {
+    "@types/prettier": "^2.7.1"
+  },
+  "peerDependencies": {
+    "syncpack": "^8.3.9"
+  }
+}

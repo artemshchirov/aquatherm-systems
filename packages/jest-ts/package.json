@@ -1,0 +1,32 @@
+{
+  "name": "@artemshchirov/configs-jest-ts",
+  "version": "0.1.8",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "artemshchirov",
+    "configs",
+    "pnpm",
+    "typescript",
+    "jest"
+  ],
+  "description": "Shared jest config",
+  "author": "Artem Shchirov <artemshchirov@gmail.com> (http://github.com/artemshchirov)",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/artemshchirov/configs",
+    "type": "git",
+    "directory": "packages/jest-ts"
+  },
+  "homepage": "https://github.com/artemshchirov/shop-api-full#readme",
+  "bugs": "https://github.com/artemshchirov/shop-api-full/issues",
+  "main": "index.js",
+  "devDependencies": {
+    "@types/jest": "^29.2.0"
+  },
+  "peerDependencies": {
+    "jest": "^29.2.2",
+    "ts-jest": "^29.0.3"
+  }
+}

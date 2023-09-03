@@ -1,0 +1,44 @@
+{
+  "name": "@artemshchirov/configs-remark",
+  "version": "0.1.5",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "artemshchirov",
+    "configs",
+    "pnpm",
+    "md",
+    "remark"
+  ],
+  "description": "Shared remark config",
+  "author": "Artem Shchirov <artemshchirov@gmail.com> (http://github.com/artemshchirov)",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/artemshchirov/configs",
+    "type": "git",
+    "directory": "packages/remark"
+  },
+  "homepage": "https://github.com/artemshchirov/shop-api-full#readme",
+  "bugs": "https://github.com/artemshchirov/shop-api-full/issues",
+  "type": "module",
+  "main": "index.js",
+  "dependencies": {
+    "remark-frontmatter": "^4.0.1",
+    "remark-lint-fenced-code-flag": "^3.1.1",
+    "remark-lint-list-item-indent": "^3.1.1",
+    "remark-lint-no-duplicate-headings": "^3.1.1",
+    "remark-lint-no-file-name-irregular-characters": "^2.1.1",
+    "remark-lint-no-undefined-references": "^4.2.0",
+    "remark-preset-lint-consistent": "^5.1.1",
+    "remark-preset-lint-markdown-style-guide": "^5.1.2",
+    "remark-preset-lint-recommended": "^6.1.2",
+    "remark-preset-prettier": "^2.0.1",
+    "remark-toc": "^8.0.1",
+    "remark-validate-links": "^12.1.0"
+  },
+  "peerDependencies": {
+    "remark": "^14.0.2",
+    "remark-cli": "^11.0.0"
+  }
+}

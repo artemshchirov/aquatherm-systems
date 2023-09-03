@@ -1,0 +1,52 @@
+{
+  "name": "@artemshchirov/configs",
+  "private": true,
+  "description": "Ecommerce template monorepo",
+  "author": "Artem Shchirov <artemshchirov@gmail.com> (http://github.com/artemshchirov)",
+  "license": "MIT",
+  "scripts": {
+    "dev": "pnpm run --parallel dev",
+    "clean": "rimraf --glob \"**/node_modules\"",
+    "fresh": "pnpm clean && pnpm i",
+    "nuke": "rimraf --glob pnpm-lock.yaml && pnpm fresh",
+    "format": "prettier",
+    "format:check": "pnpm format --check --debug-check",
+    "format:fix": "pnpm format --write",
+    "lint": "eslint --ext mjs,js,ts,tsx",
+    "lint:fix": "pnpm lint --fix",
+    "remark": "remark",
+    "remark:fix": "pnpm remark -o --",
+    "commitlint": "commitlint",
+    "syncpack:fix": "syncpack format && syncpack fix-mismatches",
+    "fix": "pnpm lint:fix . && pnpm remark:fix . && pnpm format:fix . && pnpm syncpack:fix",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "@artemshchirov/configs-commitlint": "workspace: *",
+    "@artemshchirov/configs-eslint-ts": "workspace:*",
+    "@artemshchirov/configs-prettier": "workspace:*",
+    "@artemshchirov/configs-remark": "workspace:*",
+    "@artemshchirov/configs-syncpack": "workspace:*",
+    "@changesets/cli": "^2.25.0",
+    "@commitlint/cli": "^17.1.2",
+    "eslint": "^8.26.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "remark": "^14.0.2",
+    "remark-cli": "^11.0.0",
+    "syncpack": "^8.3.9"
+  },
+  "engines": {
+    "node": ">=14.16.0",
+    "pnpm": ">=8.7.1",
+    "npm": "please-use-pnpm",
+    "yarn": "please-use-pnpm"
+  },
+  "packageManager": "pnpm@8.7.1",
+  "devDependencies": {
+    "@artemshchirov/configs-eslint-ts-next": "workspace:^",
+    "@artemshchirov/configs-ts": "workspace:^",
+    "@artemshchirov/configs-ts-next": "workspace:^"
+  }
+}
