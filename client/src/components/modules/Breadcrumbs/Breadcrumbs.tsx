@@ -1,16 +1,12 @@
 /* eslint-disable max-len */
 import { useStore } from 'effector-react'
 import Link from 'next/link'
-import {
-  ReadonlyURLSearchParams,
-  usePathname,
-  useSearchParams,
-} from 'next/navigation'
-import { ParsedUrlQuery } from 'querystring'
-import { useCallback, useMemo } from 'react'
+import { useParams, usePathname, useSearchParams } from 'next/navigation'
+import { useMemo } from 'react'
 import { $mode } from '@/context/mode'
 import Crumb from './Crumb'
 import styles from '@/styles/breadcrumbs/index.module.scss'
+import { IBreadcrumbsProps } from '@/types/common'
 
 const generatePathParts = (pathStr: string) => {
   const pathWithoutQuery = pathStr.split('?')[0]
@@ -20,37 +16,40 @@ const generatePathParts = (pathStr: string) => {
 const Breadcrumbs = ({
   getTextGenerator,
   getDefaultTextGenerator,
-}: {
-  getTextGenerator: (arg0: string, query: ReadonlyURLSearchParams) => void
-  getDefaultTextGenerator: (arg0: string, href: string) => string
-}) => {
+}: IBreadcrumbsProps) => {
   const mode = useStore($mode)
   const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : ''
   const pathname = usePathname()
   const searchParams = useSearchParams()
+  const paramsTrue = useParams()
 
   const breadcrumbs = useMemo(
     function generateBreadcrumbs() {
       const params = new URLSearchParams(Array.from(searchParams.entries()))
-      const asPathNestedRoutes = generatePathParts(`${params}`)
+      const pathUrl = `${pathname}${params ? `?${params}` : ''}`
+      const asPathNestedRoutes = generatePathParts(pathUrl)
       const pathnameNestedRoutes = generatePathParts(pathname)
 
       const crumbList = asPathNestedRoutes.map((subpath, idx) => {
         const param = pathnameNestedRoutes[idx]
-          .replace('[', '')
-          .replace(']', '')
-
         const href = '/' + asPathNestedRoutes.slice(0, idx + 1).join('/')
+
         return {
           href,
-          textGenerator: getTextGenerator(param, searchParams),
+          textGenerator: getTextGenerator(param, paramsTrue),
           text: getDefaultTextGenerator(subpath, href),
         }
       })
 
       return [...crumbList]
     },
-    [pathname, getTextGenerator, searchParams, getDefaultTextGenerator]
+    [
+      searchParams,
+      pathname,
+      getDefaultTextGenerator,
+      getTextGenerator,
+      paramsTrue,
+    ]
   )
 
   return (

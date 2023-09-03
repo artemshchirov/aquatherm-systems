@@ -1,3 +1,5 @@
+import type { Params } from 'next/dist/shared/lib/router/utils/route-matcher'
+import { RefObject } from 'react'
 import { MultiValue, SingleValue } from 'react-select'
 
 export interface IWrappedComponentProps {
@@ -32,9 +34,15 @@ export interface IGeolocation {
   longitude: number
 }
 
+export interface IBreadcrumbsProps {
+  getTextGenerator: (arg0: string, query: Params) => void
+  getDefaultTextGenerator: (arg0: string, href: string) => string
+}
+
 export interface ICrumbProps {
   text: string
   textGenerator: () => string
   href: string
   last: boolean
+  lastCrumbRef?: RefObject<HTMLElement>
 }

@@ -5,7 +5,7 @@ import ContactsPage from '@/components/templates/ContactsPage/ContactsPage'
 import Breadcrumbs from '@/components/modules/Breadcrumbs/Breadcrumbs'
 
 function WholesaleBuyers() {
-  const getDefaultTextGenerator = useCallback(() => 'Оптовым покупателям', [])
+  const getDefaultTextGenerator = useCallback(() => 'For wholesale buyers', [])
   const getTextGenerator = useCallback((param: string) => ({})[param], [])
 
   return (

@@ -5,7 +5,7 @@ import Breadcrumbs from '@/components/modules/Breadcrumbs/Breadcrumbs'
 import { useCallback } from 'react'
 
 function ShippingPaymentPage() {
-  const getDefaultTextGenerator = useCallback(() => 'Доставка и оплата', [])
+  const getDefaultTextGenerator = useCallback(() => 'Shipping and payment', [])
   const getTextGenerator = useCallback((param: string) => ({})[param], [])
 
   return (

@@ -5,7 +5,7 @@ import AuthPage from '@/components/templates/AuthPage/AuthPage'
 import useRedirectByUserCheck from '../../../hooks/useRedirectByUserCheck'
 
 export const metadata: Metadata = {
-  title: 'Art Box - Auth',
+  title: 'Best Shop - Auth',
 }
 
 export default function Auth() {
