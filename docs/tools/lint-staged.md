@@ -7,7 +7,6 @@ The purpose of the `lint-staged` is to lint and to format indexed files before t
 - [Prerequisites](#prerequisites)
 - [Setup](#setup)
 - [Usage](#usage)
-- [License](#license)
 
 ## Prerequisites
 
@@ -39,10 +38,6 @@ The purpose of the `lint-staged` is to lint and to format indexed files before t
 
 - **Automatic** linting and formatting of staged files on commit.\
   In case of any failures, commit will be rejected.
-
-## License
-
-[MIT](../../LICENSE) © [Artem Shchirov](https://github.com/artemshchirov)
 
 ---
 

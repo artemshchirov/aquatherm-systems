@@ -9,8 +9,6 @@ The purpose of the [jest](https://jestjs.io/) is to test `javascript`.
 ## Contents
 
 - [Setup](#setup)
-- [Donation](#donation)
-- [License](#license)
 
 ## Setup
 

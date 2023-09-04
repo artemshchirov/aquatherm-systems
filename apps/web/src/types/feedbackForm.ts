@@ -9,6 +9,6 @@ export type FeedbackInputs = {
 
 export interface IFeedbackInput {
   register: UseFormRegister<FeedbackInputs>;
-  errors: Productial<FieldErrorsImpl<FeedbackInputs>>;
+  errors: Partial<FieldErrorsImpl<FeedbackInputs>>;
   darkModeClass?: string;
 }

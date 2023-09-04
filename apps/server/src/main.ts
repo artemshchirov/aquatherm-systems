@@ -26,7 +26,7 @@ async function bootstrap() {
   });
 
   const config = new DocumentBuilder()
-    .setTitle('Art Box shop')
+    .setTitle('Ecommerce')
     .setDescription('API documentation')
     .setVersion('1.0')
     .addTag('api')

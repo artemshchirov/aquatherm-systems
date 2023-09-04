@@ -9,8 +9,6 @@ The purpose of the [typescript](https://www.typescriptlang.org/) is to add stron
 ## Contents
 
 - [Setup](#setup)
-- [Donation](#donation)
-- [License](#license)
 
 ## Setup
 

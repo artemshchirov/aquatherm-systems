@@ -5,7 +5,6 @@ The purpose of the **[git ↗](https://git-scm.com/)** is handling version contr
 ## Contents
 
 - [Setup](#setup)
-- [License](#license)
 
 ## Setup
 
@@ -38,10 +37,6 @@ The purpose of the **[git ↗](https://git-scm.com/)** is handling version contr
 
   **/pnpm-lock.yaml -diff
   ```
-
-## License
-
-[MIT](../../LICENSE) © [Artem Shchirov](https://github.com/artemshchirov)
 
 ---
 

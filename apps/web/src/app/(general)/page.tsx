@@ -6,7 +6,7 @@ import { useCallback } from 'react';
 import Breadcrumbs from '../../components/modules/Breadcrumbs/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Art Box - Dashboard'
+  title: 'Ecommerce | Dashboard'
 };
 
 export default function Dashboard() {

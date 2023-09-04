@@ -39,6 +39,6 @@ The purpose of this configuration is to ensure strict coding standards and facil
 - [Typescript](/packages/ts-next/README.md)
 - [ESLint](/packages/eslint-ts-next/README.md)
 
-## Sample
+## Stay in touch
 
-Sample monorepo with step by step commits can be found here - [Monorepo | 2023](https://github.com/artemshchirov/monorepo#monorepo--2023)
+- Author - [Artem Shchirov](https://artemshchirov.github.io/portfolio/)

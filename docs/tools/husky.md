@@ -7,7 +7,6 @@ The purpose of the `husky` is running tasks on certain git actions.
 - [Prerequisites](#prerequisites)
 - [Setup](#setup)
 - [Usage](#usage)
-- [License](#license)
 
 ## Prerequisites
 
@@ -56,10 +55,6 @@ The purpose of the `husky` is running tasks on certain git actions.
 
 - **Automatic** execution [lint-staged](./lint-staged.md) and [commitlint](../../packages/commitlint/README.md) on commit.\
   In case of any failures, commit will be rejected.
-
-## License
-
-[MIT](../../LICENSE) © [Artem Shchirov](https://github.com/artemshchirov)
 
 ---
 

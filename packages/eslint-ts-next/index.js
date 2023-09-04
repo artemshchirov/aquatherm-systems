@@ -27,7 +27,8 @@ module.exports = {
         'react/react-in-jsx-scope': 'off',
         'react-internal/no-production-logging': 'off',
         'react/display-name': 'off',
-        '@next/next/no-img-element': 'off'
+        '@next/next/no-img-element': 'off',
+        '@next/next/no-html-link-for-pages': 'off'
       },
       env: {
         browser: true,

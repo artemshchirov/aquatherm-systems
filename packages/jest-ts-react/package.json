@@ -14,22 +14,22 @@
   ],
   "description": "Shared jest config",
   "author": "Artem Shchirov <artemshchirov@gmail.com> (http://github.com/artemshchirov)",
-  "license": "MIT",
+  "license": "UNLICENSED",
   "repository": {
     "url": "https://github.com/artemshchirov/configs",
     "type": "git",
     "directory": "packages/jest-ts-react"
   },
-  "homepage": "https://github.com/artemshchirov/shop-api-full#readme",
-  "bugs": "https://github.com/artemshchirov/shop-api-full/issues",
+  "homepage": "https://github.com/artemshchirov/ecommerce-template#readme",
+  "bugs": "https://github.com/artemshchirov/ecommerce-template/issues",
   "main": "index.js",
   "devDependencies": {
-    "@types/jest": "^29.2.0"
+    "@types/jest": "^29.5.4"
   },
   "peerDependencies": {
     "@testing-library/react": "^13.4.0",
-    "jest": "^29.2.2",
+    "jest": "^29.6.4",
     "jest-environment-jsdom": "^29.2.2",
-    "ts-jest": "^29.0.3"
+    "ts-jest": "^29.1.1"
   }
 }

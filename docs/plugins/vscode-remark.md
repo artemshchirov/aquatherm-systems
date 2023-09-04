@@ -7,7 +7,6 @@ The purpose of the `remark vscode plugin` is integration remark with vscode envi
 - [Prerequisites](#prerequisites)
 - [Setup](#setup)
 - [Usage](#usage)
-- [License](#license)
 
 ## Prerequisites
 
@@ -24,10 +23,6 @@ The purpose of the `remark vscode plugin` is integration remark with vscode envi
 ## Usage
 
 - **Automatic** linting and formatting file with `remark` on save.
-
-## License
-
-[MIT](../../LICENSE) © [Artem Shchirov](https://github.com/artemshchirov)
 
 ---
 

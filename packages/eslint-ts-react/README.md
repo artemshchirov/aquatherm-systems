@@ -10,8 +10,6 @@ The purpose of the `eslint` is linting `javascript` and `typescript` languages (
 
 - [Setup](#setup)
 - [Usage](#usage)
-- [Donation](#donation)
-- [License](#license)
 
 ## Setup
 

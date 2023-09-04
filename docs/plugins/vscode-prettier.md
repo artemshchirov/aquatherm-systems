@@ -7,7 +7,6 @@ The purpose of the `prettier vscode plugin` is integration prettier with vscode 
 - [Prerequisites](#prerequisites)
 - [Setup](#setup)
 - [Usage](#usage)
-- [License](#license)
 
 ## Prerequisites
 
@@ -38,10 +37,6 @@ The purpose of the `prettier vscode plugin` is integration prettier with vscode 
 ## Usage
 
 - **Automatic** formatting file with `prettier` on save.
-
-## License
-
-[MIT](../../LICENSE) © [Artem Shchirov](https://github.com/artemshchirov)
 
 ---
 

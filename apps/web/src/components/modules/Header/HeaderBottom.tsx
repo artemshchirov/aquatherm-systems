@@ -35,7 +35,7 @@ const HeaderBottom = () => {
             <a className={styles.header__logo__link}>
               <img src="/img/logo.svg" alt="logo" />
               <span className={`${styles.header__logo__link__text} ${darkModeClass}`}>
-                BEST SHOP
+                ECOMMERCE
               </span>
             </a>
           </Link>

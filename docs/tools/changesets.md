@@ -6,7 +6,6 @@ The purpose of the **[changesets ↗](https://github.com/changesets/changesets)*
 
 - [Setup](#setup)
 - [Usage](#usage)
-- [License](#license)
 
 ## Setup
 
@@ -71,10 +70,6 @@ The purpose of the **[changesets ↗](https://github.com/changesets/changesets)*
   # Review and push created version tags:
   git push --follow-tags
   ```
-
-## License
-
-[MIT](../../LICENSE) © [Artem Shchirov](https://github.com/artemshchirov)
 
 ---
 

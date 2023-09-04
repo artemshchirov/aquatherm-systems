@@ -7,7 +7,6 @@ The purpose of the `eslint vscode plugin` is integration eslint with vscode envi
 - [Prerequisites](#prerequisites)
 - [Setup](#setup)
 - [Usage](#usage)
-- [License](#license)
 
 ## Prerequisites
 
@@ -43,10 +42,6 @@ The purpose of the `eslint vscode plugin` is integration eslint with vscode envi
 ## Usage
 
 - **Automatic** linting file with `eslint` on save.
-
-## License
-
-[MIT](../../LICENSE) © [Artem Shchirov](https://github.com/artemshchirov)
 
 ---
 

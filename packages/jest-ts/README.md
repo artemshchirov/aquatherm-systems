@@ -8,11 +8,7 @@ The purpose of the [jest](https://jestjs.io/) is to test `javascript`.
 
 ## Contents
 
-- [Shared jest configuration](#shared-jest-configuration)
-  - [Contents](#contents)
-  - [Setup](#setup)
-  - [Donation](#donation)
-  - [License](#license)
+- [Setup](#setup)
 
 ## Setup
 

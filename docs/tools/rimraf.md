@@ -6,7 +6,6 @@ The purpose of the **[rimraf ↗](https://www.npmjs.com/package/rimraf)** npm pa
 
 - [Setup](#setup)
 - [Usage](#usage)
-- [License](#license)
 
 ## Setup
 
@@ -23,10 +22,6 @@ The purpose of the **[rimraf ↗](https://www.npmjs.com/package/rimraf)** npm pa
   ```sh
   pnpm rimraf < file | folder | glob >
   ```
-
-## License
-
-[MIT](../../LICENSE) © [Artem Shchirov](https://github.com/artemshchirov)
 
 ---
 

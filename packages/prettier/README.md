@@ -9,8 +9,6 @@ The purpose of the `prettier` is formatting many language formats (`js`, `ts`, `
 - [Setup](#setup)
 - [Automation](#automation)
 - [Usage](#usage)
-- [Donation](#donation)
-- [License](#license)
 
 ## Setup
 

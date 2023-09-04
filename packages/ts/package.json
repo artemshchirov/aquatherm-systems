@@ -12,17 +12,17 @@
   ],
   "description": "Shared typescript config for monorepo (ts) and lib (ts) packages",
   "author": "Artem Shchirov <artemshchirov@gmail.com> (http://github.com/artemshchirov)",
-  "license": "MIT",
+  "license": "UNLICENSED",
   "repository": {
     "url": "https://github.com/artemshchirov/configs",
     "type": "git",
     "directory": "packages/ts"
   },
-  "homepage": "https://github.com/artemshchirov/shop-api-full#readme",
-  "bugs": "https://github.com/artemshchirov/shop-api-full/issues",
+  "homepage": "https://github.com/artemshchirov/ecommerce-template#readme",
+  "bugs": "https://github.com/artemshchirov/ecommerce-template/issues",
   "main": "tsconfig.json",
   "peerDependencies": {
-    "@types/node": "^18.11.3",
-    "typescript": "^4.8.4"
+    "@types/node": "^20.5.9",
+    "typescript": "^5.2.2"
   }
 }

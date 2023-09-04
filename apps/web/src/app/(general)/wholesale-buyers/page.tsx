@@ -6,7 +6,7 @@ import Breadcrumbs from '@/components/modules/Breadcrumbs/Breadcrumbs';
 
 function WholesaleBuyers() {
   const getDefaultTextGenerator = useCallback(() => 'For wholesale buyers', []);
-  const getTextGenerator = useCallback((param: string) => ({})[param], []);
+  const getTextGenerator = useCallback((param: string) => ({}[param]), []);
 
   return (
     <>

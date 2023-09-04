@@ -6,7 +6,7 @@ import Breadcrumbs from '@/components/modules/Breadcrumbs/Breadcrumbs';
 
 function About() {
   const getDefaultTextGenerator = useCallback(() => 'About company', []);
-  const getTextGenerator = useCallback((param: string) => ({})[param], []);
+  const getTextGenerator = useCallback((param: string) => ({}[param]), []);
 
   return (
     <>

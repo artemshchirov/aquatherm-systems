@@ -6,7 +6,7 @@ import Breadcrumbs from '@/components/modules/Breadcrumbs/Breadcrumbs';
 
 function Contacts() {
   const getDefaultTextGenerator = useCallback(() => 'Contacts', []);
-  const getTextGenerator = useCallback((param: string) => ({})[param], []);
+  const getTextGenerator = useCallback((param: string) => ({}[param]), []);
 
   return (
     <>

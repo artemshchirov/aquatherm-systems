@@ -4,3 +4,7 @@ dist
 pnpm-lock.yaml
 pnpm-workspace.yaml
 node-modules
+next
+node_modules
+dist
+next

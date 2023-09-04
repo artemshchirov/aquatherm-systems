@@ -12,19 +12,19 @@
   ],
   "description": "Shared prettier config",
   "author": "Artem Shchirov <artemshchirov@gmail.com> (http://github.com/artemshchirov)",
-  "license": "MIT",
+  "license": "UNLICENSED",
   "repository": {
     "url": "https://github.com/artemshchirov/configs",
     "type": "git",
     "directory": "packages/prettier"
   },
-  "homepage": "https://github.com/artemshchirov/shop-api-full#readme",
-  "bugs": "https://github.com/artemshchirov/shop-api-full/issues",
+  "homepage": "https://github.com/artemshchirov/ecommerce-template#readme",
+  "bugs": "https://github.com/artemshchirov/ecommerce-template/issues",
   "main": "index.js",
   "devDependencies": {
-    "@types/prettier": "^2.7.1"
+    "@types/prettier": "^2.7.3"
   },
   "peerDependencies": {
-    "prettier": "^2.7.1"
+    "prettier": "^2.8.8"
   }
 }

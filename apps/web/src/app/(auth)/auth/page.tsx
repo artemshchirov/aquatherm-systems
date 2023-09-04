@@ -5,7 +5,7 @@ import AuthPage from '@/components/templates/AuthPage/AuthPage';
 import useRedirectByUserCheck from '../../../hooks/useRedirectByUserCheck';
 
 export const metadata: Metadata = {
-  title: 'Best Shop - Auth'
+  title: 'Ecommerce | Auth'
 };
 
 export default function Auth() {

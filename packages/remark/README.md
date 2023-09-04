@@ -9,8 +9,6 @@ The purpose of the `remark` is linting, formatting and autogenerate contents of 
 - [Setup](#setup)
 - [Automation](#automation)
 - [Usage](#usage)
-- [Donation](#donation)
-- [License](#license)
 
 ## Setup
 

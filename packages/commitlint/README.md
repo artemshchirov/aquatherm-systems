@@ -13,8 +13,6 @@ type(scope?): subject
 - [Setup](#setup)
 - [Automation](#automation)
 - [Usage](#usage)
-- [Donation](#donation)
-- [License](#license)
 
 ## Setup
 

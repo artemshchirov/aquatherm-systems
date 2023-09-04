@@ -12,26 +12,26 @@
   ],
   "description": "Shared eslint config for monorepo (ts) and lib (ts) packages",
   "author": "Artem Shchirov <artemshchirov@gmail.com> (http://github.com/artemshchirov)",
-  "license": "MIT",
+  "license": "UNLICENSED",
   "repository": {
     "url": "https://github.com/artemshchirov/configs",
     "type": "git",
     "directory": "packages/eslint-ts"
   },
-  "homepage": "https://github.com/artemshchirov/shop-api-full#readme",
-  "bugs": "https://github.com/artemshchirov/shop-api-full/issues",
+  "homepage": "https://github.com/artemshchirov/ecommerce-template#readme",
+  "bugs": "https://github.com/artemshchirov/ecommerce-template/issues",
   "main": "index.js",
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.40.1",
-    "@typescript-eslint/parser": "^5.40.1",
-    "eslint-config-prettier": "^8.5.0",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "eslint-config-prettier": "^8.10.0",
     "eslint-plugin-log-filenames": "^1.0.6",
     "eslint-plugin-prettier": "^4.2.1"
   },
   "devDependencies": {
-    "@types/eslint": "^8.4.7"
+    "@types/eslint": "^8.44.2"
   },
   "peerDependencies": {
-    "eslint": "^8.26.0"
+    "eslint": "^8.48.0"
   }
 }

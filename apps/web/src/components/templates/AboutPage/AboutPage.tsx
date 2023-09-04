@@ -14,11 +14,11 @@ const AboutPage = () => {
         <div className={styles.about__inner}>
           <div className={`${styles.about__info} ${darkModeClass}`}>
             <p>
-              Company &quot;BEST SHOP&quot; offers you any goods for any purpose. 99% of spare parts
+              Company &quot;ECOMMERCE&quot; offers you any goods for any purpose. 99% of spare parts
               presented on the site constantly are kept in stock at our warehouse.
             </p>
             <p>
-              The range of the online store &quot;BEST SHOP&quot; includes in anything from the
+              The range of the online store &quot;ECOMMERCE&quot; includes in anything from the
               brands Arderia, Ariston, Baxi, Beretta, Bosch, Buderus, Chaffoteaux, De Dietrich,
               Demrad, Electrolux, Ferroli, Fondital, Immergas, Junkers, Koreastar, Nova Florida,
               Saunier Duval, Sime, Tiberis, Vaillant, Viessmann.

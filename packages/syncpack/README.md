@@ -8,8 +8,6 @@ The purpose of the [syncpack](https://www.npmjs.com/package/syncpack) is formatt
 
 - [Setup](#setup)
 - [Usage](#usage)
-- [Donation](#donation)
-- [License](#license)
 
 ## Setup
 

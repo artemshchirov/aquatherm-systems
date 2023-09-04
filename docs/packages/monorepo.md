@@ -6,7 +6,6 @@ The purpose of the **[package ↗](https://docs.npmjs.com/about-packages-and-mod
 
 - [Prerequisites](#prerequisites)
 - [Setup](#setup)
-- [License](#license)
 
 ## Prerequisites
 
@@ -26,7 +25,7 @@ The purpose of the **[package ↗](https://docs.npmjs.com/about-packages-and-mod
     "private": true,
     "description": "...",
     "author": "...",
-    "license": "MIT",
+    "license": "UNLICENSED",
 
     // Common scripts
 
@@ -66,10 +65,6 @@ The purpose of the **[package ↗](https://docs.npmjs.com/about-packages-and-mod
     - 'apps/*'
     - 'packages/*'
   ```
-
-## License
-
-[MIT](../../LICENSE) © [Artem Shchirov](https://github.com/artemshchirov)
 
 ---
 

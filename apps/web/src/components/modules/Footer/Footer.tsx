@@ -136,7 +136,7 @@ const Footer = () => {
           </div>
           {isMedia750 && <FooterLogo />}
           <div className={styles.footer__bottom__block}>
-            <p className={styles.footer__bottom__block__copyright}>© «BEST SHOP» 2023.</p>
+            <p className={styles.footer__bottom__block__copyright}>© «ECOMMERCE» 2023.</p>
           </div>
         </div>
       </div>
