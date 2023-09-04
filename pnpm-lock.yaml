@@ -70,7 +70,7 @@ importers:
         specifier: ^5.2.2
         version: 5.2.2
 
-  apps/server:
+  apps/api:
     dependencies:
       '@faker-js/faker':
         specifier: ^8.0.2

@@ -9,7 +9,7 @@
     "strictBindCallApply": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "@server/*": ["./apps/server/src/*"],
+      "@api/*": ["./apps/api/src/*"],
       "@web/*": ["./apps/web/*"]
     }
   }
