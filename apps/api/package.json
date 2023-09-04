@@ -6,7 +6,6 @@
   "author": "Artem Shchirov <artemshchirov@gmail.com> (http://github.com/artemshchirov)",
   "license": "UNLICENSED",
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",

@@ -5,6 +5,7 @@
   "author": "Artem Shchirov <artemshchirov@gmail.com> (http://github.com/artemshchirov)",
   "license": "UNLICENSED",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "dev": "pnpm run --parallel dev",
     "clean": "rimraf --glob \"**/node_modules\"",
     "fresh": "pnpm clean && pnpm i",
