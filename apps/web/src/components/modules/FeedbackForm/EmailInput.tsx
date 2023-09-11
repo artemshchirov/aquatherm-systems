@@ -12,8 +12,8 @@ const EmailInput = ({ register, errors, darkModeClass }: IFeedbackInput) => (
         required: 'Enter Email',
         pattern: {
           value: /\S+@\S+\.\S+/,
-          message: 'Wrong Email'
-        }
+          message: 'Wrong Email',
+        },
       })}
     />
     {errors.email && <span className={styles.error_alert}>{errors.email?.message}</span>}

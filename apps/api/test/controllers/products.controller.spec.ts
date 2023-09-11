@@ -15,7 +15,7 @@ import { ProductsModule } from '../../src/products/products.module';
 const mockedUser = {
   username: 'John',
   password: 'john123',
-  email: 'john@gmail.com'
+  email: 'john@gmail.com',
 };
 
 describe('Products controller', () => {
@@ -26,12 +26,12 @@ describe('Products controller', () => {
       imports: [
         SequelizeModule.forRootAsync({
           imports: [ConfigModule],
-          useClass: SequelizeConfigService
+          useClass: SequelizeConfigService,
         }),
         ConfigModule.forRoot({ load: [databaseConfig] }),
         ProductsModule,
-        AuthModule
-      ]
+        AuthModule,
+      ],
     }).compile();
 
     app = testModule.createNestApplication();
@@ -39,8 +39,8 @@ describe('Products controller', () => {
       session({
         secret: 'keyword',
         resave: false,
-        saveUninitialized: false
-      })
+        saveUninitialized: false,
+      }),
     );
     app.use(passport.initialize());
     app.use(passport.session());
@@ -89,8 +89,8 @@ describe('Products controller', () => {
         new: expect.any(Boolean),
         popularity: expect.any(Number),
         createdAt: expect.any(String),
-        updatedAt: expect.any(String)
-      })
+        updatedAt: expect.any(String),
+      }),
     );
   });
 
@@ -119,9 +119,9 @@ describe('Products controller', () => {
           new: expect.any(Boolean),
           popularity: expect.any(Number),
           createdAt: expect.any(String),
-          updatedAt: expect.any(String)
-        }
-      ])
+          updatedAt: expect.any(String),
+        },
+      ]),
     );
   });
 
@@ -150,9 +150,9 @@ describe('Products controller', () => {
           new: true,
           popularity: expect.any(Number),
           createdAt: expect.any(String),
-          updatedAt: expect.any(String)
-        }
-      ])
+          updatedAt: expect.any(String),
+        },
+      ]),
     );
   });
 
@@ -189,9 +189,9 @@ describe('Products controller', () => {
           new: expect.any(Boolean),
           popularity: expect.any(Number),
           createdAt: expect.any(String),
-          updatedAt: expect.any(String)
-        }
-      ])
+          updatedAt: expect.any(String),
+        },
+      ]),
     );
   });
 
@@ -221,8 +221,8 @@ describe('Products controller', () => {
         new: expect.any(Boolean),
         popularity: expect.any(Number),
         createdAt: expect.any(String),
-        updatedAt: expect.any(String)
-      })
+        updatedAt: expect.any(String),
+      }),
     );
   });
 });

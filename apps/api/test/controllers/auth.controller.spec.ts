@@ -14,7 +14,7 @@ import { AuthModule } from '../../src/auth/auth.module';
 const mockedUser = {
   username: 'John',
   password: 'john123',
-  email: 'john@gmail.com'
+  email: 'john@gmail.com',
 };
 
 describe('Auth controller', () => {
@@ -25,11 +25,11 @@ describe('Auth controller', () => {
       imports: [
         SequelizeModule.forRootAsync({
           imports: [ConfigModule],
-          useClass: SequelizeConfigService
+          useClass: SequelizeConfigService,
         }),
         ConfigModule.forRoot({ load: [databaseConfig] }),
-        AuthModule
-      ]
+        AuthModule,
+      ],
     }).compile();
 
     app = testModule.createNestApplication();
@@ -37,8 +37,8 @@ describe('Auth controller', () => {
       session({
         secret: 'keyword',
         resave: false,
-        saveUninitialized: false
-      })
+        saveUninitialized: false,
+      }),
     );
     app.use(passport.initialize());
     app.use(passport.session());

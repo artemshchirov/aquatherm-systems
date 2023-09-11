@@ -18,9 +18,9 @@ module.exports = {
         [...Array(4)].map(
           () =>
             `${faker.image.urlLoremFlickr({
-              category: 'technics'
-            })}?random=${faker.number.int(30)}`
-        )
+              category: 'technics',
+            })}?random=${faker.number.int(30)}`,
+        ),
       ),
       vendor_code: faker.internet.password(),
       in_stock: faker.number.int(100),
@@ -28,7 +28,7 @@ module.exports = {
       new: faker.datatype.boolean(),
       popularity: faker.number.int(1000),
       createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date(),
     }));
 
     const result = queryInterface.bulkInsert('Products', products);
@@ -38,5 +38,5 @@ module.exports = {
 
   async down(queryInterface, Sequelize) {
     return queryInterface.bulkDelete('Products', null, {});
-  }
+  },
 };

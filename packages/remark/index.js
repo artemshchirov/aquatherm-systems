@@ -32,7 +32,7 @@ const remarkConfig = {
     [remarkToc, { heading: 'contents', tight: true }],
     //< Others
     remarkFrontmatter, //< Parse frontmatter (---/n ... /n---)
-    remarkPrettier //< Let use prettier for formatting
+    remarkPrettier, //< Let use prettier for formatting
   ],
   settings: {
     rule: '-',
@@ -41,8 +41,8 @@ const remarkConfig = {
     emphasis: '_',
     listItemIndent: 'one',
     tightDefinitions: true,
-    fences: true
-  }
+    fences: true,
+  },
 };
 
 export default remarkConfig;

@@ -23,12 +23,12 @@ module.exports = (sequelize, DataTypes) => {
       in_stock: DataTypes.INTEGER,
       bestseller: DataTypes.BOOLEAN,
       new: DataTypes.BOOLEAN,
-      popularity: DataTypes.INTEGER
+      popularity: DataTypes.INTEGER,
     },
     {
       sequelize,
-      modelName: 'Products'
-    }
+      modelName: 'Products',
+    },
   );
   return Products;
 };

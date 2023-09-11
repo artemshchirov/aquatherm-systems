@@ -14,9 +14,9 @@ export class LoginUserResponse {
       user: {
         userId: 1,
         username: 'Artem',
-        password: 'Artem123'
-      }
-    }
+        password: 'Artem123',
+      },
+    },
   })
   user: {
     userId: number;
@@ -52,7 +52,7 @@ export class SignupResponse {
   username: string;
 
   @ApiProperty({
-    example: '$2b$10$vPtnNkNUYJ/Sj9NtFrZRJOBapBf/.4kAr4929klYd6yA7gd3Hd09C'
+    example: '$2b$10$vPtnNkNUYJ/Sj9NtFrZRJOBapBf/.4kAr4929klYd6yA7gd3Hd09C',
   })
   password: string;
 

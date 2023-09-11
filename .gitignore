@@ -170,3 +170,4 @@ yarn-error.log*
 
 # db
 .db
+.vscode/settings.json

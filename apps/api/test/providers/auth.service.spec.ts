@@ -12,7 +12,7 @@ import { AuthService } from '../../src/auth/auth.service';
 const mockedUser = {
   username: 'John',
   password: 'john123',
-  email: 'john@gmail.com'
+  email: 'john@gmail.com',
 };
 
 describe('Auth service', () => {
@@ -24,11 +24,11 @@ describe('Auth service', () => {
       imports: [
         SequelizeModule.forRootAsync({
           imports: [ConfigModule],
-          useClass: SequelizeConfigService
+          useClass: SequelizeConfigService,
         }),
         ConfigModule.forRoot({ load: [databaseConfig] }),
-        AuthModule
-      ]
+        AuthModule,
+      ],
     }).compile();
 
     authService = testModule.get<AuthService>(AuthService);

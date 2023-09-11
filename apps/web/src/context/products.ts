@@ -24,13 +24,13 @@ export const setCategoriesFromQuery = products.createEvent<string[]>();
 const updateCheckboxes = (
   checkboxes: IFilterCheckboxItem[],
   id: string,
-  payload: Partial<IFilterCheckboxItem>
+  payload: Partial<IFilterCheckboxItem>,
 ) =>
   checkboxes.map(item => {
     if (item.id === id) {
       return {
         ...item,
-        ...payload
+        ...payload,
       };
     }
 
@@ -39,13 +39,13 @@ const updateCheckboxes = (
 
 const updateCheckboxesFromQuery = (
   checkboxes: IFilterCheckboxItem[],
-  checkboxesFromQuery: string[]
+  checkboxesFromQuery: string[],
 ) =>
   checkboxes.map(item => {
     if (checkboxesFromQuery.find(title => title === item.title)) {
       return {
         ...item,
-        checked: true
+        checked: true,
       };
     }
 
@@ -57,15 +57,15 @@ export const $products = products
   .on(setProducts, (_, items) => items)
   .on(setProductsCheapFirst, state => ({
     ...state,
-    rows: state.rows.sort((a, b) => a.price - b.price)
+    rows: state.rows.sort((a, b) => a.price - b.price),
   }))
   .on(setProductsExpensiveFirst, state => ({
     ...state,
-    rows: state.rows.sort((a, b) => b.price - a.price)
+    rows: state.rows.sort((a, b) => b.price - a.price),
   }))
   .on(setProductsByPopularity, state => ({
     ...state,
-    rows: state.rows.sort((a, b) => b.popularity - a.popularity)
+    rows: state.rows.sort((a, b) => b.popularity - a.popularity),
   }));
 
 export const $vendors = products
@@ -73,11 +73,11 @@ export const $vendors = products
   .on(setVendors, (_, products) => products)
   .on(updateVendor, (state, payload) => [
     ...updateCheckboxes(state, payload.id as string, {
-      checked: payload.checked
-    })
+      checked: payload.checked,
+    }),
   ])
   .on(setVendorsFromQuery, (state, checkboxesFromQuery) => [
-    ...updateCheckboxesFromQuery(state, checkboxesFromQuery)
+    ...updateCheckboxesFromQuery(state, checkboxesFromQuery),
   ]);
 
 export const $categories = products
@@ -85,11 +85,11 @@ export const $categories = products
   .on(setCategories, (_, products) => products)
   .on(updateCategory, (state, payload) => [
     ...updateCheckboxes(state, payload.id as string, {
-      checked: payload.checked
-    })
+      checked: payload.checked,
+    }),
   ])
   .on(setCategoriesFromQuery, (state, checkboxesFromQuery) => [
-    ...updateCheckboxesFromQuery(state, checkboxesFromQuery)
+    ...updateCheckboxesFromQuery(state, checkboxesFromQuery),
   ]);
 
 export const $filteredProducts = products

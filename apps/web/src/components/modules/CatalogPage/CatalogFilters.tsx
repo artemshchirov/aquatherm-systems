@@ -7,7 +7,7 @@ import {
   $vendors,
   $categories,
   setVendorsFromQuery,
-  setCategoriesFromQuery
+  setCategoriesFromQuery,
 } from '@/context/products';
 import { useStore } from 'effector-react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
@@ -16,7 +16,7 @@ import CatalogFiltersMobile from './CatalogFiltersMobile';
 import {
   checkQueryParams,
   updateParamsAndFilters,
-  updateParamsAndFiltersFromQuery
+  updateParamsAndFiltersFromQuery,
 } from '@/utils/catalog';
 
 const CatalogFilters = ({
@@ -29,7 +29,7 @@ const CatalogFilters = ({
   currentPage,
   setIsFilterInQuery,
   closePopup,
-  filtersMobileOpen
+  filtersMobileOpen,
 }: ICatalogFiltersProps) => {
   const isMobile = useMediaQuery(820);
   const [spinner, setSpinner] = useState(false);
@@ -53,14 +53,14 @@ const CatalogFilters = ({
         categoryQueryValue,
         priceFromQueryValue,
         vendorQueryValue,
-        priceToQueryValue
+        priceToQueryValue,
       } = checkQueryParams(firstParams, pathname);
 
       const vendorQuery = `&vendor=${getQueryParamOnFirstRender('vendor', firstParams, pathname)}`;
       const categoryQuery = `&category=${getQueryParamOnFirstRender(
         'category',
         firstParams,
-        pathname
+        pathname,
       )}`;
       const priceQuery = `&priceFrom=${priceFromQueryValue}&priceTo=${priceToQueryValue}`;
 
@@ -153,7 +153,7 @@ const CatalogFilters = ({
         updateParamsAndFilters(
           `${initialPage + 1}${vendorQuery}${categoryQuery}${priceQuery}`,
           `${initialPage}${vendorQuery}${categoryQuery}${priceQuery}`,
-          router
+          router,
         );
         return;
       }
@@ -162,7 +162,7 @@ const CatalogFilters = ({
         updateParamsAndFilters(
           `${initialPage + 1}${vendorQuery}${priceQuery}`,
           `${initialPage}${vendorQuery}${priceQuery}`,
-          router
+          router,
         );
         return;
       }
@@ -171,7 +171,7 @@ const CatalogFilters = ({
         updateParamsAndFilters(
           `${initialPage + 1}${categoryQuery}${priceQuery}`,
           `${initialPage}${categoryQuery}${priceQuery}`,
-          router
+          router,
         );
         return;
       }
@@ -180,7 +180,7 @@ const CatalogFilters = ({
         updateParamsAndFilters(
           `${initialPage + 1}${priceQuery}`,
           `${initialPage}${priceQuery}`,
-          router
+          router,
         );
         return;
       }
@@ -189,7 +189,7 @@ const CatalogFilters = ({
         updateParamsAndFilters(
           `${initialPage + 1}${vendorQuery}`,
           `${initialPage}${vendorQuery}`,
-          router
+          router,
         );
         return;
       }
@@ -198,7 +198,7 @@ const CatalogFilters = ({
         updateParamsAndFilters(
           `${initialPage + 1}${categoryQuery}`,
           `${initialPage}${categoryQuery}`,
-          router
+          router,
         );
         return;
       }

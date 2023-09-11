@@ -18,7 +18,7 @@ const FeedbackForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors },
   } = useForm<FeedbackInputs>();
   const [spinner, setSpinner] = useState(false);
   const formRef = useRef() as MutableRefObject<HTMLFormElement>;

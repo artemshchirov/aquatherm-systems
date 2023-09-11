@@ -8,7 +8,7 @@ export const formatPrice = (x: number) => x.toString().replace(/\B(?=(\d{3})+(?!
 
 export const createSelectOption = (value: string | number) => ({
   value,
-  label: value
+  label: value,
 });
 
 export const idGenerator = () => {
@@ -19,7 +19,7 @@ export const idGenerator = () => {
 export const getQueryParamOnFirstRender = (
   queryName: string,
   params: URLSearchParams,
-  path: string
+  path: string,
 ) => params.get(queryName) || path.match(new RegExp(`[&?]${queryName}=(.*)(&|$)`));
 
 export const toggleClassNamesForOverlayAndBody = (overlayClassName = 'open') => {

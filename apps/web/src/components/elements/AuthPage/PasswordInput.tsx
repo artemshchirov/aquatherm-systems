@@ -7,7 +7,7 @@ const PasswordInput = ({ register, errors }: IAuthPageInput) => (
       {...register('password', {
         required: 'Input password',
         minLength: 4,
-        maxLength: 20
+        maxLength: 20,
       })}
       className={styles.form__input}
       type="password"

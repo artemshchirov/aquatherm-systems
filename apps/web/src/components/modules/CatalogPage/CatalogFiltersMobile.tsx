@@ -11,7 +11,7 @@ import {
   setVendors,
   setCategories,
   updateVendor,
-  updateCategory
+  updateCategory,
 } from '@/context/products';
 import { useState } from 'react';
 import Accordion from '@/components/elements/Accordion/Accordion';
@@ -27,7 +27,7 @@ const CatalogFiltersMobile = ({
   filtersMobileOpen,
   setIsPriceRangeChanged,
   priceRange,
-  setPriceRange
+  setPriceRange,
 }: ICatalogFilterMobileProps) => {
   const mode = useStore($mode);
   const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : '';

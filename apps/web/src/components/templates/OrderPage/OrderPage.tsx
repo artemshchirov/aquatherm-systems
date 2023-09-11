@@ -41,7 +41,7 @@ const OrderPage = () => {
         amount: totalPrice,
         description: `Order №1 ${
           userCity.city.length ? `City: ${userCity.city}, Street: ${userCity.street}` : ''
-        }`
+        }`,
       });
 
       // NOTE: payment idGenerator for dev mode
@@ -60,7 +60,7 @@ const OrderPage = () => {
     try {
       const data = await checkPaymentFx({
         url: '/payment/info',
-        paymentId
+        paymentId,
       });
 
       if (data.status === 'succeeded') {

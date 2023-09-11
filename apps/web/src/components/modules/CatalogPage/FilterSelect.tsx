@@ -7,7 +7,7 @@ import {
   $products,
   setProductsByPopularity,
   setProductsCheapFirst,
-  setProductsExpensiveFirst
+  setProductsExpensiveFirst,
 } from '@/context/products';
 import { controlStyles, menuStyles, selectStyles } from '@/styles/catalog/select';
 import { optionStyles } from '@/styles/searchInput';
@@ -38,7 +38,7 @@ const FilterSelect: React.FC<Props> = ({ setSpinner }) => {
       current.set('first', newFirst);
       router.push(`${pathname}?${current}`);
     },
-    [pathname, router, searchParams]
+    [pathname, router, searchParams],
   );
 
   useEffect(() => {
@@ -86,7 +86,7 @@ const FilterSelect: React.FC<Props> = ({ setSpinner }) => {
 
       setTimeout(() => setSpinner(false), 500);
     },
-    [setSpinner, updateRouteParam]
+    [setSpinner, updateRouteParam],
   );
 
   return (
@@ -94,18 +94,18 @@ const FilterSelect: React.FC<Props> = ({ setSpinner }) => {
       styles={{
         ...selectStyles,
         control: defaultStyles => ({
-          ...controlStyles(defaultStyles, mode)
+          ...controlStyles(defaultStyles, mode),
         }),
         input: defaultStyles => ({
           ...defaultStyles,
-          color: mode === 'dark' ? '#f2f2f2' : '#222222'
+          color: mode === 'dark' ? '#f2f2f2' : '#222222',
         }),
         menu: defaultStyles => ({
-          ...menuStyles(defaultStyles, mode)
+          ...menuStyles(defaultStyles, mode),
         }),
         option: (defaultStyles, state) => ({
-          ...optionStyles(defaultStyles, state, mode)
-        })
+          ...optionStyles(defaultStyles, state, mode),
+        }),
       }}
       isSearchable={false}
       onChange={handleSortOptionChange}

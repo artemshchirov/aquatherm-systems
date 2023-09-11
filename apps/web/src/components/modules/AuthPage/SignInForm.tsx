@@ -17,7 +17,7 @@ const SignInForm = () => {
     register,
     formState: { errors },
     handleSubmit,
-    resetField
+    resetField,
   } = useForm<IInputs>();
   const mode = useStore($mode);
   const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : '';
@@ -29,7 +29,7 @@ const SignInForm = () => {
       await singInFx({
         url: '/users/login',
         username: data.name,
-        password: data.password
+        password: data.password,
       });
 
       route.push('/');

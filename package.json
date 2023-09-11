@@ -6,6 +6,8 @@
   "license": "UNLICENSED",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
+    "build": "pnpm run --parallel build",
+    "start": "pnpm run --parallel start",
     "dev": "pnpm run --parallel dev",
     "clean": "rimraf --glob \"**/node_modules\"",
     "fresh": "pnpm clean && pnpm i",

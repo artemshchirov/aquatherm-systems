@@ -30,7 +30,7 @@ The purpose of the `lint-staged` is to lint and to format indexed files before t
   export default {
     '*.md': ['pnpm remark:fix', 'pnpm format:fix'],
     '*.{mjs,js,ts,tsx,json,yaml}': 'pnpm format:fix',
-    '*.{mjs,js,ts,tsx}': 'pnpm lint:fix'
+    '*.{mjs,js,ts,tsx}': 'pnpm lint:fix',
   };
   ```
 

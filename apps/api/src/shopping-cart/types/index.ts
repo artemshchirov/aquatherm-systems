@@ -11,7 +11,7 @@ class ShoppingCartItem {
   price: number;
 
   @ApiProperty({
-    example: 'https://loremflickr.com/640/480/technics?lock=7076674155839488?random=13'
+    example: 'https://loremflickr.com/640/480/technics?lock=7076674155839488?random=13',
   })
   image: string;
 

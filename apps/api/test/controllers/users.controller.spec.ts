@@ -17,11 +17,11 @@ describe('Users controller', () => {
       imports: [
         SequelizeModule.forRootAsync({
           imports: [ConfigModule],
-          useClass: SequelizeConfigService
+          useClass: SequelizeConfigService,
         }),
         ConfigModule.forRoot({ load: [databaseConfig] }),
-        UsersModule
-      ]
+        UsersModule,
+      ],
     }).compile();
 
     app = testModule.createNestApplication();
@@ -37,7 +37,7 @@ describe('Users controller', () => {
     const newUser = {
       username: 'Test',
       password: 'Test123',
-      email: 'test@gmail.com'
+      email: 'test@gmail.com',
     };
 
     const response = await request(app.getHttpServer()).post('/users/signup').send(newUser);

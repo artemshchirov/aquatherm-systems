@@ -8,7 +8,7 @@ const FiltersPopupTop = ({
   resetBtnText,
   resetFilters,
   resetFilterBtnDisabled,
-  closePopup
+  closePopup,
 }: IFiltersPopupTop) => {
   const mode = useStore($mode);
   const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : '';

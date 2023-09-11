@@ -8,8 +8,8 @@ const EmailInput = ({ register, errors }: IAuthPageInput) => (
         required: 'Enter Email',
         pattern: {
           value: /\S+@\S+\.\S+/,
-          message: 'Wrong Email'
-        }
+          message: 'Wrong Email',
+        },
       })}
       className={styles.form__input}
       type="email"

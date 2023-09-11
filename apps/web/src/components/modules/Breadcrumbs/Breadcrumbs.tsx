@@ -34,13 +34,13 @@ const Breadcrumbs = ({ getTextGenerator, getDefaultTextGenerator }: IBreadcrumbs
         return {
           href,
           textGenerator: getTextGenerator(param, paramsTrue),
-          text: getDefaultTextGenerator(subpath, href)
+          text: getDefaultTextGenerator(subpath, href),
         };
       });
 
       return [...crumbList];
     },
-    [searchParams, pathname, getDefaultTextGenerator, getTextGenerator, paramsTrue]
+    [searchParams, pathname, getDefaultTextGenerator, getTextGenerator, paramsTrue],
   );
 
   return (
@@ -75,7 +75,7 @@ const Breadcrumbs = ({ getTextGenerator, getDefaultTextGenerator }: IBreadcrumbs
             </li>
           ) : (
             ''
-          )
+          ),
         )}
       </ul>
     </div>

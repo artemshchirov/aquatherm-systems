@@ -6,8 +6,8 @@ module.exports = {
   extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'prettier'],
   settings: {
     next: {
-      rootDir: '../../apps/web'
-    }
+      rootDir: '../../apps/web',
+    },
   },
   rules: {
     '@next/next/no-html-link-for-pages': 'off',
@@ -21,22 +21,22 @@ module.exports = {
       {
         extendDefaults: true,
         types: {
-          '{}': false
-        }
-      }
+          '{}': false,
+        },
+      },
     ],
     'prettier/prettier': [
       'error',
       {
-        endOfLine: 'auto'
-      }
-    ]
+        endOfLine: 'auto',
+      },
+    ],
   },
   env: {
     node: true,
-    jest: true
+    jest: true,
   },
   parserOptions: {
-    ecmaVersion: 'latest'
-  }
+    ecmaVersion: 'latest',
+  },
 };

@@ -56,7 +56,7 @@ const OrderAccordion = ({ setOrderIsReady, showDoneIcon }: IOrderAccordionProps)
             exit="collapsed"
             variants={{
               open: { opacity: 1, height: 'auto' },
-              collapsed: { opacity: 0, height: 0 }
+              collapsed: { opacity: 0, height: 0 },
             }}
             style={{ overflow: 'hidden' }}
             transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
@@ -69,7 +69,7 @@ const OrderAccordion = ({ setOrderIsReady, showDoneIcon }: IOrderAccordionProps)
                       <CartPopupItem key={item.id} item={item} />
                     ) : (
                       <OrderItem item={item} key={item.id} />
-                    )
+                    ),
                   )
                 ) : (
                   <li className={styles.order__cart__empty}>

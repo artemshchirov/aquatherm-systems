@@ -8,7 +8,7 @@ import * as bcrypt from 'bcrypt';
 export class UsersService {
   constructor(
     @InjectModel(User)
-    private userModel: typeof User
+    private userModel: typeof User,
   ) {}
 
   findOne(filter: { where: { id?: string; username?: string; email?: string } }): Promise<User> {
@@ -18,10 +18,10 @@ export class UsersService {
   async create(createUserDto: CreateUserDto): Promise<User | { warningMessage: string }> {
     const user = new User();
     const existingByUsername = await this.findOne({
-      where: { username: createUserDto.username }
+      where: { username: createUserDto.username },
     });
     const existingByEmail = await this.findOne({
-      where: { email: createUserDto.email }
+      where: { email: createUserDto.email },
     });
 
     // TODO: refactor warnings to constants and refactor text messages

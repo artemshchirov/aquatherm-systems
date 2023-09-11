@@ -28,8 +28,8 @@ module.exports = {
     'main',
     'dependencies',
     'devDependencies',
-    'peerDependencies'
+    'peerDependencies',
   ],
   source: [],
-  versionGroups: []
+  versionGroups: [],
 };

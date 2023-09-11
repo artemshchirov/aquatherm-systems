@@ -10,7 +10,7 @@ const FilterManufacturerAccordion = ({
   manufacturersList,
   title,
   updateManufacturer,
-  setManufacturer
+  setManufacturer,
 }: IFilterManufacturerAccordionProps) => {
   const mode = useStore($mode);
   const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : '';

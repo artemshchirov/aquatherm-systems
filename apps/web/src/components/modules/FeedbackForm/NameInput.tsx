@@ -12,10 +12,10 @@ const NameInput = ({ register, errors, darkModeClass }: IFeedbackInput) => (
         required: 'Enter your name',
         pattern: {
           value: /^[а-яА-Яa-zA-ZёЁ]*$/,
-          message: 'Invalid value'
+          message: 'Invalid value',
         },
         minLength: 2,
-        maxLength: 15
+        maxLength: 15,
       })}
     />
     {errors.name && <span className={styles.error_alert}>{errors.name?.message}</span>}

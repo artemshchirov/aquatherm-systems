@@ -19,7 +19,7 @@ function CatalogProductPage({ params }: { params: IQueryParams }) {
 
   const getDefaultTextGenerator = useCallback(
     (subpath: string) => subpath.replace('catalog', 'Catalog'),
-    []
+    [],
   );
   const getTextGenerator = useCallback(() => () => product.name, [product]);
 
