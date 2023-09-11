@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { UsersModule } from './users/users.module';
 import { SequelizeConfigService } from './config/sequelizeConfig.service';
-import { databaseConfig } from './config/configuration';
+import { authConfig, databaseConfig } from './config/configuration';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
@@ -13,14 +13,14 @@ import { PaymentModule } from './payment/payment.module';
   imports: [
     SequelizeModule.forRootAsync({
       imports: [ConfigModule],
-      useClass: SequelizeConfigService
+      useClass: SequelizeConfigService,
     }),
-    ConfigModule.forRoot({ load: [databaseConfig] }),
+    ConfigModule.forRoot({ load: [databaseConfig, authConfig] }),
     UsersModule,
     AuthModule,
     ProductsModule,
     ShoppingCartModule,
-    PaymentModule
-  ]
+    PaymentModule,
+  ],
 })
 export class AppModule {}

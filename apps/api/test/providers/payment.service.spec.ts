@@ -16,11 +16,11 @@ describe('Payment service', () => {
       imports: [
         SequelizeModule.forRootAsync({
           imports: [ConfigModule],
-          useClass: SequelizeConfigService
+          useClass: SequelizeConfigService,
         }),
         ConfigModule.forRoot({ load: [databaseConfig] }),
-        PaymentModule
-      ]
+        PaymentModule,
+      ],
     }).compile();
 
     paymentService = testModule.get<PaymentService>(PaymentService);
@@ -43,25 +43,25 @@ describe('Payment service', () => {
       url: 'http://example.com',
       headers: {
         'Content-Type': 'application/json',
-        'Idempotence-Key': expect.any(Number)
+        'Idempotence-Key': expect.any(Number),
       },
       auth: {
         username: '204971',
-        password: 'test_deg3128t583990'
+        password: 'test_deg3128t583990',
       },
       data: {
         amount: {
           currency: 'ILS',
-          value: 100
+          value: 100,
         },
         capture: true,
         confirmation: {
-          return_url: 'http://localhost:3000/order',
+          return_url: 'http://localhost:3001/order',
           confirmation_url: 'http://example.com',
-          type: 'redirect'
+          type: 'redirect',
         },
-        description: 'Order №1'
-      }
+        description: 'Order №1',
+      },
     });
   });
 });

@@ -20,7 +20,12 @@
     "commitlint": "commitlint",
     "syncpack:fix": "syncpack format && syncpack fix-mismatches",
     "fix": "pnpm lint:fix . && pnpm remark:fix . && pnpm format:fix . && pnpm syncpack:fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "doppler": "cross-env-shell doppler -p app_ecommerce-template-api -c $APP_ENV run --",
+    "env:local:up": "cross-env APP_ENV=local pnpm doppler docker compose up -d",
+    "env:local:down": "cross-env APP_ENV=local pnpm doppler docker compose down",
+    "env:test:up": "cross-env APP_ENV=test pnpm doppler docker compose up -d",
+    "env:test:down": "cross-env APP_ENV=test pnpm doppler docker compose down "
   },
   "dependencies": {
     "@artemshchirov/configs-commitlint": "workspace:^",
@@ -44,6 +49,7 @@
     "@artemshchirov/configs-ts": "workspace:^",
     "@artemshchirov/configs-ts-next": "workspace:^",
     "@types/node": "^20.5.9",
+    "cross-env": "^7.0.3",
     "typescript": "^5.2.2"
   },
   "engines": {

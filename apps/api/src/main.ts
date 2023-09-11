@@ -3,28 +3,52 @@ import { AppModule } from './app.module';
 import session from 'express-session';
 import passport from 'passport';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import { EventEmitter } from 'events';
+import { ConfigService } from '@nestjs/config';
+import { INestApplication, Logger } from '@nestjs/common';
 
-EventEmitter.defaultMaxListeners = 20;
+declare const module: any;
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<INestApplication>(AppModule);
+  const port = process.env.PORT || 3001;
+  const host = process.env.HOST || 'localhost';
 
-  app.use(
-    session({
-      secret: 'keyword',
-      resave: false,
-      saveUninitialized: false
-    })
-  );
-  app.use(passport.initialize());
-  app.use(passport.session());
+  setupSession(app);
+
+  swaggerSetup(app);
 
   app.enableCors({
     credentials: true,
-    origin: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:3002']
+    origin: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:3002'],
   });
 
+  await app.listen(port, host, () => {
+    Logger.log(`Server running on http://${host}:${port}`, 'Bootstrap');
+  });
+
+  if (module.hot) {
+    module.hot.accept();
+    module.hot.dispose(() => app.close());
+  }
+}
+
+const setupSession = (app: INestApplication) => {
+  const configService = app.get(ConfigService);
+  const { secret } = configService.get('auth');
+
+  app.use(
+    session({
+      secret,
+      resave: false,
+      saveUninitialized: false,
+    }),
+  );
+
+  app.use(passport.initialize());
+  app.use(passport.session());
+};
+
+const swaggerSetup = (app: INestApplication) => {
   const config = new DocumentBuilder()
     .setTitle('Ecommerce')
     .setDescription('API documentation')
@@ -32,8 +56,7 @@ async function bootstrap() {
     .addTag('api')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('swagger', app, document);
+  SwaggerModule.setup('doc', app, document);
+};
 
-  await app.listen(process.env.PORT || 3001);
-}
 bootstrap();

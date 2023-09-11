@@ -12,25 +12,25 @@ export class PaymentService {
         url: 'http://example.com',
         headers: {
           'Content-Type': 'application/json',
-          'Idempotence-Key': Date.now()
+          'Idempotence-Key': Date.now(),
         },
         auth: {
           username: '204971',
-          password: 'test_deg3128t583990'
+          password: 'test_deg3128t583990',
         },
         data: {
           amount: {
             value: makePaymentDto.amount,
-            currency: 'ILS'
+            currency: 'ILS',
           },
           capture: true,
           confirmation: {
             type: 'redirect',
-            return_url: 'http://localhost:3000/order',
-            confirmation_url: 'http://example.com'
+            return_url: 'http://localhost:3001/order',
+            confirmation_url: 'http://example.com',
           },
-          description: makePaymentDto.description
-        }
+          description: makePaymentDto.description,
+        },
       };
       // const { data } = await axios(paymentData);
 
@@ -50,8 +50,8 @@ export class PaymentService {
         url: `https://api.yookassa.ru/v3/payments/${checkPaymentDto.paymentId}`,
         auth: {
           username: '204971',
-          password: 'test_dgisbcPctB1RjjKeSBzdIuXJR0IRTFKm6Rdi9eNGZxE'
-        }
+          password: 'test_dgisbcPctB1RjjKeSBzdIuXJR0IRTFKm6Rdi9eNGZxE',
+        },
       });
 
       return data;

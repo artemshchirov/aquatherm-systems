@@ -3,6 +3,10 @@ import { sqlConfig } from './sql.config';
 
 export const databaseConfig = registerAs('database', () => ({
   sql: {
-    ...sqlConfig()
-  }
+    ...sqlConfig(),
+  },
+}));
+
+export const authConfig = registerAs('auth', () => ({
+  secret: process.env.JWT_SECRET,
 }));

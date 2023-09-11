@@ -3,7 +3,7 @@ module.exports = {
   arrowParens: 'avoid',
   printWidth: 100,
   singleQuote: true,
-  trailingComma: 'none',
+  trailingComma: 'all',
   bracketSpacing: true,
   tabWidth: 2,
   semi: true,
@@ -11,8 +11,8 @@ module.exports = {
     {
       files: ['*.scss', '*.css', '*.json', '*.yaml', '*.yml', '*.html', '*.md'],
       options: {
-        tabWidth: 2
-      }
-    }
-  ]
+        tabWidth: 2,
+      },
+    },
+  ],
 };
