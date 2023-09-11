@@ -1,0 +1,81 @@
+name: Release
+on:
+  push:
+    branches:
+      - main
+jobs:
+  check-commit-message:
+    name: Check if the commit is a release
+    outputs:
+      isRelease: ${{ steps.chech_step.outputs.isRelease }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Check Commit Messages
+        id: chech_step
+        run: |
+          if git log -1 --pretty=format:%s | grep -q "^RELEASING"; then
+            echo "Commit message starts with RELEASING. Triggering the workflow."
+            echo "isRelease=true" >> "$GITHUB_ENV"
+          else
+            echo "Commit message doesn't start with RELEASING. Skipping the workflow."
+          fi
+  publish-server-artifacts:
+    name: Publish server docker image to container registry
+    runs-on: ubuntu-latest
+    needs: check-commit-message
+    if: ${{ needs.check-commit-message.outputs.isRelease }}
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Get current version of the package
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@main
+        with:
+          path: ./apps/api
+
+      # - name: Log in to registry
+      #   run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u artemshchirov --password-stdin
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: artemshchirov
+          password: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: ghcr.io/artemshchirov/ecommerce-template/api
+          tags: |
+            type=ref,event=branch
+            type=raw,value=github-{{sha}}
+            type=raw,value=v${{ steps.package-version.outputs.current-version }}
+          flavor: |
+            latest=true
+            prefix=
+            suffix=
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build and push docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: ./apps/api/Dockerfile
+          builder: ${{ steps.buildx.outputs.name }}
+          provenance: false
+          build-args: |
+            APP=server
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

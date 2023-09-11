@@ -1,0 +1,52 @@
+name: Deployment
+
+concurrency: prod
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        required: true
+        description: 'version to deploy in the format of v1.1.1'
+        default: 'latest'
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    environment: prod
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: false
+
+      - name: Cache pnpm modules
+        uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: node_modules-${{ github.ref_name }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            node_modules-${{ github.ref_name }}-
+            node_modules-master-
+            node_modules-main
+            node_modules-
+
+      - name: Install dependencies
+        if: ${{ steps.cache-dependencies.outputs.cache-hit != 'true'  }}
+        run: pnpm install
+
+      - uses: superfly/flyctl-actions/setup-flyctl@main
+
+      - name: Deploy
+        run: flyctl deploy --remote-only --image ghcr.io/artemshchirov/ecommerce-template/api:${{ inputs.version }} -a ecommerce-template-api
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
