@@ -18,7 +18,7 @@ const SignUpForm = ({ switchForm }: { switchForm: () => void }) => {
     register,
     formState: { errors },
     handleSubmit,
-    resetField
+    resetField,
   } = useForm<IInputs>();
   const mode = useStore($mode);
   const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : '';
@@ -30,7 +30,7 @@ const SignUpForm = ({ switchForm }: { switchForm: () => void }) => {
         url: '/users/signup',
         username: data.name,
         password: data.password,
-        email: data.email
+        email: data.email,
       });
 
       if (!userData) {

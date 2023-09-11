@@ -10,7 +10,7 @@ import {
   IProductsQuery,
   PaginateAndFilterResponse,
   SearchRequest,
-  SearchResponse
+  SearchResponse,
 } from './types';
 
 @Controller('products')

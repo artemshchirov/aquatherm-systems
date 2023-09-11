@@ -10,7 +10,7 @@ import {
   setProducts,
   setCategories,
   updateVendor,
-  updateCategory
+  updateCategory,
 } from '@/context/products';
 import { $mode } from '@/context/mode';
 import styles from '@/styles/catalog/index.module.scss';
@@ -124,7 +124,7 @@ const CatalogPage = ({ query }: { query: IQueryParams }) => {
 
       const { isValidVendorQuery, isValidCategoryQuery, isValidPriceQuery } = checkQueryParams(
         params,
-        pathname
+        pathname,
       );
 
       const result = await getProductsFx(
@@ -134,7 +134,7 @@ const CatalogPage = ({ query }: { query: IQueryParams }) => {
           isFilterInQuery && isValidPriceQuery
             ? `&priceFrom=${params.get('priceFrom')}&priceTo=${params.get('priceTo')}`
             : ''
-        }`
+        }`,
       );
 
       params.set('offset', `${selected + 1}`);

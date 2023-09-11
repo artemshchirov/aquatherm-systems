@@ -27,7 +27,7 @@ const BrandsSlider = () => {
     { id: 9, img: '/img/brand-3.png', alt: 'brand-3' },
     { id: 10, img: '/img/brand-4.png', alt: 'brand-4' },
     { id: 11, img: '/img/brand-2.svg', alt: 'brand-2' },
-    { id: 12, img: '/img/brand-1.png', alt: 'brand-1' }
+    { id: 12, img: '/img/brand-1.png', alt: 'brand-1' },
   ];
 
   useEffect(() => {
@@ -46,7 +46,7 @@ const BrandsSlider = () => {
     autoplay: true,
     speed: 500,
     nextArrow: <BrandsSliderNextArrow modeClass={darkModeClass} />,
-    prevArrow: <BrandsSliderPrevArrow modeClass={darkModeClass} />
+    prevArrow: <BrandsSliderPrevArrow modeClass={darkModeClass} />,
   };
 
   return (

@@ -5,7 +5,7 @@ import {
   setVendors,
   setCategories,
   updateVendor,
-  updateCategory
+  updateCategory,
 } from '@/context/products';
 import { $mode } from '@/context/mode';
 import FilterManufacturerAccordion from './FilterManufacturerAccordion';
@@ -22,7 +22,7 @@ const CatalogFiltersDesktop = ({
   resetFilterBtnDisabled,
   spinner,
   resetFilters,
-  applyFilters
+  applyFilters,
 }: ICatalogFilterDesktopProps) => {
   const mode = useStore($mode);
   const vendors = useStore($vendors);

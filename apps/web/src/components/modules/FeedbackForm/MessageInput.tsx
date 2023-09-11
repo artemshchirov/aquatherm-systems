@@ -9,7 +9,7 @@ const MessageInput = ({ register, errors, darkModeClass }: IFeedbackInput) => (
       {...register('message', {
         required: 'Enter your message',
         minLength: 20,
-        maxLength: 300
+        maxLength: 300,
       })}
     />
     {errors.message && <span className={styles.error_alert}>{errors.message?.message}</span>}

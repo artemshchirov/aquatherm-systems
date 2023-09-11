@@ -11,14 +11,14 @@ export const controlStyles = (defaultStyles: CSSObjectWithLabel, theme: string) 
   boxShadow: 'none',
   borderRadius: '4px',
   '&:hover': {
-    borderColor: '#9E9E9E'
+    borderColor: '#9E9E9E',
   },
   '& .css-1dimb5e-singleValue': {
-    color: theme === 'dark' ? '#f2f2f2' : '#222222'
+    color: theme === 'dark' ? '#f2f2f2' : '#222222',
   },
   borderRight: 'none',
   borderTopRightRadius: 0,
-  borderBottomRightRadius: 0
+  borderBottomRightRadius: 0,
 });
 
 export const menuStyles = (defaultStyles: CSSObjectWithLabel, theme: string) => ({
@@ -32,13 +32,13 @@ export const menuStyles = (defaultStyles: CSSObjectWithLabel, theme: string) => 
   overflow: 'hidden',
   backgroundColor: theme === 'dark' ? '#2d2d2d' : '#ffffff',
   width: 'calc(100% + 40px)',
-  minHeight: 30
+  minHeight: 30,
 });
 
 export const optionStyles = (
   defaultStyles: CSSObjectWithLabel,
   state: OptionProps<IOption, boolean, GroupBase<IOption>>,
-  theme: string
+  theme: string,
 ) => {
   const backgroundHoverForLightMode = state.isSelected
     ? state.isSelected
@@ -79,7 +79,7 @@ export const optionStyles = (
     margin: 0,
     '&:hover': {
       backgroundColor: theme === 'dark' ? backgroundHoverForDarkMode : backgroundHoverForLightMode,
-      color: theme === 'dark' ? colorHoverForDarkMode : colorHoverForLightMode
+      color: theme === 'dark' ? colorHoverForDarkMode : colorHoverForLightMode,
     },
     backgroundColor:
       theme === 'dark'
@@ -96,16 +96,16 @@ export const optionStyles = (
           : '#f2f2f2'
         : state.isSelected
         ? '#f2f2f2'
-        : '#222222'
+        : '#222222',
   };
 };
 
 export const inputStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
   indicatorSeparator: () => ({
-    border: 'none'
+    border: 'none',
   }),
   dropdownIndicator: () => ({
-    display: 'none'
+    display: 'none',
   }),
   menuList: defaultStyles => ({
     ...defaultStyles,
@@ -113,21 +113,21 @@ export const inputStyles: StylesConfig<IOption, boolean, GroupBase<IOption>> = {
     paddingBottom: 0,
     minHeight: 30,
     '&::-webkit-scrollbar': {
-      width: '8px'
+      width: '8px',
     },
     '&::-webkit-scrollbar-track': {
-      background: 'transparent'
+      background: 'transparent',
     },
     '&::-webkit-scrollbar-thumb': {
       background: '#454545',
-      borderRadius: '3px'
+      borderRadius: '3px',
     },
     '&::-webkit-scrollbar-thumb:hover': {
-      background: 'grey'
-    }
+      background: 'grey',
+    },
   }),
   placeholder: defaultStyles => ({
     ...defaultStyles,
-    color: '#b9babb'
-  })
+    color: '#b9babb',
+  }),
 };

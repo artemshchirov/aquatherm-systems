@@ -16,7 +16,7 @@ import { ShoppingCartService } from '../../src/shopping-cart/shopping-cart.servi
 const mockedUser = {
   username: 'John',
   password: 'john123',
-  email: 'john@gmail.com'
+  email: 'john@gmail.com',
 };
 
 describe('Shopping Cart service', () => {
@@ -30,12 +30,12 @@ describe('Shopping Cart service', () => {
       imports: [
         SequelizeModule.forRootAsync({
           imports: [ConfigModule],
-          useClass: SequelizeConfigService
+          useClass: SequelizeConfigService,
         }),
         ConfigModule.forRoot({ load: [databaseConfig] }),
         ShoppingCartModule,
-        ProductsModule
-      ]
+        ProductsModule,
+      ],
     }).compile();
 
     productsService = testModule.get<ProductsService>(ProductsService);
@@ -62,7 +62,7 @@ describe('Shopping Cart service', () => {
   beforeEach(async () => {
     const cart = new ShoppingCart();
     const user = await usersService.findOne({
-      where: { username: mockedUser.username }
+      where: { username: mockedUser.username },
     });
     const product = await productsService.findOneById(1);
 
@@ -86,7 +86,7 @@ describe('Shopping Cart service', () => {
 
   it('should return all cart items', async () => {
     const user = await usersService.findOne({
-      where: { username: mockedUser.username }
+      where: { username: mockedUser.username },
     });
 
     const cart = await shoppingCartService.findAll(user.id);
@@ -105,20 +105,20 @@ describe('Shopping Cart service', () => {
           total_price: expect.any(Number),
           in_stock: expect.any(Number),
           createdAt: expect.any(Date),
-          updatedAt: expect.any(Date)
-        })
-      )
+          updatedAt: expect.any(Date),
+        }),
+      ),
     );
   });
 
   it('should add cart item', async () => {
     await shoppingCartService.add({
       username: mockedUser.username,
-      productId: 3
+      productId: 3,
     });
 
     const user = await usersService.findOne({
-      where: { username: mockedUser.username }
+      where: { username: mockedUser.username },
     });
 
     const cart = await shoppingCartService.findAll(user.id);
@@ -136,8 +136,8 @@ describe('Shopping Cart service', () => {
         total_price: expect.any(Number),
         in_stock: expect.any(Number),
         createdAt: expect.any(Date),
-        updatedAt: expect.any(Date)
-      })
+        updatedAt: expect.any(Date),
+      }),
     );
   });
 
@@ -158,7 +158,7 @@ describe('Shopping Cart service', () => {
     await shoppingCartService.remove(1);
 
     const user = await usersService.findOne({
-      where: { username: mockedUser.username }
+      where: { username: mockedUser.username },
     });
 
     const cart = await shoppingCartService.findAll(user.id);
@@ -168,7 +168,7 @@ describe('Shopping Cart service', () => {
 
   it('should delete all cart items', async () => {
     const user = await usersService.findOne({
-      where: { username: mockedUser.username }
+      where: { username: mockedUser.username },
     });
 
     await shoppingCartService.removeAll(user.id);

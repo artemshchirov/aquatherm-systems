@@ -9,7 +9,7 @@ export class SequelizeConfigService implements SequelizeOptionsFactory {
 
   createSequelizeOptions(): SequelizeModuleOptions {
     const {
-      sql: { dialect, logging, host, port, username, password, database }
+      sql: { dialect, logging, host, port, username, password, database },
     } = this.configService.get('database');
 
     return {
@@ -25,8 +25,8 @@ export class SequelizeConfigService implements SequelizeOptionsFactory {
       synchronize: true,
       define: {
         charset: 'utf8',
-        collate: 'utf8_general_ci'
-      }
+        collate: 'utf8_general_ci',
+      },
     };
   }
 }

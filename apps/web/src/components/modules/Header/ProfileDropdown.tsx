@@ -64,7 +64,7 @@ const ProfileDropDown = forwardRef<HTMLDivElement, IWrappedComponentProps>(
         </AnimatePresence>
       </div>
     );
-  }
+  },
 );
 
 ProfileDropDown.displayName = 'ProfileDropDown';

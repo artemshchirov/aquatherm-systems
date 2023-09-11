@@ -15,7 +15,7 @@ const CartItemCounter = ({
   productId,
   increasePrice,
   decreasePrice,
-  initialCount
+  initialCount,
 }: ICartItemCounterProps) => {
   const mode = useStore($mode);
   const darkModeClass = mode === 'dark' ? `${styles.dark_mode}` : '';
@@ -39,7 +39,7 @@ const CartItemCounter = ({
 
       const data = await updateCartItemFx({
         url: `/shopping-cart/count/${productId}`,
-        payload: { count: count + 1 }
+        payload: { count: count + 1 },
       });
 
       updateCartItemCount({ productId, count: data.count });
@@ -59,7 +59,7 @@ const CartItemCounter = ({
 
       const data = await updateCartItemFx({
         url: `/shopping-cart/count/${productId}`,
-        payload: { count: count - 1 }
+        payload: { count: count - 1 },
       });
 
       updateCartItemCount({ productId, count: data.count });

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import {
   removeClassNamesForOverlayAndBody,
-  toggleClassNamesForOverlayAndBody
+  toggleClassNamesForOverlayAndBody,
 } from '@/utils/common';
 import { setSearchInputZIndex } from '@/context/header';
 

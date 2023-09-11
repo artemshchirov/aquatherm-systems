@@ -16,11 +16,11 @@ describe('Auth service', () => {
       imports: [
         SequelizeModule.forRootAsync({
           imports: [ConfigModule],
-          useClass: SequelizeConfigService
+          useClass: SequelizeConfigService,
         }),
         ConfigModule.forRoot({ load: [databaseConfig] }),
-        ProductsModule
-      ]
+        ProductsModule,
+      ],
     }).compile();
 
     productsService = testModule.get<ProductsService>(ProductsService);
@@ -47,8 +47,8 @@ describe('Auth service', () => {
         new: expect.any(Boolean),
         popularity: expect.any(Number),
         createdAt: expect.any(Date),
-        updatedAt: expect.any(Date)
-      })
+        updatedAt: expect.any(Date),
+      }),
     );
   });
 
@@ -70,8 +70,8 @@ describe('Auth service', () => {
         new: expect.any(Boolean),
         popularity: expect.any(Number),
         createdAt: expect.any(Date),
-        updatedAt: expect.any(Date)
-      })
+        updatedAt: expect.any(Date),
+      }),
     );
   });
 
@@ -98,8 +98,8 @@ describe('Auth service', () => {
           new: expect.any(Boolean),
           popularity: expect.any(Number),
           createdAt: expect.any(Date),
-          updatedAt: expect.any(Date)
-        })
+          updatedAt: expect.any(Date),
+        }),
       );
     });
   });
@@ -123,8 +123,8 @@ describe('Auth service', () => {
           new: expect.any(Boolean),
           popularity: expect.any(Number),
           createdAt: expect.any(Date),
-          updatedAt: expect.any(Date)
-        })
+          updatedAt: expect.any(Date),
+        }),
       );
     });
   });
@@ -148,8 +148,8 @@ describe('Auth service', () => {
           new: true,
           popularity: expect.any(Number),
           createdAt: expect.any(Date),
-          updatedAt: expect.any(Date)
-        })
+          updatedAt: expect.any(Date),
+        }),
       );
     });
   });

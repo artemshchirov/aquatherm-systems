@@ -8,7 +8,7 @@
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "pnpm doppler nest start",
+    "start": "cross-env APP_ENV=local pnpm doppler nest start",
     "dev": "cross-env APP_ENV=local pnpm doppler nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",

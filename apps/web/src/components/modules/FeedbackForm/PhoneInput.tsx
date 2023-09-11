@@ -12,10 +12,10 @@ const PhoneInput = ({ register, errors, darkModeClass }: IFeedbackInput) => (
         required: 'Enter phone number',
         pattern: {
           value: /^\d*[1-9]\d*$/,
-          message: 'Invalid value'
+          message: 'Invalid value',
         },
         minLength: 10,
-        maxLength: 13
+        maxLength: 13,
       })}
     />
     {errors.phone && <span className={styles.error_alert}>{errors.phone?.message}</span>}

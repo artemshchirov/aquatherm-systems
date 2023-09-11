@@ -25,7 +25,7 @@ export const searchProductsFx = createEffect(
     const { data } = await api.post(url, { search });
 
     return data.rows;
-  }
+  },
 );
 
 export const getProductByNameFx = createEffect(
@@ -37,5 +37,5 @@ export const getProductByNameFx = createEffect(
     } catch (error) {
       toast.error((error as Error).message);
     }
-  }
+  },
 );

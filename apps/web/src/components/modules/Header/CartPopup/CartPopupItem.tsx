@@ -17,7 +17,7 @@ const CartPopupItem = ({ item }: { item: IShoppingCartItem }) => {
   const { price, spinner, decreasePrice, deleteCartItem, increasePrice } = usePrice(
     item.count,
     item.productId,
-    item.price
+    item.price,
   );
 
   return (

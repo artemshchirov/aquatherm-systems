@@ -13,7 +13,7 @@ module.exports = {
         'plugin:jest/recommended',
         'plugin:react/recommended',
         'plugin:react-hooks/recommended',
-        'prettier'
+        'prettier',
       ],
       rules: {
         '@typescript-eslint/no-empty-interface': 'off',
@@ -26,25 +26,25 @@ module.exports = {
           {
             extendDefaults: true,
             types: {
-              '{}': false
-            }
-          }
+              '{}': false,
+            },
+          },
         ],
         'react-internal/no-production-logging': 'off',
         'react/display-name': 'off',
         'react/react-in-jsx-scope': 'off',
-        '@next/next/no-img-element': 'off'
+        '@next/next/no-img-element': 'off',
       },
       parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
-        project: ['packages/*/tsconfig.json', 'apps/*/tsconfig.json']
+        project: ['packages/*/tsconfig.json', 'apps/*/tsconfig.json'],
       },
       settings: {
         react: {
-          version: 'detect' // Tells eslint-plugin-react to automatically detect the version of React to use
-        }
-      }
-    }
-  ]
+          version: 'detect', // Tells eslint-plugin-react to automatically detect the version of React to use
+        },
+      },
+    },
+  ],
 };

@@ -19,7 +19,7 @@ import { ShoppingCartModule } from '../../src/shopping-cart/shopping-cart.module
 const mockedUser = {
   username: 'John',
   password: 'john123',
-  email: 'john@gmail.com'
+  email: 'john@gmail.com',
 };
 
 describe('Shopping Cart controller', () => {
@@ -32,13 +32,13 @@ describe('Shopping Cart controller', () => {
       imports: [
         SequelizeModule.forRootAsync({
           imports: [ConfigModule],
-          useClass: SequelizeConfigService
+          useClass: SequelizeConfigService,
         }),
         ConfigModule.forRoot({ load: [databaseConfig] }),
         ShoppingCartModule,
         ProductsModule,
-        AuthModule
-      ]
+        AuthModule,
+      ],
     }).compile();
 
     productsService = testModule.get<ProductsService>(ProductsService);
@@ -49,8 +49,8 @@ describe('Shopping Cart controller', () => {
       session({
         secret: 'keyword',
         resave: false,
-        saveUninitialized: false
-      })
+        saveUninitialized: false,
+      }),
     );
     app.use(passport.initialize());
     app.use(passport.session());
@@ -73,7 +73,7 @@ describe('Shopping Cart controller', () => {
   beforeEach(async () => {
     const cart = new ShoppingCart();
     const user = await usersService.findOne({
-      where: { username: mockedUser.username }
+      where: { username: mockedUser.username },
     });
     const product = await productsService.findOneById(1);
 
@@ -101,7 +101,7 @@ describe('Shopping Cart controller', () => {
       .send({ username: mockedUser.username, password: mockedUser.password });
 
     const user = await usersService.findOne({
-      where: { username: mockedUser.username }
+      where: { username: mockedUser.username },
     });
 
     const response = await request(app.getHttpServer())
@@ -122,9 +122,9 @@ describe('Shopping Cart controller', () => {
           total_price: expect.any(Number),
           in_stock: expect.any(Number),
           createdAt: expect.any(String),
-          updatedAt: expect.any(String)
-        }
-      ])
+          updatedAt: expect.any(String),
+        },
+      ]),
     );
   });
 
@@ -139,7 +139,7 @@ describe('Shopping Cart controller', () => {
       .set('Cookie', login.headers['set-cookie']);
 
     const user = await usersService.findOne({
-      where: { username: mockedUser.username }
+      where: { username: mockedUser.username },
     });
 
     const response = await request(app.getHttpServer())
@@ -159,8 +159,8 @@ describe('Shopping Cart controller', () => {
         total_price: expect.any(Number),
         in_stock: expect.any(Number),
         createdAt: expect.any(String),
-        updatedAt: expect.any(String)
-      })
+        updatedAt: expect.any(String),
+      }),
     );
   });
 
@@ -202,7 +202,7 @@ describe('Shopping Cart controller', () => {
       .set('Cookie', login.headers['set-cookie']);
 
     const user = await usersService.findOne({
-      where: { username: mockedUser.username }
+      where: { username: mockedUser.username },
     });
 
     const response = await request(app.getHttpServer())
@@ -218,7 +218,7 @@ describe('Shopping Cart controller', () => {
       .send({ username: mockedUser.username, password: mockedUser.password });
 
     const user = await usersService.findOne({
-      where: { username: mockedUser.username }
+      where: { username: mockedUser.username },
     });
 
     await request(app.getHttpServer())

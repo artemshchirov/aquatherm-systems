@@ -7,55 +7,55 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       vendor: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       category: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       price: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       vendor_code: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       description: {
-        type: Sequelize.STRING(2048)
+        type: Sequelize.STRING(2048),
       },
       images: {
-        type: Sequelize.STRING(2048)
+        type: Sequelize.STRING(2048),
       },
       in_stock: {
         type: Sequelize.INTEGER,
-        defaultValue: 0
+        defaultValue: 0,
       },
       bestseller: {
         type: Sequelize.BOOLEAN,
-        defaultValue: false
+        defaultValue: false,
       },
       new: {
         type: Sequelize.BOOLEAN,
-        defaultValue: false
+        defaultValue: false,
       },
       popularity: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Products');
-  }
+  },
 };

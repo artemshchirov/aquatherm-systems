@@ -16,7 +16,7 @@ const ProductSlider = ({ images }: { images: string[] }) => {
     autoplay: true,
     speed: 500,
     arrows: false,
-    slidesToScroll: 1
+    slidesToScroll: 1,
   };
 
   return (

@@ -24,7 +24,7 @@ export class MakePaymentResponse {
   description: string;
 
   @ApiProperty({
-    example: { type: 'redirect', confirmation_url: 'http://example.com' }
+    example: { type: 'redirect', confirmation_url: 'http://example.com' },
   })
   confirmation: {
     type: string;

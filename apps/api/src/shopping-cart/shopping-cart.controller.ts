@@ -9,7 +9,7 @@ import {
   TotalPriceRequest,
   TotalPriceResponse,
   UpdateCountRequest,
-  UpdateCountResponse
+  UpdateCountResponse,
 } from './types';
 
 @Controller('shopping-cart')
@@ -44,7 +44,7 @@ export class ShoppingCartController {
   @Patch('/total-price/:id')
   updateTotalPrice(
     @Body() { total_price }: { total_price: number },
-    @Param('id') productId: string
+    @Param('id') productId: string,
   ) {
     return this.shoppingCartService.updateTotalPrice(total_price, productId);
   }

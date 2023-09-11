@@ -25,7 +25,7 @@ function updateCartItem<T>(cartItems: IShoppingCartItem[], productId: number, pa
     if (item.productId === productId) {
       return {
         ...item,
-        ...payload
+        ...payload,
       };
     }
 
@@ -39,10 +39,10 @@ export const $shoppingCart = shoppingCart
   .on(updateShoppingCart, (state, cartItem) => [...state, cartItem])
   .on(removeShoppingCartItem, (state, productId) => [...remove(state, productId)])
   .on(updateCartItemTotalPrice, (state, { productId, total_price }) => [
-    ...updateCartItem(state, productId, { total_price })
+    ...updateCartItem(state, productId, { total_price }),
   ])
   .on(updateCartItemCount, (state, { productId, count }) => [
-    ...updateCartItem(state, productId, { count })
+    ...updateCartItem(state, productId, { count }),
   ]);
 
 export const $totalPrice = shoppingCart

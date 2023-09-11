@@ -6,7 +6,7 @@ import { setFilteredProducts } from '@/context/products';
 const createManufacturerCheckboxObj = (title: string) => ({
   title,
   checked: false,
-  id: idGenerator()
+  id: idGenerator(),
 });
 
 export const vendors = ['Art Box', 'Union', 'AMSTERDAM'].map(createManufacturerCheckboxObj);
@@ -22,10 +22,10 @@ export const checkQueryParams = (params: URLSearchParams, path: string) => {
   const priceToQueryValue = getQueryParamOnFirstRender('priceTo', params, path) as string;
 
   const vendorQueryValue = JSON.parse(
-    decodeURIComponent(getQueryParamOnFirstRender('vendor', params, path) as string)
+    decodeURIComponent(getQueryParamOnFirstRender('vendor', params, path) as string),
   );
   const categoryQueryValue = JSON.parse(
-    decodeURIComponent(getQueryParamOnFirstRender('category', params, path) as string)
+    decodeURIComponent(getQueryParamOnFirstRender('category', params, path) as string),
   );
   const isValidVendorQuery = Array.isArray(vendorQueryValue) && !!vendorQueryValue?.length;
   const isValidCategoryQuery = Array.isArray(categoryQueryValue) && !!categoryQueryValue?.length;
@@ -39,7 +39,7 @@ export const checkQueryParams = (params: URLSearchParams, path: string) => {
     priceFromQueryValue,
     priceToQueryValue,
     vendorQueryValue,
-    categoryQueryValue
+    categoryQueryValue,
   };
 };
 
@@ -53,7 +53,7 @@ export const updateParamsAndFiltersFromQuery = async (callback: VoidFunction, pa
 export async function updateParamsAndFilters<T>(
   updatedParams: T,
   path: string,
-  router: AppRouterInstance
+  router: AppRouterInstance,
 ) {
   router.push(`/catalog?limit=20&offset=${updatedParams}`);
 

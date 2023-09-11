@@ -12,7 +12,7 @@ import {
   $shoppingCart,
   $totalPrice,
   setShoppingCart,
-  setTotalPrice
+  setTotalPrice,
 } from '@/context/shopping-cart';
 import CartPopupItem from './CartPopupItem';
 import { getCartItemsFx } from '@/app/api/shopping-cart';

@@ -9,7 +9,7 @@ import { controlStyles, inputStyles, menuStyles, optionStyles } from '@/styles/s
 import {
   createSelectOption,
   removeClassNamesForOverlayAndBody,
-  toggleClassNamesForOverlayAndBody
+  toggleClassNamesForOverlayAndBody,
 } from '@/utils/common';
 import { $searchInputZIndex, setSearchInputZIndex } from '@/context/header';
 import SearchSvg from '../SearchSvg/SearchSvg';
@@ -68,7 +68,7 @@ const SearchInput = () => {
       setInputValue(search);
       const data = await searchProductsFx({
         url: '/products/search',
-        search
+        search,
       });
 
       const names = data.map((item: IProduct) => item.name).map(createSelectOption);
@@ -82,7 +82,7 @@ const SearchInput = () => {
   const getProductAndRedirect = async (name: string) => {
     const product = await getProductByNameFx({
       url: '/products/name',
-      name
+      name,
     });
 
     if (!product.id) {
@@ -103,10 +103,10 @@ const SearchInput = () => {
   const onSearchMenuOpen = () => {
     setOnMenuOpenControlStyles({
       borderBottomLeftRadius: 0,
-      border: 'none'
+      border: 'none',
     });
     setOnMenuOpenContainerStyles({
-      boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.1)'
+      boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.1)',
     });
 
     btnRef.current.style.border = 'none';
@@ -120,10 +120,10 @@ const SearchInput = () => {
     setOnMenuOpenControlStyles({
       borderBottomLeftRadius: 4,
       boxShadow: 'none',
-      border: '1px solid #9e9e9e'
+      border: '1px solid #9e9e9e',
     });
     setOnMenuOpenContainerStyles({
-      boxShadow: 'none'
+      boxShadow: 'none',
     });
 
     btnRef.current.style.border = '1px solid #9e9e9e';
@@ -137,7 +137,7 @@ const SearchInput = () => {
       <div className={styles.header__search__inner}>
         <Select
           components={{
-            NoOptionsMessage: spinner ? NoOptionsSpinner : NoOptionsMessage
+            NoOptionsMessage: spinner ? NoOptionsSpinner : NoOptionsMessage,
           }}
           instanceId={useId()}
           placeholder="I'm looking for..."
@@ -147,27 +147,27 @@ const SearchInput = () => {
             ...inputStyles,
             container: defaultStyles => ({
               ...defaultStyles,
-              ...onMenuOpenContainerStyles
+              ...onMenuOpenContainerStyles,
             }),
             control: defaultStyles => ({
               ...controlStyles(defaultStyles, mode),
               backgroundColor: mode === 'dark' ? '#2d2d2d' : '#ffffff',
               zIndex,
               transition: 'none',
-              ...onMenuOpenControlStyles
+              ...onMenuOpenControlStyles,
             }),
             input: defaultStyles => ({
               ...defaultStyles,
-              color: mode === 'dark' ? '#f2f2f2' : '#222222'
+              color: mode === 'dark' ? '#f2f2f2' : '#222222',
             }),
             menu: defaultStyles => ({
               ...menuStyles(defaultStyles, mode),
               zIndex,
-              marginTop: '-1px'
+              marginTop: '-1px',
             }),
             option: (defaultStyles, state) => ({
-              ...optionStyles(defaultStyles, state, mode)
-            })
+              ...optionStyles(defaultStyles, state, mode),
+            }),
           }}
           isClearable={true}
           openMenuOnClick={false}

@@ -16,7 +16,7 @@ module.exports = {
         // 'plugin:@next/next/recommended', //< covered in next
         'next', // https://github.com/vercel/next.js/blob/canary/packages/eslint-config-next/package.json
         'next/core-web-vitals',
-        'prettier'
+        'prettier',
       ],
       rules: {
         '@typescript-eslint/no-empty-interface': 'off',
@@ -28,26 +28,26 @@ module.exports = {
         'react-internal/no-production-logging': 'off',
         'react/display-name': 'off',
         '@next/next/no-img-element': 'off',
-        '@next/next/no-html-link-for-pages': 'off'
+        '@next/next/no-html-link-for-pages': 'off',
       },
       env: {
         browser: true,
         node: true,
-        jest: true
+        jest: true,
       },
       parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
-        project: ['apps/*/', 'packages/*/*/']
+        project: ['apps/*/', 'packages/*/*/'],
       },
       settings: {
         next: {
-          rootDir: ['apps/*/', 'packages/*/*/']
+          rootDir: ['apps/*/', 'packages/*/*/'],
         },
         react: {
-          version: 'detect' // Tells eslint-plugin-react to automatically detect the version of React to use
-        }
-      }
-    }
-  ]
+          version: 'detect', // Tells eslint-plugin-react to automatically detect the version of React to use
+        },
+      },
+    },
+  ],
 };

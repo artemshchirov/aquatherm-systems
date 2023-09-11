@@ -11,7 +11,7 @@ export class ShoppingCartService {
     @InjectModel(ShoppingCart)
     private shoppingCartModel: typeof ShoppingCart,
     private readonly usersService: UsersService,
-    private readonly productsService: ProductsService
+    private readonly productsService: ProductsService,
   ) {}
 
   async findAll(userId: number | string): Promise<ShoppingCart[]> {
@@ -21,7 +21,7 @@ export class ShoppingCartService {
   async add(addToCartDto: AddToCartDto) {
     const cart = new ShoppingCart();
     const user = await this.usersService.findOne({
-      where: { username: addToCartDto.username }
+      where: { username: addToCartDto.username },
     });
     const product = await this.productsService.findOneById(addToCartDto.productId);
 
@@ -42,7 +42,7 @@ export class ShoppingCartService {
     await this.shoppingCartModel.update({ count }, { where: { productId } });
 
     const product = await this.shoppingCartModel.findOne({
-      where: { productId }
+      where: { productId },
     });
 
     return { count: product.count };
@@ -50,12 +50,12 @@ export class ShoppingCartService {
 
   async updateTotalPrice(
     total_price: number,
-    productId: number | string
+    productId: number | string,
   ): Promise<{ total_price: number }> {
     await this.shoppingCartModel.update({ total_price }, { where: { productId } });
 
     const product = await this.shoppingCartModel.findOne({
-      where: { productId }
+      where: { productId },
     });
 
     return { total_price: product.total_price };
@@ -63,7 +63,7 @@ export class ShoppingCartService {
 
   async remove(productId: number | string): Promise<void> {
     const product = await this.shoppingCartModel.findOne({
-      where: { productId }
+      where: { productId },
     });
 
     await product.destroy();

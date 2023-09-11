@@ -5,13 +5,13 @@ import {
   RefAttributes,
   useEffect,
   useRef,
-  useState
+  useState,
 } from 'react';
 
 export function withClickOutside(
   WrappedComponent: ForwardRefExoticComponent<
     IWrappedComponentProps & RefAttributes<HTMLDivElement>
-  >
+  >,
 ) {
   const Component = () => {
     const [open, setOpen] = useState(false);

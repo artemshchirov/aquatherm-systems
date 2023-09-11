@@ -39,11 +39,11 @@ const DashboardSlider = ({ items, spinner, goToProductPage }: IDashboardSlider) 
     autoplay: true,
     speed: 500,
     arrows: false,
-    slidesToScroll: isMedia768 ? 1 : 2
+    slidesToScroll: isMedia768 ? 1 : 2,
   };
 
   const width = {
-    width: isMedia1366 ? (isMedia800 ? (isMedia560 ? 160 : 252) : 317) : 344
+    width: isMedia1366 ? (isMedia800 ? (isMedia560 ? 160 : 252) : 317) : 344,
   };
 
   return (

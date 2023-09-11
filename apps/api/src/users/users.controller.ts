@@ -7,7 +7,7 @@ import {
   Post,
   Request,
   UseGuards,
-  Get
+  Get,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -18,7 +18,7 @@ import {
   LoginUserRequest,
   LoginUserResponse,
   LogoutUserResponse,
-  SignupResponse
+  SignupResponse,
 } from './types';
 import { ApiBody, ApiOkResponse } from '@nestjs/swagger';
 

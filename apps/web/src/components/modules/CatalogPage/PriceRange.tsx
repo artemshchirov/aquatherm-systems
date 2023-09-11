@@ -39,7 +39,7 @@ const PriceRange = ({ priceRange, setPriceRange, setIsPriceRangeChanged }: IPric
               height: 'auto',
               display: 'flex',
               width: '100%',
-              padding: '0 10px'
+              padding: '0 10px',
             }}
           >
             <div
@@ -52,9 +52,9 @@ const PriceRange = ({ priceRange, setPriceRange, setIsPriceRangeChanged }: IPric
                   values: priceRange,
                   colors: ['#B1CEFA', '#247CC8', '#B1CEFA'],
                   min: MIN,
-                  max: MAX
+                  max: MAX,
                 }),
-                alignSelf: 'center'
+                alignSelf: 'center',
               }}
             >
               {children}
@@ -66,7 +66,7 @@ const PriceRange = ({ priceRange, setPriceRange, setIsPriceRangeChanged }: IPric
             {...props}
             key={props.key}
             style={{
-              ...props.style
+              ...props.style,
             }}
           >
             <div
@@ -76,7 +76,7 @@ const PriceRange = ({ priceRange, setPriceRange, setIsPriceRangeChanged }: IPric
                 borderRadius: '50%',
                 background: '#FFFFFF',
                 border: '3px solid #1C629E',
-                boxShadow: '0px 12px 8px -6px rgba(174, 181, 239, 0.2)'
+                boxShadow: '0px 12px 8px -6px rgba(174, 181, 239, 0.2)',
               }}
             />
           </div>

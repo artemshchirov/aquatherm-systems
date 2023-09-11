@@ -23,7 +23,7 @@ const CityButton = () => {
     const options = {
       enableHighAccuracy: true,
       timeout: 5000,
-      maximumAge: 0
+      maximumAge: 0,
     };
     const success = async (pos: GeolocationPosition) => {
       try {
@@ -33,7 +33,7 @@ const CityButton = () => {
 
         setUserCity({
           city: data.features[0].properties.city,
-          street: data.features[0].properties.address_line1
+          street: data.features[0].properties.address_line1,
         });
       } catch (error) {
         toast.error((error as Error).message);
