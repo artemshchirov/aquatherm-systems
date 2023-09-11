@@ -1,0 +1,11 @@
+version: '3.1'
+services:
+  db:
+    image: mysql
+    restart: always
+    volumes:
+      - ./.db/mysql/${APP_ENV}:/data/db
+    ports:
+      - ${DATABASE_PORT}:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
