@@ -7,6 +7,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: mydb
+    ports:
+      - 3306:3306
     volumes:
       - ./.db/mysql/${APP_ENV}:/var/lib/mysql
 
@@ -14,4 +16,4 @@ services:
     image: adminer
     restart: always
     ports:
-      - 8080:8080
+      - 9999:8080
