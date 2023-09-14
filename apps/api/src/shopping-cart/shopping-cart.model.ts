@@ -1,34 +1,34 @@
-import { Column, Model, Table } from 'sequelize-typescript';
+import { Table, Column, DataType, Model } from 'sequelize-typescript';
 
 @Table
 export class ShoppingCart extends Model {
-  @Column
+  @Column(DataType.INTEGER)
   userId: number;
 
-  @Column({ defaultValue: 0 })
+  @Column({ type: DataType.INTEGER, defaultValue: 0 })
   productId: number;
 
-  @Column
+  @Column(DataType.STRING)
   vendor: string;
 
-  @Column
+  @Column(DataType.STRING)
   category: string;
 
-  @Column
+  @Column(DataType.STRING)
   name: string;
 
-  @Column
+  @Column(DataType.STRING)
   image: string;
 
-  @Column({ defaultValue: 0 })
+  @Column({ type: DataType.FLOAT, defaultValue: 0 })
   price: number;
 
-  @Column({ defaultValue: 0 })
+  @Column({ type: DataType.FLOAT, defaultValue: 0 })
   total_price: number;
 
-  @Column({ defaultValue: 0 })
+  @Column({ type: DataType.INTEGER, defaultValue: 0 })
   in_stock: number;
 
-  @Column({ defaultValue: 1 })
+  @Column({ type: DataType.INTEGER, defaultValue: 1 })
   count: number;
 }

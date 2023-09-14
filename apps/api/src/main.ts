@@ -5,6 +5,7 @@ import passport from 'passport';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ConfigService } from '@nestjs/config';
 import { INestApplication, Logger } from '@nestjs/common';
+import { useContainer } from 'class-validator';
 
 declare const module: any;
 
@@ -15,12 +16,14 @@ async function bootstrap() {
 
   setupSession(app);
 
-  swaggerSetup(app);
+  setupSwagger(app);
 
   app.enableCors({
     credentials: true,
     origin: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:3002'],
   });
+
+  useContainer(app.select(AppModule), { fallbackOnErrors: true });
 
   await app.listen(port, host, () => {
     Logger.log(`Server running on http://${host}:${port}`, 'Bootstrap');
@@ -48,7 +51,7 @@ const setupSession = (app: INestApplication) => {
   app.use(passport.session());
 };
 
-const swaggerSetup = (app: INestApplication) => {
+const setupSwagger = (app: INestApplication) => {
   const config = new DocumentBuilder()
     .setTitle('Ecommerce')
     .setDescription('API documentation')

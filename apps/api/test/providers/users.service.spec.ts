@@ -6,7 +6,7 @@ import { databaseConfig } from '../../src/config/configuration';
 import { SequelizeConfigService } from '../../src/config/sequelizeConfig.service';
 import { UsersModule } from '../../src/users/users.module';
 import { User } from '../../src/users/users.model';
-import * as bcrypt from 'bcrypt';
+import bcrypt = require('bcrypt');
 import { UsersService } from '../../src/users/users.service';
 
 describe('Users service', () => {

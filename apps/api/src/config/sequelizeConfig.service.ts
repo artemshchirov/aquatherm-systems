@@ -1,11 +1,11 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { SequelizeOptionsFactory, SequelizeModuleOptions } from '@nestjs/sequelize';
 import { ConfigService } from '@nestjs/config';
 import { User } from '../users/users.model';
 
 @Injectable()
 export class SequelizeConfigService implements SequelizeOptionsFactory {
-  constructor(private readonly configService: ConfigService) {}
+  constructor(@Inject(ConfigService) private readonly configService: ConfigService) {}
 
   createSequelizeOptions(): SequelizeModuleOptions {
     const {

@@ -1,8 +1,9 @@
 import { registerAs } from '@nestjs/config';
-import { Dialect } from 'sequelize/types/sequelize';
+import { Dialect } from 'sequelize';
+require('dotenv').config();
 
 export const sqlConfig = registerAs('database', () => ({
-  dialect: <Dialect>process.env.SQL_DIALECT || 'mysql',
+  dialect: <Dialect>process.env.SQL_DIALECT,
   logging: process.env.SQL_LOGGING === 'true' ? console.log : false,
   host: process.env.DATABASE_HOST,
   port: +process.env.DATABASE_PORT,

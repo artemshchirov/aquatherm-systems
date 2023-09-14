@@ -9,13 +9,14 @@ import { ProductsModule } from './products/products.module';
 import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
 import { PaymentModule } from './payment/payment.module';
 
+// TODO: joi (or zod?) validation schema to Sequelize config
 @Module({
   imports: [
+    ConfigModule.forRoot({ isGlobal: true, load: [databaseConfig, authConfig] }),
     SequelizeModule.forRootAsync({
       imports: [ConfigModule],
       useClass: SequelizeConfigService,
     }),
-    ConfigModule.forRoot({ load: [databaseConfig, authConfig] }),
     UsersModule,
     AuthModule,
     ProductsModule,

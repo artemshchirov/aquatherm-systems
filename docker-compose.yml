@@ -1,11 +1,17 @@
 version: '3.1'
+
 services:
   db:
     image: mysql
     restart: always
-    volumes:
-      - ./.db/mysql/${APP_ENV}:/data/db
-    ports:
-      - ${DATABASE_PORT}:3306
     environment:
-      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: mydb
+    volumes:
+      - ./.db/mysql/${APP_ENV}:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080

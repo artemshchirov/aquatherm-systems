@@ -1,37 +1,37 @@
-import { Column, Model, Table } from 'sequelize-typescript';
+import { Table, Column, DataType, Model } from 'sequelize-typescript';
 
 @Table
 export class Products extends Model {
-  @Column
+  @Column(DataType.STRING)
   vendor: string;
 
-  @Column
+  @Column(DataType.STRING)
   category: string;
 
-  @Column({ defaultValue: 0 })
+  @Column({ type: DataType.FLOAT, defaultValue: 0 })
   price: number;
 
-  @Column
+  @Column(DataType.STRING)
   vendor_code: string;
 
-  @Column
+  @Column(DataType.STRING)
   name: string;
 
-  @Column
+  @Column(DataType.STRING(2048))
   description: string;
 
-  @Column
+  @Column(DataType.STRING(2048))
   images: string;
 
-  @Column({ defaultValue: 0 })
+  @Column({ type: DataType.INTEGER, defaultValue: 0 })
   in_stock: number;
 
-  @Column({ defaultValue: false })
+  @Column({ type: DataType.BOOLEAN, defaultValue: false })
   bestseller: boolean;
 
-  @Column({ defaultValue: false })
+  @Column({ type: DataType.BOOLEAN, defaultValue: false })
   new: boolean;
 
-  @Column
+  @Column(DataType.INTEGER)
   popularity: number;
 }

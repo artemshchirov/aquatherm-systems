@@ -5,10 +5,10 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { databaseConfig } from '../../src/config/configuration';
 import { SequelizeConfigService } from '../../src/config/sequelizeConfig.service';
 import { User } from '../../src/users/users.model';
-import * as bcrypt from 'bcrypt';
-import * as request from 'supertest';
-import * as passport from 'passport';
-import * as session from 'express-session';
+import bcrypt = require('bcrypt');
+import request = require('supertest');
+import passport = require('passport');
+import session = require('express-session');
 import { AuthModule } from '../../src/auth/auth.module';
 
 const mockedUser = {

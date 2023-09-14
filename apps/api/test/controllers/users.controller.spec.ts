@@ -6,8 +6,8 @@ import { databaseConfig } from '../../src/config/configuration';
 import { SequelizeConfigService } from '../../src/config/sequelizeConfig.service';
 import { UsersModule } from '../../src/users/users.module';
 import { User } from '../../src/users/users.model';
-import * as bcrypt from 'bcrypt';
-import * as request from 'supertest';
+import bcrypt = require('bcrypt');
+import request = require('supertest');
 
 describe('Users controller', () => {
   let app: INestApplication;

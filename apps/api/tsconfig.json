@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "target": "es6",
     "module": "commonjs",
     "declaration": true,
     "removeComments": true,
@@ -9,6 +10,8 @@
     "outDir": "./dist",
     "incremental": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": false
+    "forceConsistentCasingInFileNames": false,
+    "noImplicitAny": false,
+    "experimentalDecorators": true
   }
 }

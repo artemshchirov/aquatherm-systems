@@ -5,7 +5,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { databaseConfig } from '../../src/config/configuration';
 import { SequelizeConfigService } from '../../src/config/sequelizeConfig.service';
 import { User } from '../../src/users/users.model';
-import * as bcrypt from 'bcrypt';
+import bcrypt = require('bcrypt');
 import { ProductsModule } from '../../src/products/products.module';
 import { ProductsService } from '../../src/products/products.service';
 import { UsersService } from '../../src/users/users.service';

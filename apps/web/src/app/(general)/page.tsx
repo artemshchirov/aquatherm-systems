@@ -5,9 +5,9 @@ import DashboardPage from '../../components/templates/DashboardPage/DashboardPag
 import { useCallback } from 'react';
 import Breadcrumbs from '../../components/modules/Breadcrumbs/Breadcrumbs';
 
-export const metadata: Metadata = {
-  title: 'Ecommerce | Dashboard',
-};
+// export const metadata: Metadata = {
+//   title: 'Ecommerce | Dashboard',
+// };
 
 export default function Dashboard() {
   const getDefaultTextGenerator = () => '';
