@@ -29,7 +29,8 @@
     "env:local:down": "cross-env APP_ENV=local pnpm doppler docker compose down",
     "env:test:up": "cross-env APP_ENV=test pnpm doppler docker compose up -d db",
     "env:test:down": "cross-env APP_ENV=test pnpm doppler docker compose down ",
-    "docker:build": "docker build --platform linux/amd64 -t ecommerce-template-api -f ./apps/api/Dockerfile ."
+    "docker:build": "docker build --platform linux/amd64 -t ecommerce-template-api -f ./apps/api/Dockerfile .",
+    "deploy": "./deploy-docker.sh api"
   },
   "dependencies": {
     "@artemshchirov/configs-commitlint": "workspace:^",

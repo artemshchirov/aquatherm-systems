@@ -4,13 +4,15 @@ import session = require('express-session');
 import passport = require('passport');
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ConfigService } from '@nestjs/config';
-import { INestApplication, Logger } from '@nestjs/common';
+import { Logger } from '@nestjs/common';
 import { useContainer } from 'class-validator';
+import { SessionOptions } from 'express-session';
+import { NestExpressApplication } from '@nestjs/platform-express';
 
 declare const module: any;
 
 async function bootstrap() {
-  const app = await NestFactory.create<INestApplication>(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
   const port = process.env.PORT || 3001;
   const host = process.env.HOST || 'localhost';
 
@@ -20,7 +22,12 @@ async function bootstrap() {
 
   app.enableCors({
     credentials: true,
-    origin: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:3002'],
+    origin: [
+      'http://localhost:3000',
+      'http://localhost:3001',
+      'http://localhost:3002',
+      'https://ecommerce-template-web.vercel.app',
+    ],
   });
 
   useContainer(app.select(AppModule), { fallbackOnErrors: true });
@@ -35,23 +42,33 @@ async function bootstrap() {
   }
 }
 
-const setupSession = (app: INestApplication) => {
+const setupSession = (app: NestExpressApplication) => {
   const configService = app.get(ConfigService);
   const { secret } = configService.get('auth');
 
-  app.use(
-    session({
-      secret,
-      resave: false,
-      saveUninitialized: false,
-    }),
-  );
+  const sessionConfig: SessionOptions = {
+    secret,
+    name: 'ecommerce-template',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      sameSite: 'none',
+      maxAge: 60 * 60 * 1000,
+    },
+  };
+
+  if (process.env.APP_ENV === 'prod') {
+    app.set('trust proxy', 1);
+    sessionConfig.cookie.secure = true;
+  }
+
+  app.use(session(sessionConfig));
 
   app.use(passport.initialize());
   app.use(passport.session());
 };
 
-const setupSwagger = (app: INestApplication) => {
+const setupSwagger = (app: NestExpressApplication) => {
   const config = new DocumentBuilder()
     .setTitle('Ecommerce')
     .setDescription('API documentation')
