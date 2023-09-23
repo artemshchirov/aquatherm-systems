@@ -1,4 +1,3 @@
-require('dotenv').config();
 const config = {
   development: {
     username: process.env.DATABASE_USER,
@@ -25,4 +24,5 @@ const config = {
     port: process.env.DATABASE_PORT || 3306,
   },
 };
+
 module.exports = config;

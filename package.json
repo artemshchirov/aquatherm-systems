@@ -25,10 +25,11 @@
     "fix": "pnpm lint:fix . && pnpm remark:fix . && pnpm format:fix . && pnpm syncpack:fix",
     "prepare": "husky install",
     "doppler": "cross-env-shell doppler -p app_ecommerce-template-api -c $APP_ENV run --",
-    "env:local:up": "cross-env APP_ENV=local pnpm doppler docker compose up -d",
+    "env:local:up": "cross-env APP_ENV=local pnpm doppler docker-compose up -d",
     "env:local:down": "cross-env APP_ENV=local pnpm doppler docker compose down",
     "env:test:up": "cross-env APP_ENV=test pnpm doppler docker compose up -d db",
-    "env:test:down": "cross-env APP_ENV=test pnpm doppler docker compose down "
+    "env:test:down": "cross-env APP_ENV=test pnpm doppler docker compose down ",
+    "docker:build": "docker build --platform linux/amd64 -t ecommerce-template-api -f ./apps/api/Dockerfile ."
   },
   "dependencies": {
     "@artemshchirov/configs-commitlint": "workspace:^",

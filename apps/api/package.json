@@ -18,7 +18,10 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "doppler": "cross-env-shell doppler -p app_ecommerce-template-api -c $APP_ENV run --"
+    "doppler": "cross-env-shell doppler -p app_ecommerce-template-api -c $APP_ENV run --",
+    "migrate": "doppler -p app_ecommerce-template-api -c prod run -- npx sequelize-cli db:migrate",
+    "seed:local": "doppler -p app_ecommerce-template-api -c prod run -- npx sequelize-cli db:seed:all",
+    "seed": "doppler -p app_ecommerce-template-api -c prod run -- npx sequelize-cli db:seed:all"
   },
   "dependencies": {
     "@faker-js/faker": "^8.0.2",
@@ -39,7 +42,8 @@
     "rxjs": "^7.8.1",
     "sequelize": "^6.32.1",
     "sequelize-cli": "^6.6.1",
-    "sequelize-typescript": "^2.1.5"
+    "sequelize-typescript": "^2.1.5",
+    "cross-env": "^7.0.3"
   },
   "jest": {
     "moduleFileExtensions": [

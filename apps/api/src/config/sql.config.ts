@@ -1,6 +1,5 @@
 import { registerAs } from '@nestjs/config';
 import { Dialect } from 'sequelize';
-require('dotenv').config();
 
 export const sqlConfig = registerAs('database', () => ({
   dialect: <Dialect>process.env.SQL_DIALECT,

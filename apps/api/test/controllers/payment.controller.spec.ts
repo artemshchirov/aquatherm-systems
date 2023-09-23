@@ -7,8 +7,8 @@ import { SequelizeConfigService } from '../../src/config/sequelizeConfig.service
 import { User } from '../../src/users/users.model';
 import bcrypt from 'bcrypt';
 import request from 'supertest';
-import passport from 'passport';
-import session from 'express-session';
+import passport = require('passport');
+import session = require('express-session');
 
 import { AuthModule } from '../../src/auth/auth.module';
 import { PaymentModule } from '../../src/payment/payment.module';

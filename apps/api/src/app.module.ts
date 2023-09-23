@@ -8,6 +8,8 @@ import { AuthModule } from './auth/auth.module';
 import { ProductsModule } from './products/products.module';
 import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
 import { PaymentModule } from './payment/payment.module';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 
 // TODO: joi (or zod?) validation schema to Sequelize config
 @Module({
@@ -23,5 +25,7 @@ import { PaymentModule } from './payment/payment.module';
     ShoppingCartModule,
     PaymentModule,
   ],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

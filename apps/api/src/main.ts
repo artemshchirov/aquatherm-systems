@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import session from 'express-session';
-import passport from 'passport';
+import session = require('express-session');
+import passport = require('passport');
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ConfigService } from '@nestjs/config';
 import { INestApplication, Logger } from '@nestjs/common';

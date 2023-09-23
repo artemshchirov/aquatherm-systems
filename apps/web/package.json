@@ -6,10 +6,11 @@
   "author": "Artem Shchirov <artemshchirov@gmail.com> (http://github.com/artemshchirov)",
   "license": "UNLICENSED",
   "scripts": {
-    "dev": "next dev",
+    "dev": "cross-env APP_ENV=local pnpm doppler next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "cross-env APP_ENV=prod pnpm doppler next start",
+    "lint": "next lint",
+    "doppler": "cross-env-shell doppler -p app_ecommerce-template-web -c $APP_ENV run --"
   },
   "dependencies": {
     "@effector/next": "^0.5.1",

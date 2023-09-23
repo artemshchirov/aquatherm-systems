@@ -40,8 +40,8 @@ RUN pnpm turbo run build --filter=api...
 
 FROM node:18.12.1-alpine AS runner
 ENV DOPPLER_TOKEN=null
-ENV APP_ENV=dev
-ENV PORT=8000
+ENV APP_ENV=prod
+ENV PORT=8080
 WORKDIR /app
 
 ENV PNPM_HOME="/root/.local/share/pnpm"
